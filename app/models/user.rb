@@ -13,5 +13,5 @@ class User < ApplicationRecord
   has_many :objectives, dependent: :destroy
 
   validates :first_name, :last_name, :nickname, :email, presence: true
-  # has_one_attached :photo
+  has_one_attached :photo
 end
