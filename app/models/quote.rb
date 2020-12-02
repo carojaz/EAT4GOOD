@@ -1,3 +1,3 @@
 class Quote < ApplicationRecord
-  validates :phrase, presence: true
+  validates :phrases, presence: true
 end
