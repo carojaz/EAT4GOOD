@@ -13,7 +13,7 @@
 
   <body>
     <%= render 'shared/navbar' %>
-    <%= render 'shared/quotebar' %>
+    <%= render 'shared/quotebar' unless params[:action] == "home" %>
     <%= render 'shared/flashes' %>
 
     <%= yield %>
