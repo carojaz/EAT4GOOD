@@ -1,8 +1,8 @@
 .datenav {
   display: flex;
   justify-content: space-between;
-  margin-top: 0.5em;
-
+  margin: 0.5em;
+  padding: 0 2em;
   text-decoration: none;
 
   & .inactive-btn {
