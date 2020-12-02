@@ -12,6 +12,10 @@ User.destroy_all
 Friend.destroy_all
 Challenge.destroy_all
 Challengeset.destroy_all
+Breakfast.destroy_all
+Lunch.destroy_all
+Dinner.destroy_all
+Foodtype.destroy_all
 
 u1 = User.new(first_name: "Caroline" , last_name: "Jasinski", nickname: "Caro", email: "jasinski_caroline@yahoo.fr", password: "azerty" )
 file = URI.open('https://avatars3.githubusercontent.com/u/68743949?s=460&u=f16cbc21758c842fba66a642775e7c931a7be251&v=4')
@@ -71,3 +75,25 @@ cs7 = Challengeset.create!(challenge_id: c3.id, friend_id: f1.id,start_date: "20
 cs8 = Challengeset.create!(challenge_id: c4.id, friend_id: f2.id,start_date: "2020-12-07", status: "KO")
 
 puts "#{Challengeset.count/8*100}% = #{Challengeset.count} / 8 challenges created"
+
+ft1 = Foodtype.create!(name: "Dairy")
+ft2 = Foodtype.create!(name: "Meat")
+ft3 = Foodtype.create!(name: "Fish")
+ft4 = Foodtype.create!(name: "Veggie")
+ft5 = Foodtype.create!(name: "No meal")
+
+puts "#{Foodtype.count/5*100}% = #{Foodtype.count} / 5 foodtypes created"
+
+Foodtype.all.each do |ft|
+  Breakfast.create!(foodtype_id: ft.id, local: true)
+  Breakfast.create!(foodtype_id: ft.id, local: false)
+  Lunch.create!(foodtype_id: ft.id, local: true)
+  Lunch.create!(foodtype_id: ft.id, local: false)
+  Dinner.create!(foodtype_id: ft.id, local: true)
+  Dinner.create!(foodtype_id: ft.id, local: false)
+end
+puts "#{Breakfast.count/10*100}% = #{Breakfast.count} / 10 Breakfast created"
+puts "#{Lunch.count/10*100}% = #{Lunch.count} / 10 Lunch created"
+puts "#{Dinner.count/10*100}% = #{Dinner.count} / 10 Dinner created"
+
+
