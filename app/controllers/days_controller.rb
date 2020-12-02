@@ -10,7 +10,7 @@ class DaysController < ApplicationController
 
   def create
     @day = Day.new(date: Date.today)
-    @day.user = current_user.id
+    @day.user_id = current_user.id
     # methode d'instance pour un day
     set_meals
 
@@ -23,25 +23,25 @@ class DaysController < ApplicationController
 
   def create_previous
     # chercher le jour de l'instance neste
-    @date_of_day = Days.find(params[:days_id]).date
+    @date_of_day = Day.find(params[:day_id]).date
     # verifier si le jour -1 existe en base // renvoi un tableau avec 1 valeur
-    @day_before = Days.where(date: @date_of_day - 1, user_id: current_user)
+    @day_before = Day.where(date: (@date_of_day - 1), user_id: current_user)
 
     if @day_before.present?
       # si OK on sort le day de l'array de resultat
       @day_before.first
+      redirect_to edit_day_path(@day_before.first)
     else
       # si KO create new day
       set_meals
-      @day_before = Day.new(date: @date_of_day.date - 1)
-      @day_before.user = current_user.id
+      @day_before = Day.new(date: @date_of_day - 1)
+      @day_before.user_id = current_user.id
       @day_before.breakfast_id = @breakfast.id
       @day_before.lunch_id = @lunch.id
       @day_before.dinner_id = @dinner.id
       @day_before.save
+      redirect_to edit_day_path(@day_before)
     end
-    # dans tout les cas redirect show du new days
-    redirect_to day_path(@day_before)
   end
 
   def status
@@ -59,7 +59,7 @@ class DaysController < ApplicationController
   end
 
   def edit
-    @day = current_user.day
+    @date_of_day = Day.find(params[:id]).date
   end
 
   def update

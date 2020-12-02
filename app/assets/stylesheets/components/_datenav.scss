@@ -1,0 +1,16 @@
+.datenav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5em;
+
+  text-decoration: none;
+
+  & .inactive-btn {
+    color: gray;
+    opacity: 0.8;
+  }
+
+  & .active-btn {
+    color: $green;
+  }
+}

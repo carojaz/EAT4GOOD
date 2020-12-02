@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="datenav">
+    <%= link_to day_create_previous_path(Day.find(params[:id])) do  %>
+      <h3><i class="fas fa-chevron-circle-left active-btn"></i></h3>
+    <% end %>
+    <h3><%= Day.find(params[:id]).date.strftime("%d-%m-%Y") %></h3>
+    <% if Day.find(params[:id]).date == Date.today %>
+        <h3><i class="fas fa-chevron-circle-right inactive-btn"></i></h3>
+    <% else %>
+      <% @date_of_day = Day.find(params[:id]).date %>
+      <% @day_after = Day.where(date: @date_of_day + 1, user_id: current_user).first %>
+      <%= link_to edit_day_path(@day_after) do  %>
+        <h3><i class="fas fa-chevron-circle-right active-btn"></i></h3>
+      <% end %>
+    <% end %>
+  </div>
+</div>
