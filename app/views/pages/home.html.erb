@@ -1,17 +1,3 @@
-      <div class="card-meals">
-        <div class="avatar-meals">
-          <%= image_tag "breakfast.svg"%>
-          <p>breakfast</p>
-        </div>
-        <div class="avatar-meals">
-          <%= image_tag "lunch.svg" %>
-          <p>lunch</p>
-        </div>
-        <div class="avatar-meals">
-          <%= image_tag "dinner.svg" %>
-          <p>dinner</p>
-        </div>
-      </div>
 <div class="background-butterfly">
     <div class="container">
       <div class="title">
@@ -20,8 +6,8 @@
         <%= image_tag "logo.svg", alt: "logo-eat4good" %>
       </div>
       <div class="call-to-action">
-        <h2 class="btn-white">Sign up</h2>
-        <h2 class="btn-white">Login</h2>
+        <h2><%= link_to "Sign up", new_user_registration_path, class: "btn-white" %></h2>
+        <h2><%= link_to "Login", new_user_session_path, class: "btn-white" %></h2>
       </div>
       <div class="scroll">
         <i class="fas fa-angle-down"></i>
