@@ -4,7 +4,15 @@
       <%= link_to image_tag "breakfast.svg", edit_day_path(@day) %>
       <p>breakfast</p>
     <% else %>
-      <%= link_to @day.breakfast.image, edit_day_path(@day) %>
+      <% if @day.breakfast.foodtype.name == "milk"%>
+        <%= link_to image_tag "milk.svg" , edit_day_path(@day) %>
+      <% elsif @day.breakfast.foodtype.name == "meal"%>
+        <%= link_to image_tag "meal.svg" , edit_day_path(@day) %>
+      <% elsif @day.breakfast.foodtype.name == "fish"%>
+        <%= link_to image_tag "fish.svg" , edit_day_path(@day) %>
+      <% elsif @day.breakfast.foodtype.name == "vegetarian"%>
+        <%= link_to image_tag "vegetarian.svg" , edit_day_path(@day) %>
+      <% end %>
       <p>breakfast</p>
     <% end %>
   </div>
@@ -13,7 +21,15 @@
       <%= link_to image_tag "lunch.svg", edit_day_path(@day) %>
       <p>lunch</p>
     <% else %>
-      <%= link_to @day.lunch.image, edit_day_path(@day) %>
+      <% if @day.lunch.foodtype.name == "milk"%>
+        <%= link_to image_tag "milk.svg" , edit_day_path(@day) %>
+      <% elsif @day.lunch.foodtype.name == "meal"%>
+        <%= link_to image_tag "meal.svg" , edit_day_path(@day) %>
+      <% elsif @day.lunch.foodtype.name == "fish"%>
+        <%= link_to image_tag "fish.svg" , edit_day_path(@day) %>
+      <% elsif @day.lunch.foodtype.name == "vegetarian"%>
+        <%= link_to image_tag "vegetarian.svg" , edit_day_path(@day) %>
+      <% end %>
       <p>lunch</p>
     <% end %>
   </div>
@@ -22,24 +38,16 @@
       <%= link_to image_tag "dinner.svg", edit_day_path(@day) %>
       <p>dinner</p>
     <% else %>
-      <%= link_to @day.dinner.image, edit_day_path(@day) %>
+      <% if @day.dinner.foodtype.name == "milk"%>
+        <%= link_to image_tag "milk.svg" , edit_day_path(@day) %>
+      <% elsif @day.dinner.foodtype.name == "meal"%>
+        <%= link_to image_tag "meal.svg" , edit_day_path(@day) %>
+      <% elsif @day.dinner.foodtype.name == "fish"%>
+        <%= link_to image_tag "fish.svg" , edit_day_path(@day) %>
+      <% elsif @day.dinner.foodtype.name == "vegetarian"%>
+        <%= link_to image_tag "vegetarian.svg" , edit_day_path(@day) %>
+      <% end %>
       <p>dinner</p>
     <% end %>
   </div>
 </div>
-
-<!-- Essai a coller dans home pour voir le design ! A supprimer quand ca marche au dessus -->
-<div class="card-meals">
-        <div class="avatar-meals">
-          <%= image_tag "breakfast.svg"%>
-          <p>breakfast</p>
-        </div>
-        <div class="avatar-meals">
-          <%= image_tag "lunch.svg" %>
-          <p>lunch</p>
-        </div>
-        <div class="avatar-meals">
-          <%= image_tag "dinner.svg" %>
-          <p>dinner</p>
-        </div>
-      </div>
