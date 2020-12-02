@@ -13,6 +13,22 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
 }
+
+.avatar-bordered-large {
+  width: 6em;
+  height: 6em;
+  padding: 0.5em;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+  object-fit: contain;
+  margin: 0.2em;
+
+  & img {
+    margin: 2em;
+  }
+}
+
 .avatar-square {
   width: 40px;
   border-radius: 0px;
