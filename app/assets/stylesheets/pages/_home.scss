@@ -1,1 +1,39 @@
 // Specific CSS for your home-page
+* {
+  text-align: center;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+
+h1 {
+  color: white;
+  margin-top: 3em;
+}
+
+img {
+  margin-bottom: 2em;
+}
+
+.call-to-action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll {
+  font-size: 5em;
+  color: white;
+  opacity: 0.9;
+  text-shadow: 0 6px 4px rgba(0,0,0,0.2);
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
