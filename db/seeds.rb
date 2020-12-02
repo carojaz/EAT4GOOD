@@ -12,6 +12,13 @@ User.destroy_all
 Friend.destroy_all
 Challenge.destroy_all
 Challengeset.destroy_all
+Quote.destroy_all
+
+Quote.create(phrases: "Eat local decrease your CO2 impact :)")
+Quote.create(phrases: "Promote carpooling :)")
+Quote.create(phrases: "promote  public transport :)")
+Quote.create(phrases: "Eat seasonal foods :)")
+Quote.create(phrases: "Recycle your waste :)")
 
 u1 = User.new(first_name: "Caroline" , last_name: "Jasinski", nickname: "Caro", email: "jasinski_caroline@yahoo.fr", password: "azerty" )
 file = URI.open('https://avatars3.githubusercontent.com/u/68743949?s=460&u=f16cbc21758c842fba66a642775e7c931a7be251&v=4')
