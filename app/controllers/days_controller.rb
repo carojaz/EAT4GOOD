@@ -11,8 +11,51 @@ class DaysController < ApplicationController
   def create
     @day = Day.new(date: Date.today)
     @day.user = current_user.id
-    # @day.week = current_week
+    # methode d'instance pour un day
+    set_meals
+
+    @day.breakfast_id = @breakfast.id
+    @day.lunch_id = @lunch.id
+    @day.dinner_id = @dinner.id
+
     @day.save
+  end
+
+  def create_previous
+    # chercher le jour de l'instance neste
+    @date_of_day = Days.find(params[:days_id]).date
+    # verifier si le jour -1 existe en base // renvoi un tableau avec 1 valeur
+    @day_before = Days.where(date: @date_of_day - 1, user_id: current_user)
+
+    if @day_before.present?
+      # si OK on sort le day de l'array de resultat
+      @day_before.first
+    else
+      # si KO create new day
+      set_meals
+      @day_before = Day.new(date: @date_of_day.date - 1)
+      @day_before.user = current_user.id
+      @day_before.breakfast_id = @breakfast.id
+      @day_before.lunch_id = @lunch.id
+      @day_before.dinner_id = @dinner.id
+      @day_before.save
+    end
+    # dans tout les cas redirect show du new days
+    redirect_to day_path(@day_before)
+  end
+
+  def status
+    # faire le calcul du scoring du jour
+    @veggie_foodtype = Foodype.find(name: "Veggie")
+    if @day.breakfast.foodtype_id == @veggie_foodtype.id
+      veggie_counter += 1
+    end
+    if @day.lunch.foodtype_id == @veggie_foodtype.id
+      veggie_counter += 1
+    end
+    if @day.dinner.foodtype_id == @veggie_foodtype.id
+      veggie_counter += 1
+    end
   end
 
   def edit
@@ -30,5 +73,11 @@ class DaysController < ApplicationController
 
   def device_params
     params.require(:day).permit(:date, :breakfast_id, :lunch_id, :dinner_id)
+  end
+
+  def set_meals
+    @breakfast = Breakfast.last
+    @lunch = Lunch.last
+    @dinner = Dinner.last
   end
 end
