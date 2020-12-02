@@ -12,6 +12,37 @@ User.destroy_all
 Friend.destroy_all
 Challenge.destroy_all
 Challengeset.destroy_all
+Quote.destroy_all
+
+Quote.create(phrases: "Eat local decrease your CO2 impact :)")
+Quote.create(phrases: "Promote carpooling :)")
+Quote.create(phrases: "promote  public transport :)")
+Quote.create(phrases: "Eat seasonal foods :)")
+Quote.create(phrases: "Recycle your waste :)")
+Quote.create(phrases: "Don’t waste food :)")
+Quote.create(phrases: "Unplug your devices :)")
+Quote.create(phrases: "Recycle all you can :)")
+Quote.create(phrases: "Try to cut out plastic :)")
+Quote.create(phrases: "Use LED light bulbs :)")
+Quote.create(phrases: "Insulate your home :)")
+Quote.create(phrases: "Fix it, don’t throw it :)")
+Quote.create(phrases: "Use eco-friendly cleaning products :)")
+Quote.create(phrases: "Educate: you can help others understand the importance and value of our natural resources :)")
+Quote.create(phrases: "Conserve water: The less water you use, the less runoff and wastewater that eventually end up in the ocean :)")
+Quote.create(phrases: "Shop wisely: Buy less plastic and bring a reusable shopping bag :)")
+Quote.create(phrases: "Bike more. Drive less :)")
+Quote.create(phrases: "Don't send chemicals into our waterways :)")
+Quote.create(phrases: "Promote Biodiversity :)")
+Quote.create(phrases: "Don't throw rubbish on the ground :)")
+Quote.create(phrases: "Respect nature when you go for a walk :)")
+Quote.create(phrases: "Try stay in a eco-hotel when you go on holiday :)")
+Quote.create(phrases: "Choose eco-cosmetics :)")
+Quote.create(phrases: "Use mineral sun cream :)")
+Quote.create(phrases: "Buy your holidays souvenirs responsibly :)")
+Quote.create(phrases: "Support reforestation project :)")
+Quote.create(phrases: "Limit light pollution outdoor :)")
+Quote.create(phrases: "Don't throw your trash in the sea :)")
+Quote.create(phrases: "Reduce your consumption of paper :)")
 
 u1 = User.new(first_name: "Caroline" , last_name: "Jasinski", nickname: "Caro", email: "jasinski_caroline@yahoo.fr", password: "azerty" )
 file = URI.open('https://avatars3.githubusercontent.com/u/68743949?s=460&u=f16cbc21758c842fba66a642775e7c931a7be251&v=4')

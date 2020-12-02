@@ -1,0 +1,12 @@
+.navbar-quote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $orange;
+  //max-height: 3.1em;
+
+  p {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
