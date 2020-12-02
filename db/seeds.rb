@@ -127,4 +127,4 @@ puts "#{Breakfast.count/10*100}% = #{Breakfast.count} / 10 Breakfast created"
 puts "#{Lunch.count/10*100}% = #{Lunch.count} / 10 Lunch created"
 puts "#{Dinner.count/10*100}% = #{Dinner.count} / 10 Dinner created"
 
-
+d1 = Day.create!(date: Date.today)
