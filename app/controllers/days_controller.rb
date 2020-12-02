@@ -18,7 +18,6 @@ class DaysController < ApplicationController
     @day.lunch_id = @lunch.id
     @day.dinner_id = @dinner.id
 
-    # @day.week = current_week
     @day.save
   end
 
@@ -47,6 +46,16 @@ class DaysController < ApplicationController
 
   def status
     # faire le calcul du scoring du jour
+    @veggie_foodtype = Foodype.find(name: "Veggie")
+    if @day.breakfast.foodtype_id == @veggie_foodtype.id
+      veggie_counter += 1
+    end
+    if @day.lunch.foodtype_id == @veggie_foodtype.id
+      veggie_counter += 1
+    end
+    if @day.dinner.foodtype_id == @veggie_foodtype.id
+      veggie_counter += 1
+    end
   end
 
   def edit
