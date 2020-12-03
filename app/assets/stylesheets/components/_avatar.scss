@@ -14,6 +14,28 @@
   border: white 1px solid;
 }
 
+.avatar-bordered-xsmall {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  border: white 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  img {
+    align-items: center;
+    justify-content: center;
+    width: 1.7em;
+    height: 1.7em;
+  }
+}
+
 .avatar-bordered-large {
   width: 6em;
   height: 6em;
@@ -26,10 +48,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
 
   img {
     width: 4em;
     height: 4em;
+
+  }
+}
+
+.avatar-bordered-xlarge {
+  width: 7.5em;
+  height: 7.5em;
+  padding: 0.5em;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+  object-fit: contain;
+  margin: 0.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+
+  img {
+    width: 5.5em;
+    height: 5.5em;
 
   }
 }
@@ -66,8 +110,8 @@
 @media (max-width: 720px) {
   /* For a screen < 720px, this CSS will be read */
   .avatar-bordered-large {
-  width: 4.5em;
-  height: 4.5em;
+  width: 4.1em;
+  height: 4.1em;
   padding: 0.1em;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
@@ -77,10 +121,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
 
     img {
       width: 2.5em;
       height: 2.5em;
+    }
+  }
+
+  .avatar-bordered-xlarge {
+  width: 7em;
+  height: 7em;
+  padding: 0.1em;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+  object-fit: contain;
+  margin: 0.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+
+    img {
+      width: 4.5em;
+      height: 4.5em;
     }
   }
 }
@@ -117,4 +182,6 @@
     }
 }
 
-
+.selected {
+  border: $green solid 0.3em;
+}
