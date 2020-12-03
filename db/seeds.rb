@@ -17,6 +17,7 @@ Lunch.destroy_all
 Dinner.destroy_all
 Foodtype.destroy_all
 Quote.destroy_all
+Badge.destroy_all
 
 Quote.create(phrases: "Eat local decrease your CO2 impact :)")
 Quote.create(phrases: "Promote carpooling :)")
@@ -47,6 +48,8 @@ Quote.create(phrases: "Support reforestation project :)")
 Quote.create(phrases: "Limit light pollution outdoor :)")
 Quote.create(phrases: "Don't throw your trash in the sea :)")
 Quote.create(phrases: "Reduce your consumption of paper :)")
+
+Badge.create(target: 5, name: "Le badge1", description: "Mange 5 repas veggies", picture_path: "app/assets/images/badge1.svg")
 
 u1 = User.new(first_name: "Caroline" , last_name: "Jasinski", nickname: "Caro", email: "jasinski_caroline@yahoo.fr", password: "azerty" )
 file = URI.open('https://avatars3.githubusercontent.com/u/68743949?s=460&u=f16cbc21758c842fba66a642775e7c931a7be251&v=4')
