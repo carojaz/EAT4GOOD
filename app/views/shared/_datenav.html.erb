@@ -1,0 +1,13 @@
+<div class="datenav">
+  <%= link_to day_create_previous_path(@day, previous_action: params[:action]) do  %>
+    <h3><i class="fas fa-chevron-circle-left active-btn"></i></h3>
+  <% end %>
+  <h3><%= @date_of_day.strftime("%d-%m-%Y") %></h3>
+  <% if @date_of_day == Date.today %>
+      <h3><i class="fas fa-chevron-circle-right inactive-btn"></i></h3>
+  <% else %>
+    <%= link_to day_next_day_path(@day, previous_action: params[:action]) do  %>
+      <h3><i class="fas fa-chevron-circle-right active-btn"></i></h3>
+    <% end %>
+  <% end %>
+</div>
