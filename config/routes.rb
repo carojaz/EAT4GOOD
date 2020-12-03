@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     # route pour le days create_previous days_id/create
     post "/create_previous", to: 'days#create_previous'
   end
-  resources :collections, only: :index
+  resources :collections, only: [:index, :show]
   resources :recipes, only: [:index, :show]
   resources :friends, only: [:index, :new, :create, :update] do
     resources :challengesets, only: [:index, :new, :create]

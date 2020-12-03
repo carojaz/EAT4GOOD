@@ -32,10 +32,32 @@
    }
 }
 
-.content-avatar-meals {
+.avatar-large-badge {
+  width: 30px;
+  border-radius: 50%;
+  padding-left: 20px;
+  padding-top: 20px;
+    img {
+      opacity: 0.3;
+    }
 }
 
+.avatar-large-badge-complete {
+  width: 30px;
+  border-radius: 50%;
+  padding-left: 20px;
+  padding-top: 20px;
+}
 
-
+.avatar-show-badge {
+  width: 180px;
+  height: 180px;
+  background-color: white;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+  border-radius: 50%;
+    img {
+      margin: 25px;
+    }
+}
 
 
