@@ -1,0 +1,19 @@
+.btn-white {
+  height: 1.8em;
+  width: 6em;
+  border-radius: 25px;
+  border: solid $orange 0.1em;
+  color: $orange;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  margin: 0.5em;
+
+  &:hover {
+    text-decoration: none;
+    color: white;
+    background-color: $orange;
+  }
+}

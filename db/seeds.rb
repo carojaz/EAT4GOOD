@@ -57,35 +57,70 @@ User.destroy_all
 Friend.destroy_all
 Challenge.destroy_all
 Challengeset.destroy_all
+Breakfast.destroy_all
+Lunch.destroy_all
+Dinner.destroy_all
+Foodtype.destroy_all
+Quote.destroy_all
+
+Quote.create(phrases: "Eat local decrease your CO2 impact :)")
+Quote.create(phrases: "Promote carpooling :)")
+Quote.create(phrases: "promote  public transport :)")
+Quote.create(phrases: "Eat seasonal foods :)")
+Quote.create(phrases: "Recycle your waste :)")
+Quote.create(phrases: "Don’t waste food :)")
+Quote.create(phrases: "Unplug your devices :)")
+Quote.create(phrases: "Recycle all you can :)")
+Quote.create(phrases: "Try to cut out plastic :)")
+Quote.create(phrases: "Use LED light bulbs :)")
+Quote.create(phrases: "Insulate your home :)")
+Quote.create(phrases: "Fix it, don’t throw it :)")
+Quote.create(phrases: "Use eco-friendly cleaning products :)")
+Quote.create(phrases: "Educate: you can help others understand the importance and value of our natural resources :)")
+Quote.create(phrases: "Conserve water: The less water you use, the less runoff and wastewater that eventually end up in the ocean :)")
+Quote.create(phrases: "Shop wisely: Buy less plastic and bring a reusable shopping bag :)")
+Quote.create(phrases: "Bike more. Drive less :)")
+Quote.create(phrases: "Don't send chemicals into our waterways :)")
+Quote.create(phrases: "Promote Biodiversity :)")
+Quote.create(phrases: "Don't throw rubbish on the ground :)")
+Quote.create(phrases: "Respect nature when you go for a walk :)")
+Quote.create(phrases: "Try stay in a eco-hotel when you go on holiday :)")
+Quote.create(phrases: "Choose eco-cosmetics :)")
+Quote.create(phrases: "Use mineral sun cream :)")
+Quote.create(phrases: "Buy your holidays souvenirs responsibly :)")
+Quote.create(phrases: "Support reforestation project :)")
+Quote.create(phrases: "Limit light pollution outdoor :)")
+Quote.create(phrases: "Don't throw your trash in the sea :)")
+Quote.create(phrases: "Reduce your consumption of paper :)")
 
 u1 = User.new(first_name: "Caroline" , last_name: "Jasinski", nickname: "Caro", email: "jasinski_caroline@yahoo.fr", password: "azerty" )
-# file = URI.open('https://avatars3.githubusercontent.com/u/68743949?s=460&u=f16cbc21758c842fba66a642775e7c931a7be251&v=4')
-# u1.photo.attach(io: file, filename: 'caro.jpg', content_type: 'image/jpg')
+file = URI.open('https://avatars3.githubusercontent.com/u/68743949?s=460&u=f16cbc21758c842fba66a642775e7c931a7be251&v=4')
+u1.photo.attach(io: file, filename: 'caro.jpg', content_type: 'image/jpg')
 u1.save!
 
 u2 = User.new(first_name: "Nicholas" , last_name: "Claessens", nickname: "Nicho", email: "nicholas04claessens@yahoo.com", password: "azerty" )
-# file = URI.open('https://avatars1.githubusercontent.com/u/70324228?s=400&u=4b7e428200c39fee27f4d7ab4956100519065772&v=4')
-# u2.photo.attach(io: file, filename: 'nicho.jpg', content_type: 'image/jpg')
+file = URI.open('https://avatars1.githubusercontent.com/u/70324228?s=400&u=4b7e428200c39fee27f4d7ab4956100519065772&v=4')
+u2.photo.attach(io: file, filename: 'nicho.jpg', content_type: 'image/jpg')
 u2.save!
 
 u3 = User.new(first_name: "Aphisit", last_name: "Chompum", nickname: "Aphi", email: "chompum.aphisit@hotmail.fr", password: "azerty" )
-# file = URI.open('https://avatars2.githubusercontent.com/u/72460013?s=460&u=f69a8626581d6fbdad07e47bc67a630b6b8aae3a&v=4')
-# u3.photo.attach(io: file, filename: 'caro.jpg', content_type: 'image/jpg')
+file = URI.open('https://avatars2.githubusercontent.com/u/72460013?s=460&u=f69a8626581d6fbdad07e47bc67a630b6b8aae3a&v=4')
+u3.photo.attach(io: file, filename: 'caro.jpg', content_type: 'image/jpg')
 u3.save!
 
 u4 = User.new(first_name: "Yoda" , last_name: "Baby", nickname: "Yoyo", email: "yoda@baby.com", password: "azerty" )
-# file = URI.open('https://cdn.tomsguide.fr/content/uploads/sites/2/2020/07/baby-yoda-puppet.jpg')
-# u4.photo.attach(io: file, filename: 'yoda.jpg', content_type: 'image/jpg')
+file = URI.open('https://cdn.tomsguide.fr/content/uploads/sites/2/2020/07/baby-yoda-puppet.jpg')
+u4.photo.attach(io: file, filename: 'yoda.jpg', content_type: 'image/jpg')
 u4.save!
 
 u5 = User.new(first_name: "François-Xavier" , last_name: "Abraham", nickname: "Big Thumbs", email: "big_thumbs@fingers.com", password: "azerty" )
-# file = URI.open('https://www.pngfind.com/pngs/m/24-243739_thumbs-up-png-transparent-image-thumbs-up-image.png')
-# u5.photo.attach(io: file, filename: 'fx.png', content_type: 'image/png')
+file = URI.open('https://www.pngfind.com/pngs/m/24-243739_thumbs-up-png-transparent-image-thumbs-up-image.png')
+u5.photo.attach(io: file, filename: 'fx.png', content_type: 'image/png')
 u5.save!
 
 u6 = User.new(first_name: "Bob" , last_name: "Razowski", nickname: "Bob", email: "bob@monster.com", password: "azerty" )
-# file = URI.open('https://www.ladn.eu/wp-content/uploads/2016/10/bob-razowski.jpg')
-# u6.photo.attach(io: file, filename: 'bob.jpg', content_type: 'image/jpg')
+file = URI.open('https://www.ladn.eu/wp-content/uploads/2016/10/bob-razowski.jpg')
+u6.photo.attach(io: file, filename: 'bob.jpg', content_type: 'image/jpg')
 u6.save!
 
 puts "#{User.count/6*100}% = #{User.count} / 6 users created"
@@ -116,3 +151,25 @@ cs7 = Challengeset.create!(challenge_id: c3.id, friend_id: f1.id,start_date: "20
 cs8 = Challengeset.create!(challenge_id: c4.id, friend_id: f2.id,start_date: "2020-12-07", status: "KO")
 
 puts "#{Challengeset.count/8*100}% = #{Challengeset.count} / 8 challenges created"
+
+ft1 = Foodtype.create!(name: "Dairy")
+ft2 = Foodtype.create!(name: "Meat")
+ft3 = Foodtype.create!(name: "Fish")
+ft4 = Foodtype.create!(name: "Veggie")
+ft5 = Foodtype.create!(name: "No meal")
+
+puts "#{Foodtype.count/5*100}% = #{Foodtype.count} / 5 foodtypes created"
+
+Foodtype.all.each do |ft|
+  Breakfast.create!(foodtype_id: ft.id, local: true)
+  Breakfast.create!(foodtype_id: ft.id, local: false)
+  Lunch.create!(foodtype_id: ft.id, local: true)
+  Lunch.create!(foodtype_id: ft.id, local: false)
+  Dinner.create!(foodtype_id: ft.id, local: true)
+  Dinner.create!(foodtype_id: ft.id, local: false)
+end
+puts "#{Breakfast.count/10*100}% = #{Breakfast.count} / 10 Breakfast created"
+puts "#{Lunch.count/10*100}% = #{Lunch.count} / 10 Lunch created"
+puts "#{Dinner.count/10*100}% = #{Dinner.count} / 10 Dinner created"
+
+

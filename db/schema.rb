@@ -12,8 +12,30 @@
 
 ActiveRecord::Schema.define(version: 2020_12_02_205605) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "badges", force: :cascade do |t|
     t.integer "target"
@@ -68,16 +90,12 @@ ActiveRecord::Schema.define(version: 2020_12_02_205605) do
     t.bigint "breakfast_id", null: false
     t.bigint "lunch_id", null: false
     t.bigint "dinner_id", null: false
-    t.bigint "status_id", null: false
-    t.bigint "week_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["breakfast_id"], name: "index_days_on_breakfast_id"
     t.index ["dinner_id"], name: "index_days_on_dinner_id"
     t.index ["lunch_id"], name: "index_days_on_lunch_id"
-    t.index ["status_id"], name: "index_days_on_status_id"
     t.index ["user_id"], name: "index_days_on_user_id"
-    t.index ["week_id"], name: "index_days_on_week_id"
   end
 
   create_table "dinners", force: :cascade do |t|
@@ -120,6 +138,8 @@ ActiveRecord::Schema.define(version: 2020_12_02_205605) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "nb_week"
+    t.integer "year"
     t.index ["user_id"], name: "index_objectives_on_user_id"
   end
 
@@ -128,6 +148,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_205605) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
 
   create_table "recipes", force: :cascade do |t|
     t.string "title"
@@ -146,6 +167,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_205605) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -161,16 +183,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_205605) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "weeks", force: :cascade do |t|
-    t.integer "week_nb"
-    t.integer "year"
-    t.integer "counter_veggies_days"
-    t.integer "counter_locals_days"
-    t.boolean "veggie_obj_achieved"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "breakfasts", "foodtypes"
   add_foreign_key "challengesets", "challenges"
   add_foreign_key "challengesets", "friends"
@@ -179,9 +192,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_205605) do
   add_foreign_key "days", "breakfasts"
   add_foreign_key "days", "dinners"
   add_foreign_key "days", "lunches"
-  add_foreign_key "days", "statuses"
   add_foreign_key "days", "users"
-  add_foreign_key "days", "weeks"
   add_foreign_key "dinners", "foodtypes"
   add_foreign_key "friends", "users", column: "friend1_user_id"
   add_foreign_key "friends", "users", column: "friend2_user_id"
