@@ -6,7 +6,52 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 require "open-uri"
+require "nokogiri"
+
+Recipe.destroy_all
+
+for i in (1..2)
+  if i == 1
+    url = "https://www.allrecipes.com/search/results/?wt=vegetarian"
+  else
+    url = "https://www.allrecipes.com/search/results/?wt=vegetarian&page=#{i}"
+  end
+
+  html = open(url).read
+  # 1. Parse HTML
+  doc = Nokogiri::HTML(html, nil, "utf-8")
+
+  results = []
+  doc.search(".fixed-recipe-card").each do |element|
+    # 3. Create recipe and store it in results
+    title = element.search(".fixed-recipe-card__title-link").first.text.strip
+
+    recipe_url = element.search(".fixed-recipe-card__title-link").first.attribute("href").value
+
+    recipe_html = open(recipe_url).read
+    recipe_doc = Nokogiri::HTML(recipe_html, nil, "utf-8")
+    prep_time = recipe_doc.search(".recipe-meta-item-body").first.text.strip
+
+    ingredients = []
+    recipe_doc.search(".ingredients-item-name").each do |ingredient|
+      ingredients << ingredient.text.strip
+    end
+
+    descriptions = []
+    recipe_doc.search(".subcontainer.instructions-section-item .section-body").each do |description|
+      descriptions << description.text.strip
+    end
+
+    photo = element.search(".fixed-recipe-card__img").attribute("data-original-src").value
+
+    Recipe.create!(title:title, ingredients:ingredients.join(', '), description:descriptions.join(', '), preparation_time:prep_time, url_photo:photo)
+    p "une recette crée"
+  end
+end
+
+
 
 User.destroy_all
 Friend.destroy_all
