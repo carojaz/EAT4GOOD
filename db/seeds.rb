@@ -6,7 +6,52 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 require "open-uri"
+require "nokogiri"
+
+Recipe.destroy_all
+
+for i in (1..2)
+  if i == 1
+    url = "https://www.allrecipes.com/search/results/?wt=vegetarian"
+  else
+    url = "https://www.allrecipes.com/search/results/?wt=vegetarian&page=#{i}"
+  end
+
+  html = open(url).read
+  # 1. Parse HTML
+  doc = Nokogiri::HTML(html, nil, "utf-8")
+
+  results = []
+  doc.search(".fixed-recipe-card").each do |element|
+    # 3. Create recipe and store it in results
+    title = element.search(".fixed-recipe-card__title-link").first.text.strip
+
+    recipe_url = element.search(".fixed-recipe-card__title-link").first.attribute("href").value
+
+    recipe_html = open(recipe_url).read
+    recipe_doc = Nokogiri::HTML(recipe_html, nil, "utf-8")
+    prep_time = recipe_doc.search(".recipe-meta-item-body").first.text.strip
+
+    ingredients = []
+    recipe_doc.search(".ingredients-item-name").each do |ingredient|
+      ingredients << ingredient.text.strip
+    end
+
+    descriptions = []
+    recipe_doc.search(".subcontainer.instructions-section-item .section-body").each do |description|
+      descriptions << description.text.strip
+    end
+
+    photo = element.search(".fixed-recipe-card__img").attribute("data-original-src").value
+
+    Recipe.create!(title:title, ingredients:ingredients.join(', '), description:descriptions.join(', '), preparation_time:prep_time, url_photo:photo)
+    p "une recette crée"
+  end
+end
+
+
 
 User.destroy_all
 Friend.destroy_all
@@ -17,6 +62,7 @@ Lunch.destroy_all
 Dinner.destroy_all
 Foodtype.destroy_all
 Quote.destroy_all
+Badge.destroy_all
 
 Quote.create(phrases: "Eat local decrease your CO2 impact :)")
 Quote.create(phrases: "Promote carpooling :)")
@@ -47,6 +93,16 @@ Quote.create(phrases: "Support reforestation project :)")
 Quote.create(phrases: "Limit light pollution outdoor :)")
 Quote.create(phrases: "Don't throw your trash in the sea :)")
 Quote.create(phrases: "Reduce your consumption of paper :)")
+
+Badge.create(target: 5, name: "Asparagus", description: "Mange 5 repas veggies pour obtenir ce badge", picture_path: "badge1.svg")
+Badge.create(target: 25, name: "Broccoli", description: "Mange 25 repas veggies pour obtenir ce badge", picture_path: "badge2.svg")
+Badge.create(target: 100, name: "Mushroom", description: "Mange 100 repas veggies pour obtenir ce badge", picture_path: "badge3.svg")
+Badge.create(target: 5, name: "Orange", description: "Participe à 5 challenges pour obtenir ce badge", picture_path: "badge4.svg")
+Badge.create(target: 25, name: "Pineapple", description: "Participe à 25 challenges pour obtenir ce badge", picture_path: "badge5.svg")
+Badge.create(target: 100, name: "Pomegranate", description: "Participe à 100 challenges pour obtenir ce badge", picture_path: "badge6.svg")
+Badge.create(target: 5, name: "Radish", description: "Sois en positif 5 jours pour obtenir ce badge", picture_path: "badge7.svg")
+Badge.create(target: 25, name: "Salad", description: "Sois en positif 25 jours pour obtenir ce badge", picture_path: "badge8.svg")
+Badge.create(target: 100, name: "Tangerine", description: "Sois en positif 100 jours pour obtenir ce badge", picture_path: "badge9.svg")
 
 u1 = User.new(first_name: "Caroline" , last_name: "Jasinski", nickname: "Caro", email: "jasinski_caroline@yahoo.fr", password: "azerty" )
 file = URI.open('https://avatars3.githubusercontent.com/u/68743949?s=460&u=f16cbc21758c842fba66a642775e7c931a7be251&v=4')

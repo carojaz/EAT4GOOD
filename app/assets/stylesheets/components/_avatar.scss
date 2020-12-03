@@ -1,5 +1,3 @@
-
-
 .avatar {
   width: 40px;
   height: 40px;
@@ -58,14 +56,13 @@
 @media (max-width: 1024 px) {
   /* For a screen < 1024 px, this CSS will be read */
 
-
 }
 
 @media (max-width: 960px) {
   /* For a screen < 960px, this CSS will be read */
 
-
 }
+
 @media (max-width: 720px) {
   /* For a screen < 720px, this CSS will be read */
   .avatar-bordered-large {
@@ -81,14 +78,43 @@
   align-items: center;
   justify-content: center;
 
-  img {
-    width: 2.5em;
-    height: 2.5em;
+    img {
+      width: 2.5em;
+      height: 2.5em;
+    }
   }
-}
-
 }
 @media (max-width: 540px) {
   /* For a screen < 540px, this CSS will be read */
 
 }
+
+.avatar-large-badge {
+  width: 30px;
+  border-radius: 50%;
+  padding-left: 20px;
+  padding-top: 20px;
+    img {
+      opacity: 0.3;
+    }
+}
+
+.avatar-large-badge-complete {
+  width: 30px;
+  border-radius: 50%;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.avatar-show-badge {
+  width: 180px;
+  height: 180px;
+  background-color: white;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+  border-radius: 50%;
+    img {
+      margin: 25px;
+    }
+}
+
+

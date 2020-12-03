@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'recipes/index'
+  get 'recipes/show'
   devise_for :users
   root to: 'pages#home'
   resources :days, only: [:show, :new, :create, :edit, :update] do
@@ -7,7 +9,7 @@ Rails.application.routes.draw do
     get "/next_day", to: 'days#next_day'
   end
   get "create", to: 'days#create', as: :create_day
-  resources :collections, only: :index
+  resources :collections, only: [:index, :show]
   resources :recipes, only: [:index, :show]
   resources :friends, only: [:index, :new, :create, :update] do
     resources :challengesets, only: [:index, :new, :create]

@@ -1,0 +1,20 @@
+.card-index {
+  background-color: white;
+  margin-right: 50px;
+  margin-left: 50px;
+  border-radius: 25px;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+  // display: grid;
+  // grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  justify-content: space-around;
+}
+
+.badge-name {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.mt-3 {
+  color: black;
+  }
