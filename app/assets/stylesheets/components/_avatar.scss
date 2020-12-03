@@ -1,3 +1,5 @@
+
+
 .avatar {
   width: 40px;
   height: 40px;
@@ -23,9 +25,14 @@
   border: white 1px solid;
   object-fit: contain;
   margin: 0.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  & img {
-    margin: 2em;
+  img {
+    width: 4em;
+    height: 4em;
+
   }
 }
 
@@ -48,10 +55,40 @@
    }
 }
 
-.content-avatar-meals {
+@media (max-width: 1024 px) {
+  /* For a screen < 1024 px, this CSS will be read */
+
+
 }
 
+@media (max-width: 960px) {
+  /* For a screen < 960px, this CSS will be read */
 
 
+}
+@media (max-width: 720px) {
+  /* For a screen < 720px, this CSS will be read */
+  .avatar-bordered-large {
+  width: 4.5em;
+  height: 4.5em;
+  padding: 0.1em;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+  object-fit: contain;
+  margin: 0.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  img {
+    width: 2.5em;
+    height: 2.5em;
+  }
+}
 
+}
+@media (max-width: 540px) {
+  /* For a screen < 540px, this CSS will be read */
+
+}

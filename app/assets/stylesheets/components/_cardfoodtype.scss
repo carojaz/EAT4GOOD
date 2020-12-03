@@ -1,3 +1,7 @@
+.day {
+  align-items: center;
+}
+
 .cardfoodtype {
   padding: 0 2em;
   width: 90%;
@@ -6,21 +10,22 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 1em 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
 
   .title {
     margin: 1em 0.5em;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    vertical-align: middle;
 
-    & img {
+    h2 {
       margin: 0;
     }
-
-    & h2 {
-      margin: 0;
-    }
+  }
+  .avatar-bordered-large {
+    margin-bottom: 1em;
   }
 
   .choices {

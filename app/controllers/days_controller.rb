@@ -1,6 +1,8 @@
 class DaysController < ApplicationController
+  # after :authenticate_user!
+
   def show
-    @day = Day.find(params[:id])
+    set_days
   end
 
   def new
@@ -19,6 +21,19 @@ class DaysController < ApplicationController
     @day.dinner_id = @dinner.id
 
     @day.save
+
+    redirect_to(day_path(@day))
+  end
+
+  def edit
+    set_days
+  end
+
+  def update
+    @day = current_user.day
+    # status si 3 repas sont donner
+    @day.update(device_params)
+    redirect_to day_path
   end
 
   def create_previous
@@ -30,7 +45,7 @@ class DaysController < ApplicationController
     if @day_before.present?
       # si OK on sort le day de l'array de resultat
       @day_before.first
-      redirect_to edit_day_path(@day_before.first)
+      params[:previous_action] == "edit" ? redirect_to(edit_day_path(@day_before.first)) : redirect_to(day_path(@day_before.first))
     else
       # si KO create new day
       set_meals
@@ -40,8 +55,16 @@ class DaysController < ApplicationController
       @day_before.lunch_id = @lunch.id
       @day_before.dinner_id = @dinner.id
       @day_before.save
-      redirect_to edit_day_path(@day_before)
+      params[:previous_action] == "edit" ? redirect_to(edit_day_path(@day_before)) : redirect_to(day_path(@day_before))
     end
+  end
+
+  def next_day
+    # chercher le jour de l'instance neste
+    @date_of_day = Day.find(params[:day_id]).date
+    # verifier si le jour -1 existe en base // renvoi un tableau avec 1 valeur
+    @day_after = Day.where(date: (@date_of_day + 1), user_id: current_user).first
+    params[:previous_action] == "edit" ? redirect_to(edit_day_path(@day_after)) : redirect_to(day_path(@day_after))
   end
 
   def status
@@ -58,17 +81,6 @@ class DaysController < ApplicationController
     end
   end
 
-  def edit
-    @date_of_day = Day.find(params[:id]).date
-  end
-
-  def update
-    @day = current_user.day
-    # status si 3 repas sont donner
-    @day.update(device_params)
-    redirect_to day_path
-  end
-
   private
 
   def device_params
@@ -79,5 +91,10 @@ class DaysController < ApplicationController
     @breakfast = Breakfast.last
     @lunch = Lunch.last
     @dinner = Dinner.last
+  end
+
+  def set_days
+    @day = Day.find(params[:id])
+    @date_of_day = @day.date
   end
 end
