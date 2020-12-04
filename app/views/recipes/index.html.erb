@@ -13,35 +13,36 @@
         <% end %>
       </div>
     </div>
-      <div class="card-product">
-        <div class="card-product-image" style="background-image: url('<%= image_path @recipe.url_photo %>');">
+  </div>
+  <div class="card-product">
+    <div class="card-product-image" style="background-image: url('<%= image_path @recipe.url_photo %>');">
+    </div>
+    <div class="card-product-infos">
+      <div class="card-product-title">
+        <%= link_to @recipe.title, recipe_path(@recipe) %>
+      </div>
+      <div class="card-prep-time-veggie">
+        <div><%= image_tag "clock.svg", height:"25px"%><%= @recipe.preparation_time %></div>
+        <div>Veggie</div>
+      </div>
+    </div>
+  </div>
+    <% @recipes2_random.each do |recipe| %>
+      <div class="card-product-inline">
+        <%= image_tag recipe.url_photo, class:"card-product-inline-image" %>
+        <div class="card-product-inline-infos">
+          <div class="card-product-inline-infos-title-intro">
+            <%= link_to recipe.title, recipe_path(recipe) %>
+          </div>
         </div>
-        <div class="card-product-infos">
-          <div class="card-product-title">
-            <%= link_to @recipe.title, recipe_path(@recipe) %>
-          </div>
-          <div class="card-prep-time-veggie">
-            <div><%= image_tag "clock.svg", height:"25px"%><%= @recipe.preparation_time %></div>
-            <div>Veggie</div>
-          </div>
+        <div class="card-product-inline-prep-time">
+          <div class="number-prep-time"><%= recipe.preparation_time %></div>
+          <%= image_tag "clock.svg", height:"25px"%>
+          <div>Veggie</div>
         </div>
       </div>
-      <% @recipes2_random.each do |recipe| %>
-        <div class="card-product-inline">
-          <%= image_tag recipe.url_photo, class:"card-product-inline-image" %>
-          <div class="card-product-inline-infos">
-            <div class="card-product-inline-infos-title-intro">
-              <%= link_to recipe.title, recipe_path(recipe) %>
-            </div>
-          </div>
-          <div class="card-product-inline-prep-time">
-            <div class="number-prep-time"><%= recipe.preparation_time %></div>
-            <%= image_tag "clock.svg", height:"25px"%>
-            <div>Veggie</div>
-          </div>
-        </div>
-      <% end %>
-    </div>
+    <% end %>
+  </div>
   </div>
 
 

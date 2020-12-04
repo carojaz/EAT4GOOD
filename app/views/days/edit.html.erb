@@ -7,21 +7,36 @@
       <h2>Breakfast</h2>
     </div>
     <div class="choices">
-      <div class="avatar-bordered-large">
-        <%= image_tag "vegetarian.svg", alt: "veggie" %>
-      </div>
-      <div class="avatar-bordered-large">
-        <%= image_tag "meat.svg", alt: "meat" %>
-      </div>
-      <div class="avatar-bordered-large">
-        <%= image_tag "milk.svg", alt: "dairy" %>
-      </div>
-      <div class="avatar-bordered-large">
-        <%= image_tag "fish.svg", alt: "fish" %>
-      </div>
-      <div class="avatar-bordered-large selected">
-        <%= image_tag "fasting.svg", alt: "fasting"%>
-      </div>
+      <%= link_to day_path(@day, foodtype: "Veggie", meal: "breakfast"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bveggie <%= 'selected' if @breakfast == "Veggie" %>">
+          <%= image_tag "vegetarian.svg", alt: "veggie" %>
+        </div>
+      <% end %>
+
+      <%= link_to day_path(@day, foodtype: "Meat", meal: "breakfast"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bmeat <%= 'selected' if @breakfast == "Meat" %>">
+          <%= image_tag "meat.svg", alt: "meat" %>
+        </div>
+      <% end %>
+
+      <%= link_to day_path(@day, foodtype: "Dairy", meal: "breakfast"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bmilk <%= 'selected' if @breakfast == "Dairy" %>">
+          <%= image_tag "milk.svg", alt: "dairy" %>
+        </div>
+      <% end %>
+
+      <%= link_to day_path(@day, foodtype: "Fish", meal: "breakfast"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bfish <%= 'selected' if @breakfast == "Fish" %>">
+          <%= image_tag "fish.svg", alt: "fish" %>
+        </div>
+      <% end %>
+
+      <%= link_to day_path(@day, foodtype: "No meal", meal: "breakfast"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bfasting <%= 'selected' if @breakfast == "No meal" %>">
+          <%= image_tag "fasting.svg", alt: "fasting"%>
+        </div>
+      <% end %>
+
     </div>
   </div>
   <div class="cardfoodtype">
@@ -30,21 +45,35 @@
       <h2>Lunch</h2>
     </div>
     <div class="choices">
-      <div class="avatar-bordered-large">
-        <%= image_tag "vegetarian.svg", alt: "veggie" %>
-      </div>
-      <div class="avatar-bordered-large">
-        <%= image_tag "meat.svg", alt: "meat" %>
-      </div>
-      <div class="avatar-bordered-large">
-        <%= image_tag "milk.svg", alt: "dairy" %>
-      </div>
-      <div class="avatar-bordered-large">
-        <%= image_tag "fish.svg", alt: "fish" %>
-      </div>
-      <div class="avatar-bordered-large selected">
-        <%= image_tag "fasting.svg", alt: "fasting" %>
-      </div>
+      <%= link_to day_path(@day, foodtype: "Veggie", meal: "lunch"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bveggie <%= 'selected' if @lunch == "Veggie" %>">
+          <%= image_tag "vegetarian.svg", alt: "veggie" %>
+        </div>
+      <% end %>
+
+      <%= link_to day_path(@day, foodtype: "Meat", meal: "lunch"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bmeat <%= 'selected' if @lunch == "Meat" %>">
+          <%= image_tag "meat.svg", alt: "meat" %>
+        </div>
+      <% end %>
+
+      <%= link_to day_path(@day, foodtype: "Dairy", meal: "lunch"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bmilk <%= 'selected' if @lunch == "Dairy" %>">
+          <%= image_tag "milk.svg", alt: "dairy" %>
+        </div>
+      <% end %>
+
+      <%= link_to day_path(@day, foodtype: "Fish", meal: "lunch"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bfish <%= 'selected' if @lunch == "Fish" %>">
+          <%= image_tag "fish.svg", alt: "fish" %>
+        </div>
+      <% end %>
+
+      <%= link_to day_path(@day, foodtype: "No meal", meal: "lunch"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bfasting <%= 'selected' if @lunch == "No meal" %>">
+          <%= image_tag "fasting.svg", alt: "fasting"%>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="cardfoodtype">
@@ -53,21 +82,35 @@
       <h2>Dinner</h2>
     </div>
     <div class="choices">
-      <div class="avatar-bordered-large">
-        <%= image_tag "vegetarian.svg", alt: "veggie" %>
-      </div>
-      <div class="avatar-bordered-large">
-        <%= image_tag "meat.svg", alt: "meat" %>
-      </div>
-      <div class="avatar-bordered-large">
-        <%= image_tag "milk.svg", alt: "dairy" %>
-      </div>
-      <div class="avatar-bordered-large">
-        <%= image_tag "fish.svg", alt: "fish" %>
-      </div>
-      <div class="avatar-bordered-large selected">
-        <%= image_tag "fasting.svg", alt: "fasting" %>
-      </div>
+      <%= link_to day_path(@day, foodtype: "Veggie", meal: "dinner"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bveggie <%= 'selected' if @dinner == "Veggie" %>">
+          <%= image_tag "vegetarian.svg", alt: "veggie" %>
+        </div>
+      <% end %>
+
+      <%= link_to day_path(@day, foodtype: "Meat", meal: "dinner"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bmeat <%= 'selected' if @dinner == "Meat" %>">
+          <%= image_tag "meat.svg", alt: "meat" %>
+        </div>
+      <% end %>
+
+      <%= link_to day_path(@day, foodtype: "Dairy", meal: "dinner"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bmilk <%= 'selected' if @dinner == "Dairy" %>">
+          <%= image_tag "milk.svg", alt: "dairy" %>
+        </div>
+      <% end %>
+
+      <%= link_to day_path(@day, foodtype: "Fish", meal: "dinner"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bfish <%= 'selected' if @dinner == "Fish" %>">
+          <%= image_tag "fish.svg", alt: "fish" %>
+        </div>
+      <% end %>
+
+      <%= link_to day_path(@day, foodtype: "No meal", meal: "dinner"), method: :patch, remote: true do %>
+        <div class="avatar-bordered-large bfasting <%= 'selected' if @dinner == "No meal" %>">
+          <%= image_tag "fasting.svg", alt: "fasting"%>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

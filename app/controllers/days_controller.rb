@@ -27,13 +27,27 @@ class DaysController < ApplicationController
 
   def edit
     set_days
+    @breakfast = @day.breakfast.foodtype.name
+    @lunch = @day.lunch.foodtype.name
+    @dinner = @day.dinner.foodtype.name
   end
 
   def update
-    @day = current_user.day
+    @day = Day.find(params[:id])
     # status si 3 repas sont donner
-    @day.update(device_params)
-    redirect_to day_path
+    foodtype = Foodtype.find_by(name: params[:foodtype])
+
+    if params[:meal] == "breakfast"
+      @day.breakfast.foodtype = foodtype
+      @day.breakfast.save
+    elsif params[:meal] == "lunch"
+      @day.lunch.foodtype = foodtype
+      @day.lunch.save
+    else
+      @day.dinner.foodtype = foodtype
+      @day.dinner.save
+    end
+    redirect_to edit_day_path(@day)
   end
 
   def create_previous
@@ -83,8 +97,8 @@ class DaysController < ApplicationController
 
   private
 
-  def device_params
-    params.require(:day).permit(:date, :breakfast_id, :lunch_id, :dinner_id)
+  def day_params
+    params.require(:day).permit(:date, :breakfast_id, :lunch_id, :dinner_id, :foodtype)
   end
 
   def set_meals
