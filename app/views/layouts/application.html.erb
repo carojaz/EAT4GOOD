@@ -15,6 +15,9 @@
     <%= render 'shared/navbar' unless params[:action] == "home" %>
     <%= render 'shared/quotebar' unless params[:action] == "home" %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="container-void-footer">
+      <%= yield %>
+    </div>
+    <%= render 'shared/navbarbottom' unless params[:action] == "home" %>
   </body>
 </html>

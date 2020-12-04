@@ -16,6 +16,15 @@
   margin: 0;
 }
 
+body {
+  //position: relative;
+  min-height: 100vh;
+}
+
+.container-void-footer {
+  min-height: calc(100vh - 4.5em - 3.5em - 41px)
+}
+
 @media (max-width: 1024 px) {
   /* For a screen < 1024 px, this CSS will be read */
   .container {
@@ -121,7 +130,7 @@
 @media (max-width: 540px) {
   /* For a screen < 540px, this CSS will be read */
   .container {
-    width: 300px;
+    width: 400px;
   }
   h1 {
     font-size: 6vw;

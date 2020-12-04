@@ -1,0 +1,20 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  background: $green;
+  height: 4.5em;
+  position: sticky;
+  width: 100%;
+  //position: absolute;
+  bottom: 0;
+    .p-footer {
+      color: white;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+
+}

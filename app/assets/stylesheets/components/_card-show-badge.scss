@@ -1,0 +1,26 @@
+.show {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.progress {
+  margin-bottom: 40px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.lien {
+  a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: $orange;
+    font-weight: bold;
+  }
+}

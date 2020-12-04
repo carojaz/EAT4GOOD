@@ -1,7 +1,3 @@
-* {
-  margin: 0;
-}
-
 .navbar-lewagon {
   justify-content: space-between;
   align-items: center;
@@ -12,7 +8,7 @@
   top: 0;
   width: 100%;
   z-index: 1;
-  max-height: 3.5em;
+  height: 3.5em;
 
   h1 {
     margin: 0;
@@ -21,14 +17,8 @@
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
-  margin: 0;
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
-  margin: 0;
-}
-
-.navbar-lewagon .avatar {
-  margin: 0;
 }

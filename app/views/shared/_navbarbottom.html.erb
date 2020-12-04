@@ -1,0 +1,18 @@
+<div class="navbar navbar-expand navbar-light footer pb-2 pt-3">
+  <%= link_to "/", class: "" do %>
+    <%= image_tag "dashboard.svg" %>
+    <div class="p-footer">Dashboard</div>
+  <% end %>
+  <%= link_to collections_path, class: "" do %>
+    <%= image_tag "badge.svg" %>
+    <div class="p-footer">Badges</div>
+  <% end %>
+  <%= link_to recipes_path, class: "" do %>
+    <%= image_tag "cookbook.svg" %>
+    <div class="p-footer">Recipes</div>
+  <% end %>
+  <%= link_to "/", class: "" do %>
+    <%= image_tag "shuttle.svg" %>
+    <div class="p-footer">Challenges</div>
+  <% end %>
+</div>

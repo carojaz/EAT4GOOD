@@ -64,6 +64,7 @@ Lunch.destroy_all
 Dinner.destroy_all
 Foodtype.destroy_all
 Quote.destroy_all
+Badge.destroy_all
 
 Quote.create(phrases: "Eat local decrease your CO2 impact :)")
 Quote.create(phrases: "Promote carpooling :)")
@@ -94,6 +95,16 @@ Quote.create(phrases: "Support reforestation project :)")
 Quote.create(phrases: "Limit light pollution outdoor :)")
 Quote.create(phrases: "Don't throw your trash in the sea :)")
 Quote.create(phrases: "Reduce your consumption of paper :)")
+
+Badge.create(target: 5, name: "Asparagus", description: "Mange 5 repas veggies pour obtenir ce badge", picture_path: "badge1.svg")
+Badge.create(target: 25, name: "Broccoli", description: "Mange 25 repas veggies pour obtenir ce badge", picture_path: "badge2.svg")
+Badge.create(target: 100, name: "Mushroom", description: "Mange 100 repas veggies pour obtenir ce badge", picture_path: "badge3.svg")
+Badge.create(target: 5, name: "Orange", description: "Participe à 5 challenges pour obtenir ce badge", picture_path: "badge4.svg")
+Badge.create(target: 25, name: "Pineapple", description: "Participe à 25 challenges pour obtenir ce badge", picture_path: "badge5.svg")
+Badge.create(target: 100, name: "Pomegranate", description: "Participe à 100 challenges pour obtenir ce badge", picture_path: "badge6.svg")
+Badge.create(target: 5, name: "Radish", description: "Sois en positif 5 jours pour obtenir ce badge", picture_path: "badge7.svg")
+Badge.create(target: 25, name: "Salad", description: "Sois en positif 25 jours pour obtenir ce badge", picture_path: "badge8.svg")
+Badge.create(target: 100, name: "Tangerine", description: "Sois en positif 100 jours pour obtenir ce badge", picture_path: "badge9.svg")
 
 u1 = User.new(first_name: "Caroline" , last_name: "Jasinski", nickname: "Caro", email: "jasinski_caroline@yahoo.fr", password: "azerty" )
 file = URI.open('https://avatars3.githubusercontent.com/u/68743949?s=460&u=f16cbc21758c842fba66a642775e7c931a7be251&v=4')
@@ -174,4 +185,13 @@ puts "#{Breakfast.count/10*100}% = #{Breakfast.count} / 10 Breakfast created"
 puts "#{Lunch.count/10*100}% = #{Lunch.count} / 10 Lunch created"
 puts "#{Dinner.count/10*100}% = #{Dinner.count} / 10 Dinner created"
 
-
+d1 = Day.new(date: Date.today)
+breakfast = Breakfast.last
+lunch = Lunch.last
+dinner = Dinner.last
+d1.breakfast_id = breakfast.id
+d1.lunch_id = lunch.id
+d1.dinner_id = dinner.id
+d1.user_id = u1.id
+d1.save
+puts "#{Day.count/1*100}% = #{Day.count} / 1 Days created"
