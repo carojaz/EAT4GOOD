@@ -1,10 +1,12 @@
 <h1 class="mt-3 pb-2">Badges Collection</h1>
   <div class="card-index">
-    <div class="row">
+    <div class="row pb-3">
       <% @collections.each do |badge| %>
         <div class="avatar-large-badge col-4">
           <p class="badge-name"><%=badge.name%></p>
+          <div class="avatar-index-badge">
           <%= link_to image_tag(badge.picture_path), collection_path(badge) %>
+          </div>
         </div>
       <% end %>
     </div>
