@@ -12,7 +12,7 @@ require "nokogiri"
 
 Recipe.destroy_all
 
-for i in (1..2)
+for i in (1..4)
   if i == 1
     url = "https://www.allrecipes.com/search/results/?wt=vegetarian"
   else
@@ -27,6 +27,8 @@ for i in (1..2)
   doc.search(".fixed-recipe-card").each do |element|
     # 3. Create recipe and store it in results
     title = element.search(".fixed-recipe-card__title-link").first.text.strip
+
+    introduction = element.search(".fixed-recipe-card__description").first.text.strip
 
     recipe_url = element.search(".fixed-recipe-card__title-link").first.attribute("href").value
 
@@ -46,7 +48,7 @@ for i in (1..2)
 
     photo = element.search(".fixed-recipe-card__img").attribute("data-original-src").value
 
-    Recipe.create!(title:title, ingredients:ingredients.join(', '), description:descriptions.join(', '), preparation_time:prep_time, url_photo:photo)
+    Recipe.create!(title:title, introduction:introduction, ingredients:ingredients.join(', '), description:descriptions.join(', '), preparation_time:prep_time, url_photo:photo)
     p "une recette crée"
   end
 end
