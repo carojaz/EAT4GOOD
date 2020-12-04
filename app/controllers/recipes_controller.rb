@@ -1,8 +1,13 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
-    @recipe = @recipes.sample
-    @recipes2_random = @recipes.sample(10)
+    if params[:query].present?
+      @recipes = Recipe.where("title ILIKE ?", "%#{params[:query]}%")
+      @recipes2_random = @recipes.sample(30)
+    else
+      @recipes = Recipe.all
+      @recipe = @recipes.sample
+      @recipes2_random = @recipes.sample(30)
+    end
   end
 
   def show
