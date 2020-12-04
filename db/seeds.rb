@@ -49,11 +49,10 @@ for i in (1..4)
     photo = element.search(".fixed-recipe-card__img").attribute("data-original-src").value
 
     Recipe.create!(title:title, introduction:introduction, ingredients:ingredients.join(', '), description:descriptions.join(', '), preparation_time:prep_time, url_photo:photo)
-    p "une recette crée"
   end
 end
 
-
+puts "#{Recipe.count/80*100}% = #{Recipe.count} / 80 challenges created"
 
 User.destroy_all
 Friend.destroy_all
@@ -96,6 +95,8 @@ Quote.create(phrases: "Limit light pollution outdoor :)")
 Quote.create(phrases: "Don't throw your trash in the sea :)")
 Quote.create(phrases: "Reduce your consumption of paper :)")
 
+puts "#{Quote.count/28*100}% = #{Quote.count} / 28 challenges created"
+
 Badge.create(target: 5, name: "Asparagus", description: "Eat 5 veggie meals to get this badge", picture_path: "badge1.svg")
 Badge.create(target: 25, name: "Broccoli", description: "Eat 25 veggie meals to get this badge", picture_path: "badge2.svg")
 Badge.create(target: 100, name: "Mushroom", description: "Eat 100 veggie meals to get this badge", picture_path: "badge3.svg")
@@ -105,6 +106,8 @@ Badge.create(target: 100, name: "Pomegranate", description: "Take part in 100 ch
 Badge.create(target: 5, name: "Radish", description: "Be positive 5 days to get this badge", picture_path: "badge7.svg")
 Badge.create(target: 25, name: "Salad", description: "Be positive 25 days to get this badge", picture_path: "badge8.svg")
 Badge.create(target: 100, name: "Tangerine", description: "Be positive 100 days to get this badge", picture_path: "badge9.svg")
+
+puts "#{Quote.count/9*100}% = #{Quote.count} / 9 challenges created"
 
 u1 = User.new(first_name: "Caroline" , last_name: "Jasinski", nickname: "Caro", email: "jasinski_caroline@yahoo.fr", password: "azerty" )
 file = URI.open('https://avatars3.githubusercontent.com/u/68743949?s=460&u=f16cbc21758c842fba66a642775e7c931a7be251&v=4')
@@ -127,7 +130,7 @@ u4.photo.attach(io: file, filename: 'yoda.jpg', content_type: 'image/jpg')
 u4.save!
 
 u5 = User.new(first_name: "François-Xavier" , last_name: "Abraham", nickname: "Big Thumbs", email: "big_thumbs@fingers.com", password: "azerty" )
-file = URI.open('https://www.pngfind.com/pngs/m/24-243739_thumbs-up-png-transparent-image-thumbs-up-image.png')
+file = URI.open('https://www.nodal.am/wp-content/uploads/2018/03/PNGPIX-COM-Thumbs-Up-PNG-Transparent-Image-500x848.png')
 u5.photo.attach(io: file, filename: 'fx.png', content_type: 'image/png')
 u5.save!
 
