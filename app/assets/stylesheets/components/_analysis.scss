@@ -1,6 +1,6 @@
 .follow-icon {
-  width: 20em;
-  height: 20em;
+  width: 22em;
+  height: 22em;
   padding: 0.5em;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
@@ -16,5 +16,34 @@
     width: 12em;
     height: 12em;
     padding:0.5em;
+    bottom: 0;
   }
+}
+
+.leaf {
+  position: relative;
+  width: 12em;
+  height: 12em;
+
+  .leaf-fill {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .leaf-empty {
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+
+    img {
+      // display: block;
+      margin-top: -50%;
+    }
+  }
+}
+
+.week-analysis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
