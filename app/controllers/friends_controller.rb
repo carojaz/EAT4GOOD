@@ -1,7 +1,6 @@
 class FriendsController < ApplicationController
   def index
-    @friends = Friend.all
-    # Prendre le user qui a le friend id2
+    @friends = Friend.where(friend1_user: current_user)
   end
 
   def new

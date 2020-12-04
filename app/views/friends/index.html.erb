@@ -1,0 +1,20 @@
+<h1 class="mt-3 pb-2">Friends List</h1>
+<form class="my-2 my-lg-0 text-center friendlist">
+      <input class="form-control mr-sm-2" type="search" placeholder="Add a friend" aria-label="Search">
+</form>
+<div class="friendlist">
+  <h2 class="mt-3 mb-3">Challenge your friends</h2>
+  <div class="row">
+    <% @friends.each do |friend| %>
+      <div class="col-4">
+        <%= link_to new_friend_challengeset_path(friend.friend2_user_id), class: "" do %>
+        <%= cl_image_tag friend.friend2_user.photo.key, :transformation=>[
+        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+        {:width=>200, :crop=>"scale"}
+        ], class: "avatar-friend-list" %>
+        <div class="friend-name"><%= friend.friend2_user.nickname %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
