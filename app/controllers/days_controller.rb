@@ -33,20 +33,17 @@ class DaysController < ApplicationController
   end
 
   def update
-    @day = Day.find(params[:id])
+    set_days
     # status si 3 repas sont donner
     foodtype = Foodtype.find_by(name: params[:foodtype])
-
     if params[:meal] == "breakfast"
-      @day.breakfast.foodtype = foodtype
-      @day.breakfast.save
+      @day.breakfast = Breakfast.find_by(foodtype_id: foodtype)
     elsif params[:meal] == "lunch"
-      @day.lunch.foodtype = foodtype
-      @day.lunch.save
+      @day.lunch = Lunch.find_by(foodtype_id: foodtype)
     else
-      @day.dinner.foodtype = foodtype
-      @day.dinner.save
+      @day.dinner = Dinner.find_by(foodtype_id: foodtype)
     end
+    @day.save
     redirect_to edit_day_path(@day)
   end
 

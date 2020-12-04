@@ -1,7 +1,14 @@
 <div class="navbar navbar-expand navbar-light footer pb-2 pt-3">
-  <%= link_to "/", class: "" do %>
-    <%= image_tag "dashboard.svg" %>
-    <div class="p-footer">Dashboard</div>
+  <% if params[:action] == "edit" && params[:controller] == "days"  %>
+    <%= link_to day_path(@day), class: "" do %>
+      <%= image_tag "dashboard.svg" %>
+      <div class="p-footer">Dashboard</div>
+    <% end %>
+  <% else %>
+    <%= link_to "/", class: "" do %>
+      <%= image_tag "dashboard.svg" %>
+      <div class="p-footer">Dashboard</div>
+    <% end %>
   <% end %>
   <%= link_to collections_path, class: "" do %>
     <%= image_tag "badge.svg" %>
