@@ -5,13 +5,13 @@
         <% if @day.breakfast.foodtype.name == "No meal" %>
           <%= link_to image_tag("fasting.svg"), edit_day_path(@day) %>
         <% else %>
-          <% if @day.breakfast.foodtype.name == "milk"%>
+          <% if @day.breakfast.foodtype.name == "Dairy"%>
             <%= link_to image_tag("milk.svg"), edit_day_path(@day) %>
-          <% elsif @day.breakfast.foodtype.name == "meal"%>
+          <% elsif @day.breakfast.foodtype.name == "Meat"%>
             <%= link_to image_tag("meat.svg"), edit_day_path(@day) %>
-          <% elsif @day.breakfast.foodtype.name == "fish"%>
+          <% elsif @day.breakfast.foodtype.name == "Fish"%>
             <%= link_to image_tag("fish.svg"), edit_day_path(@day) %>
-          <% elsif @day.breakfast.foodtype.name == "vegetarian"%>
+          <% elsif @day.breakfast.foodtype.name == "Veggie"%>
             <%= link_to image_tag("vegetarian.svg"), edit_day_path(@day) %>
           <% end %>
         <% end %>
@@ -25,13 +25,13 @@
         <% if @day.lunch.foodtype.name == "No meal" %>
           <%= link_to image_tag("fasting.svg"), edit_day_path(@day) %>
         <% else %>
-          <% if @day.lunch.foodtype.name == "milk"%>
+          <% if @day.lunch.foodtype.name == "Dairy"%>
             <%= link_to image_tag("milk.svg"), edit_day_path(@day) %>
-          <% elsif @day.lunch.foodtype.name == "meal"%>
+          <% elsif @day.lunch.foodtype.name == "Meat"%>
             <%= link_to image_tag("meat.svg"), edit_day_path(@day) %>
-          <% elsif @day.lunch.foodtype.name == "fish"%>
+          <% elsif @day.lunch.foodtype.name == "Fish"%>
             <%= link_to image_tag("fish.svg"), edit_day_path(@day) %>
-          <% elsif @day.lunch.foodtype.name == "vegetarian"%>
+          <% elsif @day.lunch.foodtype.name == "Veggie"%>
             <%= link_to image_tag("vegetarian.svg"), edit_day_path(@day) %>
           <% end %>
         <% end %>
@@ -45,13 +45,13 @@
         <% if @day.dinner.foodtype.name == "No meal" %>
           <%= link_to image_tag("fasting.svg"), edit_day_path(@day) %>
         <% else %>
-          <% if @day.dinner.foodtype.name == "milk"%>
+          <% if @day.dinner.foodtype.name == "Dairy"%>
             <%= link_to image_tag("milk.svg"), edit_day_path(@day) %>
-          <% elsif @day.dinner.foodtype.name == "meal"%>
+          <% elsif @day.dinner.foodtype.name == "Meat"%>
             <%= link_to image_tag("meat.svg"), edit_day_path(@day) %>
-          <% elsif @day.dinner.foodtype.name == "fish"%>
+          <% elsif @day.dinner.foodtype.name == "Fish"%>
             <%= link_to image_tag("fish.svg"), edit_day_path(@day) %>
-          <% elsif @day.dinner.foodtype.name == "vegetarian"%>
+          <% elsif @day.dinner.foodtype.name == "Veggie"%>
             <%= link_to image_tag("vegetarian.svg"), edit_day_path(@day) %>
           <% end %>
         <% end %>

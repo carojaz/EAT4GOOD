@@ -6,6 +6,7 @@ const selectClassMeal = () => {
       const breakfastMilk = document.querySelector(".bmilk");
       const breakfastFish = document.querySelector(".bfish");
       const breakfastFasting = document.querySelector(".bfasting");
+
       const lunchVeggie = document.querySelector(".lveggie");
       const lunchMeat = document.querySelector(".lmeat");
       const lunchMilk = document.querySelector(".lmilk");
@@ -19,7 +20,6 @@ const selectClassMeal = () => {
       const dinnerFasting = document.querySelector(".dfasting");
 
       breakfastVeggie.addEventListener("click", (event) => {
-        console.log("ok");
         breakfastVeggie.classList.add("selected");
         breakfastMeat.classList.remove("selected");
         breakfastMilk.classList.remove("selected");
