@@ -11,12 +11,14 @@
     <h2><%= current_user.nickname %></h2>
   </div>
   <div class="edit-info">
-    <h6>Weekly objectives</h6>
-    <div class="objective-setting field-user">
-      <h4><i class="fas fa-minus-circle"></i></h6>
-      <h6> 0 veggie meal(s) per week </h6>
-      <h4><i class="fas fa-plus-circle"></i></h6>
+    <div class="week-obj">
+      <div class="objective-setting field-user">
+        <h6><i class="fas fa-minus-circle"></i></h6>
+        <h6> 6 veggie meal(s) per week </h6>
+        <h6><i class="fas fa-plus-circle"></i></h6>
+      </div>
     </div>
+    <h6>Weekly objectives</h6>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.error_notification %>
