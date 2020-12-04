@@ -188,6 +188,15 @@
     }
 }
 
+.avatar-index-badge {
+  background-color: white;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+  border-radius: 50%;
+    img {
+      margin: 10px;
+    }
+}
+
 .selected {
   border: $green solid 0.3em;
 }
