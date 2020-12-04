@@ -1,11 +1,24 @@
-<h1>Recipes#show</h1>
-<div class="recipe-url_photo"></div>
-Photos : <%= image_tag @recipe.url_photo %>
-<div class="recipe-title"></div>
-Title : <%= @recipe.title %>
-<div class="recipe-title"></div>
-Description : <%= @recipe.description %>
-<div class="recipe"></div>
-Preparation time : <%= @recipe.preparation_time %>
-<div class="recipe-title"></div>
-Ingredients : <%= @recipe.ingredients %>
+<div class="card-product-big">
+  <div class="card-product-big-url_photo">
+    <%= image_tag @recipe.url_photo %>
+  </div>
+  <div class="card-product-big-title">
+    <%= @recipe.title %>
+  </div>
+  <div class="card-product-big-prep-time">
+    <div><%= image_tag "clock.svg", height:"25px"%><%= @recipe.preparation_time %></div>
+    <div>Veggie</div>
+  </div>
+  <div class="card-product-big-introduction">
+    <div class="sub-card-product-introduction-title">Description</div>
+    <div class = "sub-card-product-introduction-details"><%= @recipe.introduction %></div>
+  </div>
+  <div class="card-product-ingredients">
+    <div class ="sub-card-product-ingredients-title">Ingredients</div>
+    <div class = "sub-card-product-ingredients-details"><%= @recipe.ingredients %></div>
+  </div>
+  <div class="card-product-directions">
+    <div class="sub-card-product-directions-title">Directions</div>
+    <div class="sub-card-product-directions-details"><%= @recipe.description %></div>
+  </div>
+</div> 

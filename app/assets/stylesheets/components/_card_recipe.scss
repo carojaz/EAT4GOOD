@@ -1,0 +1,138 @@
+.search-form {
+  width: 320px;
+  height: 50px;
+  align-items: center;
+  margin: 0 auto;
+
+  & .fields {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+
+    & .search-input {
+      align-items: center;
+      width: 100%;
+      border-radius: 50px;
+
+    }
+  }
+
+  & .form-control {
+    border-radius: 5px;
+    margin: 10px 0px 10px 0px;
+  }
+}
+
+
+.card-product{
+  margin: 20px 0px 30px 0px;
+  width: 320px;
+  border-radius: 5px;
+  background-color: white;
+  .card-product-image{
+    width: 100%;
+    height: 111px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+  }
+}
+
+.card-prep-time-veggie{
+  display: flex;
+  justify-content: space-around; 
+  img{
+    margin-right: 10px;
+  }
+}
+
+.card-product-inline{
+  width: 320px;
+  height: 80px;
+  margin: 0px 0px 30px 0px;
+  display: flex;
+  font-size: 18px;
+  background-color: white;
+  .card-product-inline-image{
+    width: 90px;
+    height: 100%;
+    border-radius: 5px;
+  }
+}
+
+.card-product-inline-prep-time{
+  justify-content: center;
+  flex-direction: column;
+  padding-right: 5px;;
+  .number-prep-time{
+    font-size: 14px;
+  }
+}
+
+.card-product-inline-infos{
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+//------------------------------------------------------------------- Show recipe scss
+.card-product-big{
+  width: 320px;
+  margin: 0 auto;
+}
+
+.card-product-big-url_photo{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  img{
+    width: 320px;
+    height: 115px;
+    object-fit: contain;
+    margin: 10px 0px 0px 0px;
+  }
+}
+
+.card-product-big-prep-time{
+  display: flex;
+  justify-content: space-around; 
+  img{
+    margin-right: 10px;
+  }
+}
+
+.sub-card-product-introduction-title{
+  margin: 10px 0px;
+  display: flex;
+  justify-content: start;
+  font-weight: bold;
+}
+
+.sub-card-product-introduction-details{
+  text-align: left;
+}
+
+.sub-card-product-ingredients-title{
+  margin: 10px 0px;
+  display: flex;
+  justify-content: start;
+  font-weight: bold;
+}
+
+.sub-card-product-ingredients-details{
+  text-align: left;
+}
+
+.sub-card-product-directions-title{
+  margin: 10px 0px;
+  display: flex;
+  justify-content: start;
+  font-weight: bold;
+}
+
+.sub-card-product-directions-details{
+  text-align: left;
+}
