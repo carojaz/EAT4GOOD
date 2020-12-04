@@ -151,7 +151,7 @@ f7 = Friend.create(friend1_user_id: u5.id, friend2_user_id: u3.id, status: "OK")
 f8 = Friend.create(friend1_user_id: u5.id, friend2_user_id: u1.id, status: "OK")
 f9 = Friend.create(friend1_user_id: u5.id, friend2_user_id: u6.id, status: "OK")
 
-puts "#{Friend.count/6*100}% = #{Friend.count} / 6 friends links created"
+puts "#{Friend.count/9*100}% = #{Friend.count} / 9 friends links created"
 
 c1 = Challenge.create!(message: "Pas cap!", nb_days_veggie: 2, nb_days_local: 1 )
 c2 = Challenge.create!(message: "Go for challenge!!", nb_days_veggie: 5, nb_days_local: 0 )
