@@ -28,9 +28,11 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { selectClassMeal } from '../components/select_class_meal';
+import { objectiveSetting } from '../components/objective_setting';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   selectClassMeal();
+  objectiveSetting();
 });

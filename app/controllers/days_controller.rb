@@ -78,18 +78,30 @@ class DaysController < ApplicationController
     params[:previous_action] == "edit" ? redirect_to(edit_day_path(@day_after)) : redirect_to(day_path(@day_after))
   end
 
-  def status
-    # faire le calcul du scoring du jour
-    @veggie_foodtype = Foodype.find(name: "Veggie")
-    if @day.breakfast.foodtype_id == @veggie_foodtype.id
-      veggie_counter += 1
+  def week_analysis
+    # 1 recuperer  date
+    set_days
+    # 2 calcul du num de semaine
+    set_week_year
+    # 3 recuperer l'objectif de la semaine (instance)
+    @obj = Objective.where(nb_week: @week, year: @year)
+    @obj_veggie = @obj.first.veggie.days
+    # 4 trouver les jours de la semaine
+    @week_start = Date.commercial(@year, @week, 1)
+    @week_end = Date.commercial(@year, @week, 7)
+    # 5 recuperer un array des instances correspondant a la semaine
+    @days_of_week = current_user.days.where(date: @week_start..@week_end)
+    # 6 recuperer veggie footype id
+    @veggie = Foodtype.find_by(name: "Veggie")
+    # 7 calculer le nb de veggie cette semaine
+    @veggie_this_week = 0
+    @days_of_week.each do |day|
+      day.breakfast_id == @veggie ? @veggie_this_week += 1 : @veggie_this_week
+      day.lunch_id == @veggie ? @veggie_this_week += 1 : @veggie_this_week
+      day.dinner_id == @veggie ? @veggie_this_week += 1 : @veggie_this_week
     end
-    if @day.lunch.foodtype_id == @veggie_foodtype.id
-      veggie_counter += 1
-    end
-    if @day.dinner.foodtype_id == @veggie_foodtype.id
-      veggie_counter += 1
-    end
+    # 8 statistique de la semaine
+    @week_analysis = @veggie_this_week / @obj_veggie
   end
 
   private
@@ -107,5 +119,10 @@ class DaysController < ApplicationController
   def set_days
     @day = Day.find(params[:id])
     @date_of_day = @day.date
+  end
+
+  def set_week_year
+    @week = @date_of_day.cweek
+    @year = @date_of_day.year
   end
 end

@@ -35,9 +35,50 @@
     bottom: 0;
     overflow: hidden;
 
-    img {
+    .img-level0 {
+      // display: block;
+      margin-top: -110%;
+    }
+    .img-level10 {
+      // display: block;
+      margin-top: -90%;
+    }
+
+    .img-level20 {
+      // display: block;
+      margin-top: -80%;
+    }
+    .img-level30 {
+      // display: block;
+      margin-top: -70%;
+    }
+    .img-level40 {
+      // display: block;
+      margin-top: -60%;
+    }
+    .img-level50 {
       // display: block;
       margin-top: -50%;
+    }
+    .img-level60 {
+      // display: block;
+      margin-top: -40%;
+    }
+    .img-level70 {
+      // display: block;
+      margin-top: -30%;
+    }
+    .img-level80 {
+      // display: block;
+      margin-top: -25%;
+    }
+    .img-level90 {
+      // display: block;
+      margin-top: -20%;
+    }
+    .img-level100 {
+      // display: block;
+      margin-top: -0%;
     }
   }
 }

@@ -67,10 +67,10 @@
       <p>Wow you did it!</p>
       <div class="leaf">
         <div class="leaf-fill">
-          <%= image_tag "leaf100.svg", alt: "leaf-fill" %>
+          <%= image_tag "leaf0.svg", alt: "leaf-fill" %>
         </div>
         <div class="leaf-empty">
-          <%= image_tag "leaf0.svg", alt: "leaf-empty" %>
+          <%= image_tag "leaf100.svg", alt: "leaf-empty", class: 'img-level50' if @day == @day %>
         </div>
       </div>
       <p>6/6 veggie meals</p>
