@@ -1,65 +1,81 @@
+<div class="container container-user">
   <div class="user-info">
-    <% if User.first.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, :transformation=>[
-  {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-  {:width=>200, :crop=>"scale"}
-  ], class: "avatar-bordered-xlarge dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% else %>
-            <%= cl_image_tag "https://pbs.twimg.com/profile_images/1092451626781163523/0YzJMi-8_400x400.jpg", class: "avatar-bordered-xlarge dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% end %>
-    <h2><%= current_user.nickname %></h2>
+    <div class="user-pict">
+      <% if User.first.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, :transformation=>[
+    {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+    {:width=>200, :crop=>"scale"}
+    ], class: "avatar-bordered-xlarge dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%= cl_image_tag "https://pbs.twimg.com/profile_images/1092451626781163523/0YzJMi-8_400x400.jpg", class: "avatar-bordered-xlarge dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
+    </div>
+    <div class="user-nickname">
+      <h2><%= current_user.nickname %></h2>
+    </div>
   </div>
   <div class="edit-info">
     <div class="week-obj">
     <h6>Weekly objectives</h6>
       <div class="objective-setting">
-        <h6><i class="fas fa-minus-circle"></i></h6>
-        <h6> 6 veggie meal(s) per week </h6>
-        <h6><i class="fas fa-plus-circle"></i></h6>
+        <div class="btn-left">
+          <h3><i class="fas fa-minus-circle"></i></h3>
+        </div>
+        <div class="obj">
+          <h6> 6 veggie meal(s) per week </h6>
+        </div>
+        <div class="btn-right">
+          <h3><i class="fas fa-plus-circle"></i></h3>
+        </div>
       </div>
     </div>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
 
-      <div class="form-inputs">
+        <div class="form-inputs">
+          <%= f.input :nickname,
+                      hint: "leave it if you don't want to change it",
+                      required: false,
+                      input_html: { autocomplete: current_user.nickname }%>
+          <%= f.input :first_name,
+                      hint: "leave it if you don't want to change it",
+                      required: false,
+                      input_html: { autocomplete: current_user.first_name }%>
+          <%= f.input :last_name,
+                      hint: "leave it if you don't want to change it",
+                      required: false,
+                      input_html: { autocomplete: current_user.last_name } %>
 
-        <%= f.input :first_name,
-                    hint: "leave it if you don't want to change it",
-                    required: false,
-                    input_html: { autocomplete: current_user.first_name }%>
-        <%= f.input :last_name,
-                    hint: "leave it if you don't want to change it",
-                    required: false,
-                    input_html: { autocomplete: current_user.last_name } %>
+          <%= f.input :email, required: true %>
 
-        <%= f.input :email, required: true, autofocus: true %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+          <%= f.input :current_password,
+                      hint: "we need your current password to confirm your changes",
+                      required: true,
+                      input_html: { autocomplete: "current-password" } %>
 
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-        <% end %>
-        <%= f.input :current_password,
-                    hint: "we need your current password to confirm your changes",
-                    required: true,
-                    input_html: { autocomplete: "current-password" } %>
+          <%= f.input :password,
+                      hint: "leave it blank if you don't want to change it",
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :photo, as: :file %>
+        </div>
 
-        <%= f.input :password,
-                    hint: "leave it blank if you don't want to change it",
-                    required: false,
-                    input_html: { autocomplete: "new-password" } %>
-        <%= f.input :password_confirmation,
-                    required: false,
-                    input_html: { autocomplete: "new-password" } %>
-      </div>
+        <div class="form-actions btn-white">
+          <%= f.button :submit, "Update" %>
+        </div>
+      <% end %>
 
-      <div class="form-actions btn-warning mb-3">
-        <%= f.button :submit, "Update" %>
-      </div>
-    <% end %>
+      <h6>Cancel my account</h6>
 
-    <h6>Cancel my account</h6>
+      <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-    <%= link_to "Back", :back %>
-  </div>
+      <%= link_to "Back", :back %>
+    </div>
+</div>

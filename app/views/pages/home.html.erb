@@ -1,9 +1,12 @@
 <div class="background-butterfly">
     <div class="container-home">
       <div class="title-hp">
-        <%= image_tag "logo.svg", alt: "logo-eat4good", class: "logo" %>
+        <div class="logo">
+          <%= image_tag "logo.svg", alt: "logo-eat4good", class: "logo" %>
+        </div>
         <h1>Track your food good habits. <br>
-       Feel proud of yourself to protect Hearth</h1>
+        Feel proud of yourself<br>
+        by protecting Hearth</h1>
       </div>
       <div class="call-to-action">
         <h2><%= link_to "Sign up", new_user_registration_path, class: "btn-white" %></h2>
