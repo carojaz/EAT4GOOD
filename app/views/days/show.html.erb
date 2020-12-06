@@ -66,14 +66,16 @@
     <div class="follow-icon">
       <p>Wow you did it!</p>
       <div class="leaf">
-        <div class="leaf-fill">
+        <div class="leaf-fill" data-obj='<%= @week_status %>'>
           <%= image_tag "leaf0.svg", alt: "leaf-fill" %>
         </div>
         <div class="leaf-empty">
-          <%= image_tag "leaf100.svg", alt: "leaf-empty", class: 'img-level50' if @day == @day %>
+          <%= image_tag "leaf100.svg", alt: "leaf-empty" %>
         </div>
       </div>
-      <p>6/6 veggie meals</p>
+      <p> <%= @veggie_this_week %> / <%= @obj_veggie %> veggie meals</p>
     </div>
   </div>
 </div>
+
+

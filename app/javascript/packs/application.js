@@ -29,10 +29,12 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { selectClassMeal } from '../components/select_class_meal';
 import { objectiveSetting } from '../components/objective_setting';
+import { leafFollowUp } from '../components/leaf_follow_up';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   selectClassMeal();
   objectiveSetting();
+  leafFollowUp();
 });

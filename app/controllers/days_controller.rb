@@ -3,6 +3,7 @@ class DaysController < ApplicationController
 
   def show
     set_days
+    week_analysis
   end
 
   def new
@@ -21,7 +22,7 @@ class DaysController < ApplicationController
     @day.dinner_id = @dinner.id
 
     @day.save
-
+    @day_for_week_set = @day
     set_obj
     redirect_to(day_path(@day))
   end
@@ -66,7 +67,7 @@ class DaysController < ApplicationController
       @day_before.lunch_id = @lunch.id
       @day_before.dinner_id = @dinner.id
       @day_before.save
-      @day = @day_before
+      @day_for_week_set = @day_before
       set_obj
       params[:previous_action] == "edit" ? redirect_to(edit_day_path(@day_before)) : redirect_to(day_path(@day_before))
     end
@@ -77,35 +78,9 @@ class DaysController < ApplicationController
     @date_of_day = Day.find(params[:day_id]).date
     # verifier si le jour -1 existe en base // renvoi un tableau avec 1 valeur
     @day_after = Day.where(date: (@date_of_day + 1), user_id: current_user).first
-    @day = @day_after
+    @day_for_week_set = @day_after
     set_obj
     params[:previous_action] == "edit" ? redirect_to(edit_day_path(@day_after)) : redirect_to(day_path(@day_after))
-  end
-
-  def week_analysis
-    # 1 recuperer  date
-    set_days
-    # 2 calcul du num de semaine
-    set_week_year
-    # 3 recuperer l'objectif de la semaine (instance)
-    @obj = Objective.where(nb_week: @week, year: @year)
-    @obj_veggie = @obj.first.veggie.days
-    # 4 trouver les jours de la semaine
-    @week_start = Date.commercial(@year, @week, 1)
-    @week_end = Date.commercial(@year, @week, 7)
-    # 5 recuperer un array des instances correspondant a la semaine
-    @days_of_week = current_user.days.where(date: @week_start..@week_end)
-    # 6 recuperer veggie footype id
-    @veggie = Foodtype.find_by(name: "Veggie")
-    # 7 calculer le nb de veggie cette semaine
-    @veggie_this_week = 0
-    @days_of_week.each do |day|
-      day.breakfast_id == @veggie ? @veggie_this_week += 1 : @veggie_this_week
-      day.lunch_id == @veggie ? @veggie_this_week += 1 : @veggie_this_week
-      day.dinner_id == @veggie ? @veggie_this_week += 1 : @veggie_this_week
-    end
-    # 8 statistique de la semaine
-    @week_analysis = @veggie_this_week / @obj_veggie
   end
 
   private
@@ -131,8 +106,8 @@ class DaysController < ApplicationController
   end
 
   def set_obj
-    @year = @day.date.year
-    @week = @day.date.cweek
+    @year = @day_for_week_set.date.year
+    @week = @day_for_week_set.date.cweek
     @week_before = @week - 1
 
     @obj_of_week = Objective.find_by(year: @year, nb_week: @week, user_id: current_user.id)
@@ -150,6 +125,39 @@ class DaysController < ApplicationController
       @obj_of_week.veggies_days = @veggies_days
     end
     @obj_of_week.save
+  end
+
+  def week_analysis
+    # 1 recuperer  date
+    set_days
+    # 2 calcul du num de semaine
+    set_week_year
+    # 3 recuperer l'objectif de la semaine (instance)
+    @obj = Objective.where(nb_week: @week, year: @year)
+    @obj_veggie = @obj.first.veggies_days
+    # 4 trouver les jours de la semaine
+    @week_start = Date.commercial(@year, @week, 1)
+    @week_end = Date.commercial(@year, @week, 7)
+    # 5 recuperer un array des instances correspondant a la semaine
+    @days_of_week = current_user.days.where(date: @week_start..@week_end).to_a
+    # 6 recuperer veggie footype id
+    # @veggie = Foodtype.find_by(name: "Veggie")
+    # 7 calculer le nb de veggie cette semaine
+    @veggie_this_week = 0
+    @days_of_week.each do |day|
+      @veggie_this_week += 1 if day.breakfast.foodtype.name == "Veggie"
+      @veggie_this_week += 1 if day.lunch.foodtype.name == "Veggie"
+      @veggie_this_week += 1 if day.dinner.foodtype.name == "Veggie"
+    end
+    # 8 statistique de la semaine
+    if @obj_veggie.zero? && @veggie_this_week.zero?
+      @week_status = 0
+    elsif @obj_veggie.zero? && @veggie_this_week > 0
+      @week_status = 100
+    else
+    @week_status = (@veggie_this_week / @obj_veggie) * 100
+    end
+
   end
 
 end
