@@ -5,8 +5,8 @@ const leafFollowUp = () => {
 
       // });
       const weekStatus = document.querySelector(".leaf-fill")
-      console.log("oui je te vois");
-      console.log(typeof(weekStatus.dataset.obj));
+      // console.log("oui je te vois");
+      // console.log(typeof(weekStatus.dataset.obj));
       const weekStatusInt = Number.parseInt(weekStatus.dataset.obj, 10);
       console.log(weekStatusInt);
 

@@ -68,8 +68,10 @@
         <p>Let's start!</p>
       <% elsif @week_status > 0 && @week_status < 100 %>
         <p>Follow your effort!</p>
-      <% else %>
+      <% elsif @week_status == 100 %>
         <p>Wow you did it!</p>
+      <% else %>
+        <p>Near to stars!</p>
       <% end %>
       <div class="leaf">
         <div class="leaf-fill" data-obj='<%= @week_status %>'>

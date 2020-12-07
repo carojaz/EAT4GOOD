@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'objectives/update'
   get 'recipes/index'
   get 'recipes/show'
   devise_for :users
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
     resources :challengesets, only: [:index, :new, :create]
   end
   resources :profiles, only: [:show, :edit, :update]
+  resources :objectives, only: [:update]
 end

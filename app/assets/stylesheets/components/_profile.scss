@@ -55,11 +55,15 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+ .week-obj {
+    width: 67%;
+  }
 }
 
 .objective-setting {
-  padding: 0.2em 2em;
   width: 100%;
+  padding: 0.2em 2em;
   border-radius: 25px;
   border: silver 0.1em solid;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -70,24 +74,41 @@ body {
   align-items: center;
   justify-content: center;
 
-    .btn-right {
-      margin-left: 0.5em;
-
-      h3 {
-        margin: 0;
-      }
-    }
-
-    .btn-left {
-      margin-right: 0.5em;
-
-      h3 {
-        margin: 0;
-      }
+    .btn {
+      height: 2em ;
     }
 
     h6 {
-      margin: 0;
+      margin: 0.5em;
+    }
+
+    .form-control {
+      color: $gray;
+    }
+    #objective_veggies_days {
+    }
+
+    .simple_form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    input[type='range'] {
+      width: 100%;
+      color: $gray;
+      background-color: $green;
+       cursor: pointer;
+      -webkit-appearance: none;
+      height: 0.1em;
+      padding: 0.1em 0;
+    }
+
+    .btn-white {
+      width: 80%;
+      margin: 1em 0;
     }
 }
+
 

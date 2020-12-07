@@ -81,7 +81,6 @@ class DaysController < ApplicationController
     # verifier si le jour -1 existe en base // renvoi un tableau avec 1 valeur
     @day_after = Day.where(date: (@date_of_day + 1), user_id: current_user).first
     @day_for_week_set = @day_after
-    set_obj
     week_analysis
     params[:previous_action] == "edit" ? redirect_to(edit_day_path(@day_after)) : redirect_to(day_path(@day_after))
   end
@@ -132,7 +131,6 @@ class DaysController < ApplicationController
       @obj_of_week.veggies_days = @veggies_days
     end
     @obj_of_week.save
-
   end
 
   def week_analysis
@@ -163,7 +161,7 @@ class DaysController < ApplicationController
     elsif @obj_veggie.zero? && @veggie_this_week > 0
       @week_status = 100
     else
-    @week_status = ((@veggie_this_week.to_f / @obj_veggie.to_f) * 100).to_i
+      @week_status = ((@veggie_this_week.to_f / @obj_veggie.to_f) * 100).to_i
     end
   end
 end
