@@ -24,6 +24,7 @@ class DaysController < ApplicationController
     @day.save
     @day_for_week_set = @day
     set_obj
+    week_analysis
     redirect_to(day_path(@day))
   end
 
@@ -69,6 +70,7 @@ class DaysController < ApplicationController
       @day_before.save
       @day_for_week_set = @day_before
       set_obj
+      week_analysis
       params[:previous_action] == "edit" ? redirect_to(edit_day_path(@day_before)) : redirect_to(day_path(@day_before))
     end
   end
@@ -80,6 +82,7 @@ class DaysController < ApplicationController
     @day_after = Day.where(date: (@date_of_day + 1), user_id: current_user).first
     @day_for_week_set = @day_after
     set_obj
+    week_analysis
     params[:previous_action] == "edit" ? redirect_to(edit_day_path(@day_after)) : redirect_to(day_path(@day_after))
   end
 
@@ -96,8 +99,13 @@ class DaysController < ApplicationController
   end
 
   def set_days
-    @day = Day.find(params[:id])
-    @date_of_day = @day.date
+    if params[:id].present?
+      @day = Day.find(params[:id])
+      @date_of_day = @day.date
+    else
+      @day = Day.find(params[:day_id])
+      @date_of_day = @day.date
+    end
   end
 
   def set_week_year
@@ -112,7 +120,7 @@ class DaysController < ApplicationController
 
     @obj_of_week = Objective.find_by(year: @year, nb_week: @week, user_id: current_user.id)
     @obj_week_before = Objective.find_by(year: @year, nb_week: @week_before, user_id: current_user.id)
-    if @obj_week_before.present?
+    if @obj_week_before.present? && @obj_week_before.veggies_days > 0
       @veggies_days = @obj_week_before.veggies_days
     else
       @veggies_days = 0
@@ -124,6 +132,7 @@ class DaysController < ApplicationController
       @obj_of_week.veggies_days = @veggies_days
     end
     @obj_of_week.save
+
   end
 
   def week_analysis
@@ -154,8 +163,7 @@ class DaysController < ApplicationController
     elsif @obj_veggie.zero? && @veggie_this_week > 0
       @week_status = 100
     else
-    @week_status = (@veggie_this_week / @obj_veggie) * 100
+    @week_status = ((@veggie_this_week.to_f / @obj_veggie.to_f) * 100).to_i
     end
   end
-
 end

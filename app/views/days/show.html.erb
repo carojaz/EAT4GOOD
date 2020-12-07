@@ -64,7 +64,13 @@
 <div class="day">
   <div class="week-analysis">
     <div class="follow-icon">
-      <p>Wow you did it!</p>
+      <% if @week_status  == 0 %>
+        <p>Let's start!</p>
+      <% elsif @week_status > 0 && @week_status < 100 %>
+        <p>Follow your effort!</p>
+      <% else %>
+        <p>Wow you did it!</p>
+      <% end %>
       <div class="leaf">
         <div class="leaf-fill" data-obj='<%= @week_status %>'>
           <%= image_tag "leaf0.svg", alt: "leaf-fill" %>
