@@ -112,7 +112,6 @@ class DaysController < ApplicationController
 
     @obj_of_week = Objective.find_by(year: @year, nb_week: @week, user_id: current_user.id)
     @obj_week_before = Objective.find_by(year: @year, nb_week: @week_before, user_id: current_user.id)
-
     if @obj_week_before.present?
       @veggies_days = @obj_week_before.veggies_days
     else
@@ -157,7 +156,6 @@ class DaysController < ApplicationController
     else
     @week_status = (@veggie_this_week / @obj_veggie) * 100
     end
-
   end
 
 end
