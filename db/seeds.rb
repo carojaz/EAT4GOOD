@@ -95,7 +95,7 @@ Quote.create(phrases: "Limit light pollution outdoor :)")
 Quote.create(phrases: "Don't throw your trash in the sea :)")
 Quote.create(phrases: "Reduce your consumption of paper :)")
 
-puts "#{Quote.count/28*100}% = #{Quote.count} / 28 challenges created"
+puts "#{Quote.count/25*100}% = #{Quote.count} / 28 quotes created"
 
 Badge.create(target: 5, name: "Asparagus", description: "Eat 5 veggie meals to get this badge", picture_path: "badge1.svg")
 Badge.create(target: 25, name: "Broccoli", description: "Eat 25 veggie meals to get this badge", picture_path: "badge2.svg")
@@ -120,7 +120,7 @@ Badge.create(target: 50, name: "Carrot", description: "Save 50 trees to get this
 Badge.create(target: 100, name: "Pepper", description: "Save 100 trees to get this badge", picture_path: "badge21.svg")
 Badge.create(target: 21, name: "Ultime", description: "Earn all other badges", picture_path: "badge22.svg")
 
-puts "#{Quote.count/9*100}% = #{Quote.count} / 9 challenges created"
+puts "#{Badge.count/22*100}% = #{Badge.count} / 22 challenges created"
 
 u1 = User.new(first_name: "Caroline" , last_name: "Jasinski", nickname: "Caro", email: "jasinski_caroline@yahoo.fr", password: "azerty" )
 file = URI.open('https://avatars3.githubusercontent.com/u/68743949?s=460&u=f16cbc21758c842fba66a642775e7c931a7be251&v=4')

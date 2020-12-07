@@ -88,3 +88,16 @@
   justify-content: center;
   align-items: center;
 }
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 6em;
+    height: 6em;
+    margin: 1em;
+    opacity: 0.9;
+  }
+}

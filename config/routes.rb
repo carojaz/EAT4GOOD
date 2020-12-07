@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'recipes/index'
-  get 'recipes/show'
   devise_for :users
   root to: 'pages#home'
   resources :days, only: [:show, :new, :create, :edit, :update] do
@@ -15,4 +13,5 @@ Rails.application.routes.draw do
     resources :challengesets, only: [:index, :new, :create]
   end
   resources :profiles, only: [:show, :edit, :update]
+  resources :objectives, only: [:update]
 end
