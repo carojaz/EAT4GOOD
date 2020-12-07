@@ -3,14 +3,14 @@
   justify-content: space-around;
   align-items: center;
   margin: 0;
-  background: $green;
+  background: white;
   height: 4.5em;
   position: sticky;
   width: 100%;
   //position: absolute;
   bottom: 0;
     .p-footer {
-      color: white;
+      color: $green;
       text-decoration: none;
     }
     a:hover {

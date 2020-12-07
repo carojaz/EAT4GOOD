@@ -1,14 +1,27 @@
-<div class="container">
-  <h2>Sign up</h2>
+<div class="container container-user">
+  <h2>Join Eat4Good adventure</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
+      <%= f.input :nickname,
+                  hint: "leave it if you don't want to change it",
+                  required: false,
+                  input_html: { autocomplete: "Your nickname" }%>
+      <%= f.input :first_name,
+                  hint: "leave it if you don't want to change it",
+                  required: false,
+                  input_html: { autocomplete: "Your first name" }%>
+      <%= f.input :last_name,
+                  hint: "leave it if you don't want to change it",
+                  required: false,
+                  input_html: { autocomplete: "Your last name" } %>
       <%= f.input :email,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
+      <%= f.input :photo, as: :file %>
       <%= f.input :password,
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -18,7 +31,7 @@
                   input_html: { autocomplete: "new-password" } %>
     </div>
 
-    <div class="form-actions">
+    <div class="form-actions btn-white">
       <%= f.button :submit, "Sign up" %>
     </div>
   <% end %>

@@ -22,13 +22,19 @@ body {
 }
 
 .container-void-footer {
-  min-height: calc(100vh - 4.5em - 3.5em - 41px)
+  min-height: calc(100vh - 4.5em - 3.5em)
 }
 
 @media (max-width: 1024 px) {
   /* For a screen < 1024 px, this CSS will be read */
   .container {
     width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: space-evenly;
+    justify-content: space-evenly;
+    min-height: calc(100vh - 4.5em - 3.5em);
+
   }
   h1 {
     font-size: 3vw;
@@ -63,6 +69,11 @@ body {
   /* For a screen < 960px, this CSS will be read */
   .container {
     width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: calc(100vh - 4.5em - 3.5em);
   }
   h1 {
     font-size: 3vw;
@@ -97,6 +108,11 @@ body {
   /* For a screen < 720px, this CSS will be read */
   .container {
     width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: calc(100vh - 4.5em - 3.5em);
   }
   h1 {
     font-size: 6vw;
@@ -131,6 +147,11 @@ body {
   /* For a screen < 540px, this CSS will be read */
   .container {
     width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: calc(100vh - 4.5em - 3.5em - 4em);
   }
   h1 {
     font-size: 6vw;

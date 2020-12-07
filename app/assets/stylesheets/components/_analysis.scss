@@ -1,6 +1,6 @@
 .follow-icon {
-  width: 20em;
-  height: 20em;
+  width: 22em;
+  height: 22em;
   padding: 0.5em;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
@@ -16,5 +16,75 @@
     width: 12em;
     height: 12em;
     padding:0.5em;
+    bottom: 0;
   }
+}
+
+.leaf {
+  position: relative;
+  width: 12em;
+  height: 12em;
+
+  .leaf-fill {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .leaf-empty {
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+
+    .img-level0 {
+      // display: block;
+      margin-top: -110%;
+    }
+    .img-level10 {
+      // display: block;
+      margin-top: -90%;
+    }
+
+    .img-level20 {
+      // display: block;
+      margin-top: -80%;
+    }
+    .img-level30 {
+      // display: block;
+      margin-top: -70%;
+    }
+    .img-level40 {
+      // display: block;
+      margin-top: -60%;
+    }
+    .img-level50 {
+      // display: block;
+      margin-top: -50%;
+    }
+    .img-level60 {
+      // display: block;
+      margin-top: -40%;
+    }
+    .img-level70 {
+      // display: block;
+      margin-top: -30%;
+    }
+    .img-level80 {
+      // display: block;
+      margin-top: -25%;
+    }
+    .img-level90 {
+      // display: block;
+      margin-top: -20%;
+    }
+    .img-level100 {
+      // display: block;
+      margin-top: -0%;
+    }
+  }
+}
+
+.week-analysis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

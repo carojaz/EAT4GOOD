@@ -61,12 +61,21 @@
       </div>
     </div>
   </div>
-<div class="container day">
+<div class="day">
   <div class="week-analysis">
     <div class="follow-icon">
-      <h5>Wow you did it!</h5>
-      <%= image_tag "leaf.svg", alt: "moon" %>
-      <h6>6/6 veggie meals</h6>
+      <p>Wow you did it!</p>
+      <div class="leaf">
+        <div class="leaf-fill" data-obj='<%= @week_status %>'>
+          <%= image_tag "leaf0.svg", alt: "leaf-fill" %>
+        </div>
+        <div class="leaf-empty">
+          <%= image_tag "leaf100.svg", alt: "leaf-empty" %>
+        </div>
+      </div>
+      <p> <%= @veggie_this_week %> / <%= @obj_veggie %> veggie meals</p>
     </div>
   </div>
 </div>
+
+

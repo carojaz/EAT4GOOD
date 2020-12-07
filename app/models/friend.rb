@@ -5,5 +5,6 @@ class Friend < ApplicationRecord
   has_many :challenges, through: :challengesets
 
   validates :friend1_user, uniqueness: { scope: :friend2_user, message: "you are already friends" }
+  validates :friend2_user, uniqueness: { scope: :friend1_user, message: "you are already friends" }
   validates :status, inclusion: { in: ['pending', 'OK', 'KO'] }
 end

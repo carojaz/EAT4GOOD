@@ -1,7 +1,52 @@
+.container-user {
+  background-color: $green;
+  padding : 50px;
+  width: 650px;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+  position:relative;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  h2 {
+    color: white;
+    font-weight: 800;
+    margin-bottom: 30px;
+  }
+  input {
+    border-radius: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+
+  .btn-white {
+    width: auto;
+  }
+}
+
+body {
+  background-color: #EBEDF3;
+}
+
 .user-info  {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+
+  h2 {
+    margin: 0;
+  }
 }
 
 .edit-info {
@@ -12,34 +57,37 @@
   flex-direction: column;
 }
 
-  // .btn-white {
-  //   width: 100%;
-  //   margin:0;
-  // }
+.objective-setting {
+  padding: 0.2em 2em;
+  width: 100%;
+  border-radius: 25px;
+  border: silver 0.1em solid;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 1em 0;
+  background-color: white;
+  color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .form-inputs {
-    border-radius: 25px;
-  }
+    .btn-right {
+      margin-left: 0.5em;
 
-  .objective-setting {
-    padding: 0.2em 2em;
-    width: 100%;
-    border-radius: 25px;
-    border: silver 0.1em solid;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    margin: 1em 0;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-    vertical-align: center;
-      i {
-        margin: 0.2em;
-      }
-
-      h6 {
-        padding: 0.5em;
+      h3 {
         margin: 0;
       }
+    }
+
+    .btn-left {
+      margin-right: 0.5em;
+
+      h3 {
+        margin: 0;
+      }
+    }
+
+    h6 {
+      margin: 0;
+    }
 }
 
