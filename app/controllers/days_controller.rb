@@ -133,7 +133,7 @@ class DaysController < ApplicationController
     @obj_of_week.save
   end
 
-  def week_analysis
+  def set_analysis_scope
     # 1 recuperer  date
     set_days
     # 2 calcul du num de semaine
@@ -146,6 +146,9 @@ class DaysController < ApplicationController
     @week_end = Date.commercial(@year, @week, 7)
     # 5 recuperer un array des instances correspondant a la semaine
     @days_of_week = current_user.days.where(date: @week_start..@week_end).to_a
+  end
+
+  def count_veggie
     # 6 recuperer veggie footype id
     # @veggie = Foodtype.find_by(name: "Veggie")
     # 7 calculer le nb de veggie cette semaine
@@ -155,6 +158,59 @@ class DaysController < ApplicationController
       @veggie_this_week += 1 if day.lunch.foodtype.name == "Veggie"
       @veggie_this_week += 1 if day.dinner.foodtype.name == "Veggie"
     end
+  end
+
+  def count_meat
+    # 6 recuperer veggie footype id
+    # @veggie = Foodtype.find_by(name: "Veggie")
+    # 7 calculer le nb de veggie cette semaine
+    @meat_this_week = 0
+    @days_of_week.each do |day|
+      @meat_this_week += 1 if day.breakfast.foodtype.name == "Meat"
+      @meat_this_week += 1 if day.lunch.foodtype.name == "Meat"
+      @meat_this_week += 1 if day.dinner.foodtype.name == "Meat"
+    end
+  end
+
+  def count_fish
+    # 6 recuperer veggie footype id
+    # @veggie = Foodtype.find_by(name: "Veggie")
+    # 7 calculer le nb de veggie cette semaine
+    @fish_this_week = 0
+    @days_of_week.each do |day|
+      @fish_this_week += 1 if day.breakfast.foodtype.name == "Fish"
+      @fish_this_week += 1 if day.lunch.foodtype.name == "Fish"
+      @fish_this_week += 1 if day.dinner.foodtype.name == "Fish"
+    end
+  end
+
+  def count_dairy
+    # 6 recuperer veggie footype id
+    # @veggie = Foodtype.find_by(name: "Veggie")
+    # 7 calculer le nb de veggie cette semaine
+    @dairy_this_week = 0
+    @days_of_week.each do |day|
+      @dairy_this_week += 1 if day.breakfast.foodtype.name == "Dairy"
+      @dairy_this_week += 1 if day.lunch.foodtype.name == "Dairy"
+      @dairy_this_week += 1 if day.dinner.foodtype.name == "Dairy"
+    end
+  end
+
+  def count_fasting
+    # 6 recuperer veggie footype id
+    # @veggie = Foodtype.find_by(name: "Veggie")
+    # 7 calculer le nb de veggie cette semaine
+    @fasting_this_week = 0
+    @days_of_week.each do |day|
+      @fasting_this_week += 1 if day.breakfast.foodtype.name == "No meal"
+      @fasting_this_week += 1 if day.lunch.foodtype.name == "No meal"
+      @fasting_this_week += 1 if day.dinner.foodtype.name == "No meal"
+    end
+  end
+
+  def week_analysis
+    set_analysis_scope
+    count_veggie
     # 8 statistique de la semaine
     if @obj_veggie.zero? && @veggie_this_week.zero?
       @week_status = 0
@@ -163,5 +219,15 @@ class DaysController < ApplicationController
     else
       @week_status = ((@veggie_this_week.to_f / @obj_veggie.to_f) * 100).to_i
     end
+  end
+
+  def day_status
+    @day = Day.find_by(date: Date.today)
+  end
+
+  def co2_analysis
+    set_analysis_scope
+    @full_meat = 960 * 3
+    @day.breakfast.foodtype.name
   end
 end
