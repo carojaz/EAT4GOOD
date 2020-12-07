@@ -1,6 +1,7 @@
 class FriendsController < ApplicationController
+
   def index
-    @friends = Friend.where(friend1_user: current_user)
+    @friends = Friend.where(friend1_user: current_user).or(Friend.where(friend2_user: current_user))
   end
 
   def new
