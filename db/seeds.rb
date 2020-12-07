@@ -106,6 +106,19 @@ Badge.create(target: 100, name: "Pomegranate", description: "Take part in 100 ch
 Badge.create(target: 5, name: "Radish", description: "Be positive 5 days to get this badge", picture_path: "badge7.svg")
 Badge.create(target: 25, name: "Salad", description: "Be positive 25 days to get this badge", picture_path: "badge8.svg")
 Badge.create(target: 100, name: "Tangerine", description: "Be positive 100 days to get this badge", picture_path: "badge9.svg")
+Badge.create(target: 10, name: "Acorn", description: "Achieve 10 times your goal of the week to get this badge", picture_path: "badge10.svg")
+Badge.create(target: 50, name: "Apple", description: "Achieve 50 times your goal of the week to get this badge", picture_path: "badge11.svg")
+Badge.create(target: 100, name: "Banana", description: "Achieve 100 times your goal of the week to get this badge", picture_path: "badge12.svg")
+Badge.create(target: 10, name: "Corn", description: "Have 10 people in your friends list to get this badge", picture_path: "badge13.svg")
+Badge.create(target: 25, name: "Eggplant", description: "Have 25 people in your friends list to get this badge", picture_path: "badge14.svg")
+Badge.create(target: 50, name: "Pumpkin", description: "Have 50 people in your friends list to get this badge", picture_path: "badge15.svg")
+Badge.create(target: 10, name: "Peach", description: "Log in 10 days to get this badge", picture_path: "badge16.svg")
+Badge.create(target: 50, name: "Pear", description: "Log in 50 days to get this badge", picture_path: "badge17.svg")
+Badge.create(target: 100, name: "Grapes", description: "Log in 50 days to get this badge", picture_path: "badge18.svg")
+Badge.create(target: 10, name: "Cherry", description: "Save 10 trees to get this badge", picture_path: "badge19.svg")
+Badge.create(target: 50, name: "Carrot", description: "Save 50 trees to get this badge", picture_path: "badge20.svg")
+Badge.create(target: 100, name: "Pepper", description: "Save 100 trees to get this badge", picture_path: "badge21.svg")
+Badge.create(target: 21, name: "Ultime", description: "Earn all other badges", picture_path: "badge22.svg")
 
 puts "#{Quote.count/9*100}% = #{Quote.count} / 9 challenges created"
 

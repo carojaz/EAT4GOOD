@@ -15,6 +15,7 @@ class CollectionsController < ApplicationController
   end
 
   def up_counter
+    # Badges 1 a 3 (veggie meals)
     @days = Day.where(user: current_user).to_a
     @asparagus_badge = Badge.where(name: "Asparagus")
     @collection1 = Collection.find_by(badge: @asparagus_badge, user: current_user)
@@ -40,6 +41,36 @@ class CollectionsController < ApplicationController
       @collection3.counter += 1 if day.lunch.foodtype.name == "Veggie"
       @collection3.counter += 1 if day.dinner.foodtype.name == "Veggie"
       @collection3.save
+    end
+
+    # badges amis
+    @friends = Friend.where(friend1_user: current_user).or(Friend.where(friend2_user: current_user))
+    @count = @friends.count
+
+    @corn_badge = Badge.where(name: "Corn")
+    @collection13 = Collection.find_by(badge: @corn_badge, user: current_user)
+    @collection13.counter = @count
+    @collection13.save
+
+    @eggplant_badge = Badge.where(name: "Eggplant")
+    @collection14 = Collection.find_by(badge: @eggplant_badge, user: current_user)
+    @collection14.counter = @count
+    @collection14.save
+
+    @pumpkin_badge = Badge.where(name: "Pumpkin")
+    @collection15 = Collection.find_by(badge: @pumpkin_badge, user: current_user)
+    @collection15.counter = @count
+    @collection15.save
+
+    # Badges Ultimes
+    @badges = Badge.all
+    @ultime_badge = Badge.where(name: "Ultime")
+    @collection22 = Collection.find_by(badge: @ultime_badge, user: current_user)
+    @collection22.counter = 0
+    @badges.each do |badge|
+      @collec = Collection.find_by(badge: badge, user: current_user)
+      @collection22.counter += 1 if badge.target <= @collec.counter
+      @collection22.save
     end
   end
 end
