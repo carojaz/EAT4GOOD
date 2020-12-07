@@ -57,58 +57,80 @@ body {
   flex-direction: column;
 
  .week-obj {
-    width: 67%;
+    width: 100%;
+  }
+  .objective-setting {
+    width: 100%;
+    padding: 1em;
+    border-radius: 25px;
+    border: silver 0.1em solid;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    margin: 1em 0;
+    background-color: white;
+    color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+      .btn {
+        height: 2em ;
+      }
+
+      h6 {
+        margin: 0.5em;
+      }
+
+      .form-control {
+        color: $gray;
+      }
+      .new-target {
+        width: 3em;
+        height: 3em;
+        border-radius: 50%;
+        border: $green solid 0.1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $green;
+        color: white;
+        font-size: 1.5em;
+      }
+
+      .target {
+        width: 3em;
+        height: 3em;
+        border-radius: 50%;
+        border: $green solid 0.1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white ;
+        color: $green;
+        font-size: 1.5em;
+      }
+
+      .simple_form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      input[type='range'] {
+        width: 100%;
+        margin: 1em 0;
+        color: $gray;
+        background-color: $green;
+         cursor: pointer;
+        -webkit-appearance: none;
+        height: 0.1em;
+        padding: 0.1em 0;
+      }
+
+      .btn-white {
+        width: 80%;
+        margin: 0.5em 0;
+      }
   }
 }
-
-.objective-setting {
-  width: 100%;
-  padding: 0.2em 2em;
-  border-radius: 25px;
-  border: silver 0.1em solid;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin: 1em 0;
-  background-color: white;
-  color: gray;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-    .btn {
-      height: 2em ;
-    }
-
-    h6 {
-      margin: 0.5em;
-    }
-
-    .form-control {
-      color: $gray;
-    }
-    #objective_veggies_days {
-    }
-
-    .simple_form {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    input[type='range'] {
-      width: 100%;
-      color: $gray;
-      background-color: $green;
-       cursor: pointer;
-      -webkit-appearance: none;
-      height: 0.1em;
-      padding: 0.1em 0;
-    }
-
-    .btn-white {
-      width: 80%;
-      margin: 1em 0;
-    }
-}
-
 
