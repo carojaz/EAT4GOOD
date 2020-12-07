@@ -204,13 +204,13 @@ puts "#{Breakfast.count/10*100}% = #{Breakfast.count} / 10 Breakfast created"
 puts "#{Lunch.count/10*100}% = #{Lunch.count} / 10 Lunch created"
 puts "#{Dinner.count/10*100}% = #{Dinner.count} / 10 Dinner created"
 
-d1 = Day.new(date: Date.today)
-breakfast = Breakfast.last
-lunch = Lunch.last
-dinner = Dinner.last
-d1.breakfast_id = breakfast.id
-d1.lunch_id = lunch.id
-d1.dinner_id = dinner.id
-d1.user_id = u1.id
-d1.save
-puts "#{Day.count/1*100}% = #{Day.count} / 1 Days created"
+# d1 = Day.new(date: Date.today)
+# breakfast = Breakfast.last
+# lunch = Lunch.last
+# dinner = Dinner.last
+# d1.breakfast_id = breakfast.id
+# d1.lunch_id = lunch.id
+# d1.dinner_id = dinner.id
+# d1.user_id = u1.id
+# d1.save
+# puts "#{Day.count/1*100}% = #{Day.count} / 1 Days created"
