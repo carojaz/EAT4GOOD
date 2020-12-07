@@ -101,15 +101,17 @@ class DaysController < ApplicationController
     if params[:id].present?
       @day = Day.find(params[:id])
       @date_of_day = @day.date
-    else
+    elsif params[:day_id].present?
       @day = Day.find(params[:day_id])
       @date_of_day = @day.date
     end
   end
 
   def set_week_year
-    @week = @date_of_day.cweek
-    @year = @date_of_day.year
+    if @date_of_day.present?
+      @week = @date_of_day.cweek
+      @year = @date_of_day.year
+    end
   end
 
   def set_obj
@@ -139,7 +141,7 @@ class DaysController < ApplicationController
     # 2 calcul du num de semaine
     set_week_year
     # 3 recuperer l'objectif de la semaine (instance)
-    @obj = Objective.where(nb_week: @week, year: @year)
+    @obj = Objective.where(nb_week: @week, year: @year, user_id: current_user.id)
     @obj_veggie = @obj.first.veggies_days
     # 4 trouver les jours de la semaine
     @week_start = Date.commercial(@year, @week, 1)
@@ -215,7 +217,7 @@ class DaysController < ApplicationController
     if @obj_veggie.zero? && @veggie_this_week.zero?
       @week_status = 0
     elsif @obj_veggie.zero? && @veggie_this_week > 0
-      @week_status = 100
+      @week_status = 110
     else
       @week_status = ((@veggie_this_week.to_f / @obj_veggie.to_f) * 100).to_i
     end
