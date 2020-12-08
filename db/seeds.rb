@@ -139,6 +139,16 @@ file = URI.open('https://www.ladn.eu/wp-content/uploads/2016/10/bob-razowski.jpg
 u6.photo.attach(io: file, filename: 'bob.jpg', content_type: 'image/jpg')
 u6.save!
 
+u7 = User.new(first_name: "Zinedine" , last_name: "Zidane", nickname: "Zizou", email: "zizou@france.com", password: "azerty" )
+file = URI.open('https://www.podcastjournal.net/photo/art/grande/48501574-38041877.jpg')
+u7.photo.attach(io: file, filename: 'zizou.jpg', content_type: 'image/jpg')
+u7.save!
+
+u8 = User.new(first_name: "Chat" , last_name: "Roux", nickname: "Garfield", email: "garfield@chat.com", password: "azerty" )
+file = URI.open('https://cdn-www.konbini.com/fr/images/files/2016/01/10-of-the-biggest-celebrity-regrets-bill-murray-garfield-810x4851.jpg')
+u8.photo.attach(io: file, filename: 'garfield.jpg', content_type: 'image/jpg')
+u8.save!
+
 puts "#{User.count/6*100}% = #{User.count} / 6 users created"
 
 f1 = Friend.create(friend1_user_id: u1.id, friend2_user_id: u2.id, status: "OK")

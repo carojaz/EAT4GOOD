@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   resources :collections, only: [:index, :show]
   resources :recipes, only: [:index, :show]
   resources :friends, only: [:index, :new, :create, :update] do
+    member do 
+      patch 'validated'
+      patch 'refused'
+    end
     resources :challengesets, only: [:index, :new, :create]
   end
-  resources :profiles, only: [:show, :edit, :update]
+  resources :profiles, only: [:index, :show, :edit, :update]
 end
