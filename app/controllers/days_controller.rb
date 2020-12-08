@@ -299,7 +299,11 @@ class DaysController < ApplicationController
   end
 
   def month_calendar
-    @year_w = @date_of_day.year
+    if @date_of_day
+      @year_w = @date_of_day.year
+    else
+      @year_w = @day.year
+    end
     # semaine actuelle
     @nb_week_w0 = @date_of_day.cweek
     @nb_week_w3 = @nb_week_w0 - 3
