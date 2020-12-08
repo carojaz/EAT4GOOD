@@ -13,7 +13,7 @@ class ChallengesController < ApplicationController
       @challengeset.challenge = @challenge
       @date = current_user.days.last.date
       @week = @date.cweek
-      @challengeset.start_date = @week
+      @challengeset.start_date = @week + 1
       @challengeset.save
       redirect_to friends_path
     else
