@@ -9,7 +9,7 @@
       <div class="col-4 <%= "opacity-avatar" if @friends.find{|f|f.friend1_user == friend || f.friend2_user == friend }.status == "pending"  %>">
         <% @friend = Friend.where(friend1_user: current_user, friend2_user: friend).or(Friend.where(friend2_user: current_user, friend1_user: friend)) %>
         <%= link_to new_challenge_path(@friend.first.friend2_user_id), class: "" do %>
-        <%= cl_image_tag @friend.first.friend2_user.photo.key, :transformation=>[
+        <%= cl_image_tag friend.photo.key, :transformation=>[
         {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
         {:width=>200, :crop=>"scale"}
         ], class: "avatar-friend-list"%>
