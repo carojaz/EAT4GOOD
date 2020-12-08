@@ -6,6 +6,7 @@ class DaysController < ApplicationController
     week_analysis
     co2_analysis
     m2_analysis
+    h2o_analysis
   end
 
   def new
@@ -29,6 +30,7 @@ class DaysController < ApplicationController
     week_analysis
     co2_analysis
     m2_analysis
+    h2o_analysis
     redirect_to(day_path(@day))
   end
 
@@ -76,6 +78,7 @@ class DaysController < ApplicationController
       set_obj
       week_analysis
       co2_analysis
+      h2o_analysis
       params[:previous_action] == "edit" ? redirect_to(edit_day_path(@day_before)) : redirect_to(day_path(@day_before))
     end
   end
@@ -89,6 +92,7 @@ class DaysController < ApplicationController
     week_analysis
     co2_analysis
     m2_analysis
+    h2o_analysis
     params[:previous_action] == "edit" ? redirect_to(edit_day_path(@day_after)) : redirect_to(day_path(@day_after))
   end
 
@@ -269,5 +273,24 @@ class DaysController < ApplicationController
     end
     @eco_m2_day = (@full_meat_m2 - @m2_today).round(1)
     @eco_m2_day_percentage = ((@eco_m2_day.to_f / @full_meat_m2.to_f) * 100).round
+  end
+
+  def h2o_analysis
+    set_analysis_scope
+    @full_meat_h2o = 5166 * 3
+    @h2o_today = 0
+    @meals = []
+    @meals << @day.breakfast.foodtype.name
+    @meals << @day.lunch.foodtype.name
+    @meals << @day.dinner.foodtype.name
+    @meals.each do |meal|
+      @h2o_today += 0 if meal == "No meal"
+      @h2o_today += 1800 if meal == "Veggie"
+      @h2o_today += 340 if meal == "Dairy"
+      @h2o_today += 4000 if meal == "Fish"
+      @h2o_today += 5166 if meal == "Meat"
+    end
+    @eco_h2o_day = (@full_meat_h2o - @h2o_today).round(1)
+    @eco_h2o_day_percentage = ((@eco_h2o_day.to_f / @full_meat_h2o.to_f) * 100).round
   end
 end

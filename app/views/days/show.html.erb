@@ -103,24 +103,37 @@
     </div>
 
     <div class="m2">
-    <div class="progress" data-percentage='<%= @eco_m2_day_percentage %>'>
-      <span class="progress-left">
-        <span class="progress-bar"></span>
-      </span>
-      <span class="progress-right">
-        <span class="progress-bar"></span>
-      </span>
+      <div class="progress" data-percentage='<%= @eco_m2_day_percentage %>'>
+        <span class="progress-left">
+          <span class="progress-bar"></span>
+        </span>
+        <span class="progress-right">
+          <span class="progress-bar"></span>
+        </span>
         <div class="progress-value">
-            <div>
-             <%= image_tag "tree.svg", alt: "m2 indicator" %>
-            </div>
+          <div>
+            <%= image_tag "tree.svg", alt: "m2 indicator" %>
           </div>
         </div>
+      </div>
       <p>- <%= @eco_m2_day %> m2</p>
     </div>
 
-    <div class="health avatar-bordered-xlarge">
-      <%= image_tag "health.svg", alt: "health indicator" %>
+    <div class="h2o">
+      <div class="progress" data-percentage='<%= @eco_h2o_day_percentage %>'>
+        <span class="progress-left">
+          <span class="progress-bar"></span>
+        </span>
+        <span class="progress-right">
+          <span class="progress-bar"></span>
+        </span>
+        <div class="progress-value">
+          <div>
+            <%= image_tag "water.svg", alt: "m2 indicator" %>
+          </div>
+        </div>
+      </div>
+      <p>- <%= @eco_h2o_day %> L</p>
     </div>
   </div>
 </div>
