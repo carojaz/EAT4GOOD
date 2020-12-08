@@ -151,53 +151,30 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span class="active"></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-        </tr>
-        <tr>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span class="active"></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-        </tr>
-        <tr>
-          <td><span class="active"></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span class="active"></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-        </tr>
-        <tr>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-        </tr>
-        <tr>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-          <td><span></span></td>
-        </tr>
+        <% counter = 0 %>
+        <% @day_status.each do |day, score| %>
+          <% if (counter % 7).zero? %>
+            <tr>
+          <% end %>
+          <% if score == 0 %>
+            <td><span class="veggie0"></span></td>
+          <% elsif score == 1 %>
+            <td><span class="veggie1"></span></td>
+          <% elsif score == 2 %>
+            <td><span class="veggie2"></span></td>
+          <% elsif score == 3 %>
+            <td><span class="veggie3"></span></td>
+          <% elsif score == -1 %>
+            <td><span class="veggie-1"></span></td>
+          <% else %>
+            <td><span class="veggie0"></span></td>
+          <% end %>
+          <% counter += 1 %>
+          <% if (counter % 7).zero? %>
+            </tr>
+          <% end %>
+        <% end %>
       </tbody>
-
     </table>
   </div>
 </div>
