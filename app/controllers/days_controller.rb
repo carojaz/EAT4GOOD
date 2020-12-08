@@ -7,6 +7,7 @@ class DaysController < ApplicationController
     co2_analysis
     m2_analysis
     h2o_analysis
+    month_analysis
   end
 
   def new
@@ -31,6 +32,7 @@ class DaysController < ApplicationController
     co2_analysis
     m2_analysis
     h2o_analysis
+    month_analysis
     redirect_to(day_path(@day))
   end
 
@@ -79,6 +81,7 @@ class DaysController < ApplicationController
       week_analysis
       co2_analysis
       h2o_analysis
+      month_analysis
       params[:previous_action] == "edit" ? redirect_to(edit_day_path(@day_before)) : redirect_to(day_path(@day_before))
     end
   end
@@ -93,6 +96,7 @@ class DaysController < ApplicationController
     co2_analysis
     m2_analysis
     h2o_analysis
+    month_analysis
     params[:previous_action] == "edit" ? redirect_to(edit_day_path(@day_after)) : redirect_to(day_path(@day_after))
   end
 
@@ -292,5 +296,31 @@ class DaysController < ApplicationController
     end
     @eco_h2o_day = (@full_meat_h2o - @h2o_today).round(1)
     @eco_h2o_day_percentage = ((@eco_h2o_day.to_f / @full_meat_h2o.to_f) * 100).round
+  end
+
+  def month_calendar
+    @year_w = @date_of_day.year
+    # semaine actuelle
+    @nb_week_w0 = @date_of_day.cweek
+    @nb_week_w3 = @nb_week_w0 - 3
+    @week_end_w0 = Date.commercial(@year_w, @nb_week_w0, 7)
+    @week_start_w3 = Date.commercial(@year_w, @nb_week_w3, 1)
+    @days_of_period_user = current_user.days.where(date: @week_start_w3..@week_end_w0).to_a
+
+    # toutes les dates de la periode
+    @days_of_period = (@week_start_w3..@week_end_w0)
+  end
+
+  def month_analysis
+    month_calendar
+    @day_status = Hash.new(0)
+    @days_of_period.each do |day|
+      @user_day = @days_of_period_user.find { |day2| day2.date == day }
+      if @user_day.nil?
+        @day_status[day] = -1
+      else
+        @day_status[day] = @user_day.veggie_per_day
+      end
+    end
   end
 end

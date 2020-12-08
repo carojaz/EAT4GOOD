@@ -3,6 +3,7 @@
   width: 60%;
   border-radius: 25px;
   border: silver 0.1em solid;
+  background-color: white;
 
   table{
     width: 100%;
@@ -14,6 +15,7 @@
     font-weight: normal;
     font-size: 14px;
     color: #5b5b5b;
+    width: 1em;
   }
 
   td{
@@ -35,9 +37,30 @@
        font-weight: bold;
   }
 
-  td > span.active{
-      border: 1px solid #98cd60;
-      background-color: #98cd60;
+  td > span.veggie0{
+      border: 1px solid #89D0BF;
+      background-color: #89D0BF;
+      border-radius: 30px;
+    }
+
+  td > span.veggie1{
+      border: 1px solid #C6F093;
+      background-color: #C6F093;
+      border-radius: 30px;
+    }
+  td > span.veggie2{
+      border: 1px solid #8EB85E;
+      background-color: #8EB85E;
+      border-radius: 30px;
+    }
+  td > span.veggie3{
+      border: 1px solid #59822D;
+      background-color: #59822D;
+      border-radius: 30px;
+    }
+
+  td > span.veggie-1{
+      border: 1px solid silver;
       border-radius: 30px;
     }
 }
