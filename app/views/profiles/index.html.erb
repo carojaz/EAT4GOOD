@@ -1,0 +1,31 @@
+<h1 class="mt-3 pb-2">Users List</h1>
+<div class="search-input">
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Write your friend nickname"
+  %>
+  <%= submit_tag "Search", class: "search-input btn-white" %>
+</div>
+<div class="friendlist">
+  <div class="row">
+    <% @users_not_my_friend.each do |user| %>
+      <div class="col-4">
+        <%= simple_form_for @friend do |f| %>
+          <%= f.input :friend2_user, as: :hidden, input_html: {value: user.id} %>
+          <%= f.submit "+", class: "add-btn", data: {confirm: "Are you sure?"} %>
+          
+          <%= cl_image_tag user.photo.key, :transformation=>[
+          {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+          {:width=>200, :crop=>"scale"}
+          ], class: "avatar-friend-list" %>
+        <% end %>
+
+      
+        <div class="friend-name"><%= user.nickname %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
