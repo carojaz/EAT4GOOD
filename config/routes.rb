@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :collections, only: [:index, :show]
   resources :recipes, only: [:index, :show]
   resources :friends, only: [:index, :new, :create, :update] do
+    resources :challenges, only: [:new, :create]
     resources :challengesets, only: [:index, :new, :create]
   end
   resources :profiles, only: [:show, :edit, :update]
