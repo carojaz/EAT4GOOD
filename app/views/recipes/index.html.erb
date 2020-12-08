@@ -22,7 +22,9 @@
         <%= link_to @recipe.title, recipe_path(@recipe) %>
       </div>
       <div class="card-prep-time-veggie">
-        <div><%= image_tag "clock.svg", height:"25px"%><%= @recipe.preparation_time %></div>
+        <div><%= image_tag "clock.svg", height:"25px"%>
+          <%= @recipe.preparation_time.gsub("mins","").gsub(" ", "") %> mins
+        </div>
         <div>Veggie</div>
       </div>
     </div>

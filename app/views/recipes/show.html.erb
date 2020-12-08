@@ -7,7 +7,7 @@
     <div>
       <div class="prep-time">
         <%= image_tag "clock.svg", class: "recipe-icons"%>
-        <%= @recipe.preparation_time %>
+        <%= @recipe.preparation_time.gsub("mins","").gsub(" ", "") %> mins
       <%= image_tag "veggie-recipe.svg", class: "recipe-icons"%>
       Veggie
       </div>

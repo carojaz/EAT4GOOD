@@ -93,11 +93,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 1em;
 
   img {
     width: 6em;
     height: 6em;
-    margin: 1em;
     opacity: 0.9;
+  }
+
+  .co2, .m2, .h2o {
+    display: flex;
+    flex-direction: column;
+    margin: 0.2em;
   }
 }
