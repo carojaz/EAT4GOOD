@@ -39,16 +39,20 @@ for i in (1..4)
     ingredients = []
     recipe_doc.search(".ingredients-item-name").each do |ingredient|
       ingredients << ingredient.text.strip
+      ingredients << "@"
     end
 
     descriptions = []
     recipe_doc.search(".subcontainer.instructions-section-item .section-body").each do |description|
       descriptions << description.text.strip
+      descriptions << "@"
     end
 
     photo = element.search(".fixed-recipe-card__img").attribute("data-original-src").value
 
     Recipe.create!(title:title, introduction:introduction, ingredients:ingredients.join(', '), description:descriptions.join(', '), preparation_time:prep_time, url_photo:photo)
+    puts ".."
+
   end
 end
 
