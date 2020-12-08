@@ -25,9 +25,11 @@
           <div class="friend-name"><%= friend.nickname %></div>
         <% end %>
         <% end %>
-        <% if @friends.find{|f| f.friend2_user == current_user }.status == "pending" %>
+        <% if @friends.find{|f| f.friend2_user == current_user } %>
+         <% if @friends.find{|f| f.friend2_user == current_user && f.friend1_user == friend}.status == "pending" %>
           <%= link_to "Validated friend", validated_friend_path(@friends.find{|f|f.friend1_user == friend || f.friend2_user == friend }), method: :patch  %>
           <%= link_to "Refused friend", refused_friend_path(@friends.find{|f| f.friend2_user == current_user }), method: :patch  %>
+        <% end %>
         <% end %>
       </div>
     <% end %>
