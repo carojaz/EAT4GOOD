@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   end
   resources :profiles, only: [:show, :edit, :update]
   resources :objectives, only: [:update]
+  resources :challenges, only: [:new, :create]
 end
