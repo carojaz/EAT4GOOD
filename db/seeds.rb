@@ -39,16 +39,20 @@ for i in (1..4)
     ingredients = []
     recipe_doc.search(".ingredients-item-name").each do |ingredient|
       ingredients << ingredient.text.strip
+      ingredients << "@"
     end
 
     descriptions = []
     recipe_doc.search(".subcontainer.instructions-section-item .section-body").each do |description|
       descriptions << description.text.strip
+      descriptions << "@"
     end
 
     photo = element.search(".fixed-recipe-card__img").attribute("data-original-src").value
 
     Recipe.create!(title:title, introduction:introduction, ingredients:ingredients.join(', '), description:descriptions.join(', '), preparation_time:prep_time, url_photo:photo)
+    puts ".."
+
   end
 end
 
@@ -95,7 +99,7 @@ Quote.create(phrases: "Limit light pollution outdoor :)")
 Quote.create(phrases: "Don't throw your trash in the sea :)")
 Quote.create(phrases: "Reduce your consumption of paper :)")
 
-puts "#{Quote.count/28*100}% = #{Quote.count} / 28 challenges created"
+puts "#{Quote.count/25*100}% = #{Quote.count} / 28 quotes created"
 
 Badge.create(target: 5, name: "Asparagus", description: "Eat 5 veggie meals to get this badge", picture_path: "badge1.svg")
 Badge.create(target: 25, name: "Broccoli", description: "Eat 25 veggie meals to get this badge", picture_path: "badge2.svg")
@@ -106,8 +110,21 @@ Badge.create(target: 100, name: "Pomegranate", description: "Take part in 100 ch
 Badge.create(target: 5, name: "Radish", description: "Be positive 5 days to get this badge", picture_path: "badge7.svg")
 Badge.create(target: 25, name: "Salad", description: "Be positive 25 days to get this badge", picture_path: "badge8.svg")
 Badge.create(target: 100, name: "Tangerine", description: "Be positive 100 days to get this badge", picture_path: "badge9.svg")
+Badge.create(target: 10, name: "Acorn", description: "Achieve 10 times your goal of the week to get this badge", picture_path: "badge10.svg")
+Badge.create(target: 50, name: "Apple", description: "Achieve 50 times your goal of the week to get this badge", picture_path: "badge11.svg")
+Badge.create(target: 100, name: "Banana", description: "Achieve 100 times your goal of the week to get this badge", picture_path: "badge12.svg")
+Badge.create(target: 10, name: "Corn", description: "Have 10 people in your friends list to get this badge", picture_path: "badge13.svg")
+Badge.create(target: 25, name: "Eggplant", description: "Have 25 people in your friends list to get this badge", picture_path: "badge14.svg")
+Badge.create(target: 50, name: "Pumpkin", description: "Have 50 people in your friends list to get this badge", picture_path: "badge15.svg")
+Badge.create(target: 10, name: "Peach", description: "Log in 10 days to get this badge", picture_path: "badge16.svg")
+Badge.create(target: 50, name: "Pear", description: "Log in 50 days to get this badge", picture_path: "badge17.svg")
+Badge.create(target: 100, name: "Grapes", description: "Log in 50 days to get this badge", picture_path: "badge18.svg")
+Badge.create(target: 10, name: "Cherry", description: "Save 10 trees to get this badge", picture_path: "badge19.svg")
+Badge.create(target: 50, name: "Carrot", description: "Save 50 trees to get this badge", picture_path: "badge20.svg")
+Badge.create(target: 100, name: "Pepper", description: "Save 100 trees to get this badge", picture_path: "badge21.svg")
+Badge.create(target: 21, name: "Ultime", description: "Earn all other badges", picture_path: "badge22.svg")
 
-puts "#{Quote.count/9*100}% = #{Quote.count} / 9 challenges created"
+puts "#{Badge.count/22*100}% = #{Badge.count} / 22 challenges created"
 
 u1 = User.new(first_name: "Caroline" , last_name: "Jasinski", nickname: "Caro", email: "jasinski_caroline@yahoo.fr", password: "azerty" )
 file = URI.open('https://avatars3.githubusercontent.com/u/68743949?s=460&u=f16cbc21758c842fba66a642775e7c931a7be251&v=4')
@@ -201,13 +218,13 @@ puts "#{Breakfast.count/10*100}% = #{Breakfast.count} / 10 Breakfast created"
 puts "#{Lunch.count/10*100}% = #{Lunch.count} / 10 Lunch created"
 puts "#{Dinner.count/10*100}% = #{Dinner.count} / 10 Dinner created"
 
-d1 = Day.new(date: Date.today)
-breakfast = Breakfast.last
-lunch = Lunch.last
-dinner = Dinner.last
-d1.breakfast_id = breakfast.id
-d1.lunch_id = lunch.id
-d1.dinner_id = dinner.id
-d1.user_id = u1.id
-d1.save
-puts "#{Day.count/1*100}% = #{Day.count} / 1 Days created"
+# d1 = Day.new(date: Date.today)
+# breakfast = Breakfast.last
+# lunch = Lunch.last
+# dinner = Dinner.last
+# d1.breakfast_id = breakfast.id
+# d1.lunch_id = lunch.id
+# d1.dinner_id = dinner.id
+# d1.user_id = u1.id
+# d1.save
+# puts "#{Day.count/1*100}% = #{Day.count} / 1 Days created"

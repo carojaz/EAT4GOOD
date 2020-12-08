@@ -1,24 +1,42 @@
-<div class="card-product-big">
+<div class="card-product-big container">
   <div class="card-product-big-url_photo">
-    <%= image_tag @recipe.url_photo %>
+    <div>
+      <%= image_tag @recipe.url_photo, class: "picture-recipe" %>
+      <h3><%= @recipe.title %></h3>
+    </div>
+    <div>
+      <div class="prep-time">
+        <%= image_tag "clock.svg", class: "recipe-icons"%>
+        <%= @recipe.preparation_time.gsub("mins","").gsub(" ", "") %> mins
+      <%= image_tag "veggie-recipe.svg", class: "recipe-icons"%>
+      Veggie
+      </div>
+    </div>
   </div>
-  <div class="card-product-big-title">
-    <%= @recipe.title %>
+  <div class="card-product-recipes-show">
+    <h5>Description</h5>
+    <div>
+      <%= @recipe.introduction %>
+    </div>
   </div>
-  <div class="card-product-big-prep-time">
-    <div><%= image_tag "clock.svg", height:"25px"%><%= @recipe.preparation_time %></div>
-    <div>Veggie</div>
+  <div class="card-product-recipes-show">
+    <h5>Ingredients</h5>
+    <div>
+      <ul>
+        <% @recipe.ingredients.split("@,").each do |ingredient| %>
+          <li><%= ingredient.gsub(", @", "") %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  <div class="card-product-big-introduction">
-    <div class="sub-card-product-introduction-title">Description</div>
-    <div class = "sub-card-product-introduction-details"><%= @recipe.introduction %></div>
+  <div class="card-product-recipes-show">
+    <h5>Directions</h5>
+    <div>
+      <ul>
+        <% @recipe.description.split("@,").each do |instruction| %>
+          <li><%= instruction.gsub(", @", "") %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  <div class="card-product-ingredients">
-    <div class ="sub-card-product-ingredients-title">Ingredients</div>
-    <div class = "sub-card-product-ingredients-details"><%= @recipe.ingredients %></div>
-  </div>
-  <div class="card-product-directions">
-    <div class="sub-card-product-directions-title">Directions</div>
-    <div class="sub-card-product-directions-details"><%= @recipe.description %></div>
-  </div>
-</div> 
+</div>
