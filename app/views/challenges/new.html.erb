@@ -17,3 +17,10 @@
   </div>
 </div>
 
+<%= simple_form_for @challenge do |f| %>
+  <h4>Veggie meals per week : </h4>
+  <%= f.input :nb_days_veggie, as: :range, input_html: { min:0, max:21 }, label: false %>
+  <%= f.input :message %>
+  <%= hidden_field_tag(:format, params[:format]) %>
+  <%= f.submit 'New challenge', class: "btn-white" %>
+<% end %>

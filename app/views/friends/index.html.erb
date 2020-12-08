@@ -7,7 +7,7 @@
   <div class="row">
     <% @friends.each do |friend| %>
       <div class="col-4">
-        <%= link_to new_friend_challengeset_path(friend.friend2_user_id), class: "" do %>
+        <%= link_to new_challenge_path(friend.friend2_user_id), class: "" do %>
         <%= cl_image_tag friend.friend2_user.photo.key, :transformation=>[
         {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
         {:width=>200, :crop=>"scale"}
