@@ -13,11 +13,47 @@
   .logo {
     margin-bottom: 1em;
   }
+
+  .btn-white {
+    color: #3c3c3c;
+
+    &:hover {
+      color: white;
+    }
+  }
 }
 
 .container-home-info {
-  h3, p {
-    color: $orange;
+
+  border: $orange solid 0.1em;
+  border-radius: 25px;
+  background-color: rgba(255,255,255, 0.6);
+  h3, p, h5 {
+    color: gray;
+  }
+
+  h3 {
+    margin: 1em;
+  }
+
+  img {
+    border-radius: 25px;
+    width: 70%;
+    margin: 1em;
+  }
+
+  .home-details {
+    display: flex;
+    flex-direction: column;
+    img {
+      width: 10%;
+    }
+
+    .app-detail {
+      display: flex;
+      align-items: center;
+      margin: 1em;
+    }
   }
 }
 
@@ -26,8 +62,8 @@
   .logo {
   }
   h1 {
-    color: white;
-    text-shadow: 0 4px 4px rgba(0,0,0,0.4);
+    color: #3c3c3c;
+    text-shadow: 0 2px 2px rgba(255,255,255,1);
   }
 }
 

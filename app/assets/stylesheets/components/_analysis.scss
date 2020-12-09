@@ -27,6 +27,10 @@
     padding:0.5em;
     bottom: 0;
   }
+
+  p {
+    margin: 0;
+  }
 }
 
 .leaf {
@@ -51,6 +55,7 @@
     .img-level10 {
       // display: block;
       margin-top: -90%;
+      padding-bottom: 0;
     }
 
     .img-level20 {
