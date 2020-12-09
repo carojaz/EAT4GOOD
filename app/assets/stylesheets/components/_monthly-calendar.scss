@@ -1,9 +1,16 @@
 .monthly-analysis {
-
   width: 60%;
   border-radius: 25px;
   border: silver 0.1em solid;
   background-color: white;
+  padding: 1em;
+  margin-bottom: 2em;
+
+  h5 {
+    margin-top: 0em;
+    margin-bottom: 0.3em;
+    border-bottom: silver 0.01em solid;
+  }
 
   table{
     width: 100%;
@@ -16,6 +23,7 @@
     font-size: 14px;
     color: #5b5b5b;
     width: 1em;
+    padding-bottom: 0.5em;
   }
 
   td{
@@ -38,24 +46,24 @@
   }
 
   td > span.veggie0{
-      border: 1px solid #89D0BF;
-      background-color: #89D0BF;
+      border: 1px solid #b5e6ea;
+      background-color: #b5e6ea;
       border-radius: 30px;
     }
 
   td > span.veggie1{
-      border: 1px solid #C6F093;
-      background-color: #C6F093;
+      border: 1px solid #c8ee99;
+      background-color: #c8ee99;
       border-radius: 30px;
     }
   td > span.veggie2{
-      border: 1px solid #8EB85E;
-      background-color: #8EB85E;
+      border: 1px solid #8ab05e;
+      background-color: #8ab05e;
       border-radius: 30px;
     }
   td > span.veggie3{
-      border: 1px solid #59822D;
-      background-color: #59822D;
+      border: 1px solid #527a28;
+      background-color: #527a28;
       border-radius: 30px;
     }
 
@@ -63,4 +71,14 @@
       border: 1px solid silver;
       border-radius: 30px;
     }
+}
+.legend {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  border-radius: 25px;
+  padding: 0 1em;
+  margin-top: 1em;
+  background: rgb(181,230,234);
+  background: linear-gradient(90deg, rgba(181,230,234,1) 0%, rgba(200,238,153,1) 24%, rgba(138,176,94,1) 62%, rgba(82,122,40,1) 100%);
 }
