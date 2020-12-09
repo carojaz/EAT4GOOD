@@ -11,17 +11,16 @@
   <div class="row">
     <% @users_not_my_friend.each do |user| %>
       <div class="col-4">
-        <%= simple_form_for @friend do |f| %>
-          <%= f.input :friend2_user, as: :hidden, input_html: {value: user.id} %>
-          <%= f.submit "+", class: "add-btn", data: {confirm: "Are you sure?"} %>
-
-          <%= cl_image_tag user.photo.key, :transformation=>[
-          {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-          {:width=>200, :crop=>"scale"}
-          ], class: "avatar-friend-list" %>
-        <% end %>
-
-
+        <div class="card-add-friend">
+          <%= simple_form_for @friend do |f| %>
+            <%= f.input :friend2_user, as: :hidden, input_html: {value: user.id} %>
+            <%= f.submit "+", class: "add-btn", data: {confirm: "Are you sure?"} %>
+            <%= cl_image_tag user.photo.key, :transformation=>[
+            {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+            {:width=>200, :crop=>"scale"}
+            ], class: "avatar-friend-list" %>
+          <% end %>
+        </div>   
         <div class="friend-name"><%= user.nickname %></div>
       </div>
     <% end %>
