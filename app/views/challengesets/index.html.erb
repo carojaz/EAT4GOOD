@@ -1,0 +1,20 @@
+<h1 class="mt-3">Your challenge</h1>
+
+<% @challengesets.each do |challengeset| %>
+  <% challengeset.each do |chall| %>
+    <div class="card">
+      <div class="vs">
+          <div class="avatars">
+            <div class="avatar1"></div>
+            <div class="avatar2"></div>
+          </div>
+          <p>week</p>
+      </div>
+      <div class="recap">
+        <p><%= chall.challenge.nb_days_veggie%> veggies meals this week</p>
+        <p><%= chall.challenge.message %></p>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
