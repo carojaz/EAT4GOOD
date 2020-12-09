@@ -2,20 +2,20 @@ class ProfilesController < ApplicationController
   def index
     @friend = Friend.new
     if params[:query].present?
-      @users = User.where("nickname ILIKE ?", "%#{params[:query]}%")
+      @users = User.where("nickname ILIKE ?", "%#{params[:query]}%") 
     else
       @users = User.all
-      @friends = Friend.where(friend1_user: current_user).or(Friend.where(friend2_user: current_user))
-      @my_friends = @friends.map do |friend|
-        if friend.friend1_user == current_user
-          friend.friend2_user
-        else
-          friend.friend1_user
-        end
+    end
+    @friends = Friend.where(friend1_user: current_user).or(Friend.where(friend2_user: current_user))
+    @my_friends = @friends.map do |friend|
+      if friend.friend1_user == current_user
+        friend.friend2_user
+      else
+        friend.friend1_user
       end
-      @users_not_my_friend = @users.reject do |user|
-        @my_friends.include?(user) || user == current_user
-      end
+    end
+    @users_not_my_friend = @users.reject do |user|
+      @my_friends.include?(user) || user == current_user
     end
   end
 

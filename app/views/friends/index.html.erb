@@ -18,6 +18,9 @@
           {:width=>200, :crop=>"scale"}
           ], class: "avatar-friend-list"%>
           <div class="friend-name"><%= friend.nickname %></div>
+          <%= link_to friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"}, class: "hidden" do %>
+          <button class="delete-btn"></button>
+          <% end %>
           <% end %>
         <% else %>
           <%= link_to new_challenge_path(@friend.first.friend2_user_id), class: "" do %>
@@ -26,6 +29,9 @@
           {:width=>200, :crop=>"scale"}
           ], class: "avatar-friend-list"%>
           <div class="friend-name"><%= friend.nickname %></div>
+          <%= link_to  friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"}, class: "hidden" do %>
+         <button class="delete-btn"></button>
+          <% end %>
         <% end %>
         <% end %>
         <% if @friends.find{|f| f.friend2_user == current_user } && @friends.find{|f| f.friend2_user == current_user && f.friend1_user == friend} %>

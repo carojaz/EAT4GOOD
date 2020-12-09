@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "create", to: 'days#create', as: :create_day
   resources :collections, only: [:index, :show]
   resources :recipes, only: [:index, :show]
-  resources :friends, only: [:index, :new, :create, :update] do
+  resources :friends, only: [:index, :new, :create, :update, :destroy] do
     member do 
       patch 'validated'
       patch 'refused'
