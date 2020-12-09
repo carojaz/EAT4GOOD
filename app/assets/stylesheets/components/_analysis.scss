@@ -96,6 +96,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1em;
 }
 
 .daily {
@@ -106,7 +107,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1em;
+  margin: 0 0 1em 0;
 
   img {
     width: 6em;
