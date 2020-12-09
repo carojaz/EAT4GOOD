@@ -11,7 +11,7 @@ class ChallengesController < ApplicationController
       @challengeset = Challengeset.new
       @challengeset.friend = @friend.first
       @challengeset.challenge = @challenge
-      @date = current_user.days.last.date
+      @date = Date.today
       @week = @date.cweek
       @challengeset.start_date = @week + 1
       @challengeset.save
