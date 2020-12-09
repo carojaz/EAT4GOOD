@@ -301,11 +301,12 @@ class DaysController < ApplicationController
   def month_calendar
     if @date_of_day
       @year_w = @date_of_day.year
+      @nb_week_w0 = @date_of_day.cweek
     else
-      @year_w = @day.year
+      @year_w = @day.date.year
+      @nb_week_w0 = @day.date.cweek
     end
     # semaine actuelle
-    @nb_week_w0 = @date_of_day.cweek
     @nb_week_w3 = @nb_week_w0 - 3
     @week_end_w0 = Date.commercial(@year_w, @nb_week_w0, 7)
     @week_start_w3 = Date.commercial(@year_w, @nb_week_w3, 1)
