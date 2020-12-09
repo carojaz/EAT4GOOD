@@ -74,7 +74,7 @@ class CollectionsController < ApplicationController
     @collection6.counter = counter
     @collection6.save
 
-    # badges positives
+    # badges fill meals
     @days = Day.where(user: current_user).to_a
 
     @radish_badge = Badge.where(name: "Radish")
@@ -122,6 +122,28 @@ class CollectionsController < ApplicationController
     @collection15.save
 
     # badges log in
+    array_date = []
+    @compteur = 0
+    date = Date.today
+    unless array_date.include? Date.today
+      @compteur += 1
+      array_date << date
+    end
+
+    @peach_badge = Badge.where(name: "Peach")
+    @collection16 = Collection.find_by(badge: @peach_badge, user: current_user)
+    @collection16.counter = @compteur
+    @collection16.save
+
+    @pear_badge = Badge.where(name: "Pear")
+    @collection17 = Collection.find_by(badge: @pear_badge, user: current_user)
+    @collection17.counter = @compteur
+    @collection17.save
+
+    @grapes_badge = Badge.where(name: "Grapes")
+    @collection18 = Collection.find_by(badge: @grapes_badge, user: current_user)
+    @collection18.counter = @compteur
+    @collection18.save
 
     # badges trees?
 

@@ -119,10 +119,10 @@ Badge.create(target: 50, name: "Pumpkin", description: "Have 50 people in your f
 Badge.create(target: 10, name: "Peach", description: "Log in 10 days to get this badge", picture_path: "badge16.svg")
 Badge.create(target: 50, name: "Pear", description: "Log in 50 days to get this badge", picture_path: "badge17.svg")
 Badge.create(target: 100, name: "Grapes", description: "Log in 50 days to get this badge", picture_path: "badge18.svg")
-Badge.create(target: 10, name: "Cherry", description: "Save 10 trees to get this badge", picture_path: "badge19.svg")
-Badge.create(target: 50, name: "Carrot", description: "Save 50 trees to get this badge", picture_path: "badge20.svg")
-Badge.create(target: 100, name: "Pepper", description: "Save 100 trees to get this badge", picture_path: "badge21.svg")
-Badge.create(target: 21, name: "Ultime", description: "Earn all other badges", picture_path: "badge22.svg")
+# Badge.create(target: 10, name: "Cherry", description: "Save 10 trees to get this badge", picture_path: "badge19.svg")
+# Badge.create(target: 50, name: "Carrot", description: "Save 50 trees to get this badge", picture_path: "badge20.svg")
+# Badge.create(target: 100, name: "Pepper", description: "Save 100 trees to get this badge", picture_path: "badge21.svg")
+Badge.create(target: 18, name: "Ultime", description: "Earn all other badges", picture_path: "badge22.svg")
 
 puts "#{Badge.count/22*100}% = #{Badge.count} / 22 challenges created"
 
