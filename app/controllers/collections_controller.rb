@@ -30,6 +30,18 @@ class CollectionsController < ApplicationController
     @collection3 = Collection.find_by(badge: @mushroom_badge, user: current_user)
     @collection3.counter = 0
 
+    @acorn_badge = Badge.where(name: "Acorn")
+    @collection10 = Collection.find_by(badge: @acorn_badge, user: current_user)
+    @collection10.counter = 0
+
+    @apple_badge = Badge.where(name: "Apple")
+    @collection11 = Collection.find_by(badge: @apple_badge, user: current_user)
+    @collection11.counter = 0
+
+    @banana_badge = Badge.where(name: "Banana")
+    @collection12 = Collection.find_by(badge: @banana_badge, user: current_user)
+    @collection12.counter = 0
+
     @days.each do |day|
       @collection1.counter += 1 if day.breakfast.foodtype.name == "Veggie"
       @collection1.counter += 1 if day.lunch.foodtype.name == "Veggie"
@@ -45,6 +57,21 @@ class CollectionsController < ApplicationController
       @collection3.counter += 1 if day.lunch.foodtype.name == "Veggie"
       @collection3.counter += 1 if day.dinner.foodtype.name == "Veggie"
       @collection3.save
+
+      @collection10.counter += 1 if day.breakfast.foodtype.name == "Veggie"
+      @collection10.counter += 1 if day.lunch.foodtype.name == "Veggie"
+      @collection10.counter += 1 if day.dinner.foodtype.name == "Veggie"
+      @collection10.save
+
+      @collection11.counter += 1 if day.breakfast.foodtype.name == "Veggie"
+      @collection11.counter += 1 if day.lunch.foodtype.name == "Veggie"
+      @collection11.counter += 1 if day.dinner.foodtype.name == "Veggie"
+      @collection11.save
+
+      @collection12.counter += 1 if day.breakfast.foodtype.name == "Veggie"
+      @collection12.counter += 1 if day.lunch.foodtype.name == "Veggie"
+      @collection12.counter += 1 if day.dinner.foodtype.name == "Veggie"
+      @collection12.save
     end
 
     # badges challenges
@@ -78,29 +105,27 @@ class CollectionsController < ApplicationController
     @days = Day.where(user: current_user).to_a
 
     @radish_badge = Badge.where(name: "Radish")
-    @collection6 = Collection.find_by(badge: @radish_badge, user: current_user)
-    @collection6.counter = 0
-
-    @salad_badge = Badge.where(name: "Salad")
-    @collection7 = Collection.find_by(badge: @salad_badge, user: current_user)
+    @collection7 = Collection.find_by(badge: @radish_badge, user: current_user)
     @collection7.counter = 0
 
-    @tangerine_badge = Badge.where(name: "Tangerine")
-    @collection8 = Collection.find_by(badge: @tangerine_badge, user: current_user)
+    @salad_badge = Badge.where(name: "Salad")
+    @collection8 = Collection.find_by(badge: @salad_badge, user: current_user)
     @collection8.counter = 0
 
-    @days.each do |day|
-      @collection6.counter += 1 if (day.breakfast.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish") && (day.lunch.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish") && (day.dinner.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish")
-      @collection6.save
+    @tangerine_badge = Badge.where(name: "Tangerine")
+    @collection9 = Collection.find_by(badge: @tangerine_badge, user: current_user)
+    @collection9.counter = 0
 
-      @collection7.counter += 1 if (day.breakfast.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish") && (day.lunch.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish") && (day.dinner.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish")
+    @days.each do |day|
+      @collection7.counter += 1 if (day.breakfast.foodtype.name != "No meal") && (day.lunch.foodtype.name != "No meal") && (day.dinner.foodtype.name != "No meal")
       @collection7.save
 
-      @collection8.counter += 1 if (day.breakfast.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish") && (day.lunch.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish") && (day.dinner.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish")
+      @collection8.counter += 1 if (day.breakfast.foodtype.name != "No meal") && (day.lunch.foodtype.name != "No meal") && (day.dinner.foodtype.name != "No meal")
       @collection8.save
-    end
 
-    # badges objectifs
+      @collection9.counter += 1 if (day.breakfast.foodtype.name != "No meal") && (day.lunch.foodtype.name != "No meal") && (day.dinner.foodtype.name != "No meal")
+      @collection9.save
+    end
 
     # badges amis
     @friends = Friend.where(friend1_user: current_user).or(Friend.where(friend2_user: current_user))
@@ -121,11 +146,12 @@ class CollectionsController < ApplicationController
     @collection15.counter = @count
     @collection15.save
 
-    # badges log in
+    # badges login
+
     array_date = []
     @compteur = 0
     date = Date.today
-    unless array_date.include? Date.today
+    unless array_date.include? date
       @compteur += 1
       array_date << date
     end
@@ -144,8 +170,6 @@ class CollectionsController < ApplicationController
     @collection18 = Collection.find_by(badge: @grapes_badge, user: current_user)
     @collection18.counter = @compteur
     @collection18.save
-
-    # badges trees?
 
     # Badges Ultimes
     @badges = Badge.all
