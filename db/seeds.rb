@@ -183,18 +183,18 @@ puts "#{Friend.count/9*100}% = #{Friend.count} / 9 friends links created"
 c1 = Challenge.create!(message: "Pas cap!", nb_days_veggie: 2, nb_days_local: 1 )
 c2 = Challenge.create!(message: "Go for challenge!!", nb_days_veggie: 5, nb_days_local: 0 )
 c3 = Challenge.create!(message: "100%", nb_days_veggie: 7, nb_days_local: 7 )
-c4 = Challenge.create!(message: "local challenge!", nb_days_veggie: 0, nb_days_local: 4 )
+c4 = Challenge.create!(message: "local challenge!", nb_days_veggie: 1, nb_days_local: 4 )
 
 puts "#{Challenge.count/4*100}% = #{Challenge.count} / 4 challenges created"
 
-cs1 = Challengeset.create!(challenge_id: c1.id, friend_id: f1.id,start_date: "2020-12-07", status: "OK")
-cs2 = Challengeset.create!(challenge_id: c2.id, friend_id: f2.id,start_date: "2020-12-07", status: "pending")
-cs3 = Challengeset.create!(challenge_id: c3.id, friend_id: f3.id,start_date: "2020-12-07", status: "KO")
-cs4 = Challengeset.create!(challenge_id: c4.id, friend_id: f4.id,start_date: "2020-12-07", status: "OK")
-cs5 = Challengeset.create!(challenge_id: c1.id, friend_id: f5.id,start_date: "2020-12-07", status: "pending")
-cs6 = Challengeset.create!(challenge_id: c2.id, friend_id: f6.id,start_date: "2020-12-07", status: "pending")
-cs7 = Challengeset.create!(challenge_id: c3.id, friend_id: f1.id,start_date: "2020-12-07", status: "pending")
-cs8 = Challengeset.create!(challenge_id: c4.id, friend_id: f2.id,start_date: "2020-12-07", status: "KO")
+cs1 = Challengeset.create!(challenge_id: c1.id, friend_id: f1.id,start_date: "49", status: "OK")
+cs2 = Challengeset.create!(challenge_id: c2.id, friend_id: f2.id,start_date: "50", status: "pending")
+cs3 = Challengeset.create!(challenge_id: c3.id, friend_id: f3.id,start_date: "49", status: "KO")
+cs4 = Challengeset.create!(challenge_id: c4.id, friend_id: f4.id,start_date: "49", status: "OK")
+cs5 = Challengeset.create!(challenge_id: c1.id, friend_id: f5.id,start_date: "49", status: "pending")
+cs6 = Challengeset.create!(challenge_id: c2.id, friend_id: f6.id,start_date: "49", status: "pending")
+cs7 = Challengeset.create!(challenge_id: c3.id, friend_id: f1.id,start_date: "49", status: "pending")
+cs8 = Challengeset.create!(challenge_id: c4.id, friend_id: f2.id,start_date: "49", status: "KO")
 
 puts "#{Challengeset.count/8*100}% = #{Challengeset.count} / 8 challenges created"
 
