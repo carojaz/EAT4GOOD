@@ -59,6 +59,3 @@ class FriendsController < ApplicationController
     params.require(:friend).permit(:friend1_user_id, :friend2_user_id)
   end
 end
-
-
-
