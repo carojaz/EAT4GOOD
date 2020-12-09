@@ -6,28 +6,26 @@
     {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
     {:width=>200, :crop=>"scale"}
     ], class: "avatar-bordered-xlarge dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= cl_image_tag "https://pbs.twimg.com/profile_images/1092451626781163523/0YzJMi-8_400x400.jpg", class: "avatar-bordered-xlarge dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
+      <% else %>
+        <%= cl_image_tag "https://pbs.twimg.com/profile_images/1092451626781163523/0YzJMi-8_400x400.jpg", class: "avatar-bordered-xlarge dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
     </div>
     <div class="user-nickname">
       <h2><%= current_user.nickname %></h2>
     </div>
   </div>
   <div class="edit-info">
-    <div class="week-obj">
-    <h4>Veggie meals weekly objectives</h4>
-      <div class="objective-setting">
-        <%= simple_form_for(current_user.objectives.find_by(nb_week: Date.today.cweek), remote: true) do |f| %>
-          <h4>Your current target is :</h4>
-          <h4 class="target"> <%= current_user.objectives.find_by(nb_week: Date.today.cweek).veggies_days %> </h4>
-          <h4>Input your new challenge : </h4>
-          <div id="target-veggies-days" class="new-target">
-          </div>
-          <%= f.input :veggies_days, as: :range, input_html: { min:0, max:21 }, label: false %>
-          <%= f.button :submit %>
+    <div class="objective-setting">
+      <h4>Veggie meals weekly objectives</h4>
+      <%= simple_form_for(current_user.objectives.find_by(nb_week: Date.today.cweek), remote: true) do |f| %>
+        <h4>Your current target is</h4>
+        <h4 class="target"> <%= current_user.objectives.find_by(nb_week: Date.today.cweek).veggies_days %> </h4>
+        <h4>Input your new challenge</h4>
+        <div id="target-veggies-days" class="new-target">
+        </div>
+        <%= f.input :veggies_days, as: :range, input_html: { min:0, max:21 }, label: false %>
+        <%= f.button :submit %>
         <% end %>
-      </div>
     </div>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>

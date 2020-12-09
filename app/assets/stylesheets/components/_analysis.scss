@@ -6,8 +6,8 @@
 }
 
 .follow-icon {
-  width: 22em;
-  height: 22em;
+  width: 13em;
+  height: 13em;
   padding: 0.5em;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
@@ -18,10 +18,12 @@
   align-items: center;
   justify-content: center;
   background-color: #FFFFFF;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 
   img {
-    width: 12em;
-    height: 12em;
+    width: 8em;
+    height: 8em;
     padding:0.5em;
     bottom: 0;
   }
@@ -29,8 +31,8 @@
 
 .leaf {
   position: relative;
-  width: 12em;
-  height: 12em;
+  width: 8em;
+  height: 8em;
 
   .leaf-fill {
     position: absolute;
@@ -94,13 +96,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1em;
+}
+
+.daily {
+  display: flex;
 }
 
 .indicators {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 1em;
+  margin: 0 0 1em 0;
 
   img {
     width: 6em;
@@ -114,3 +121,4 @@
     margin: 0.2em;
   }
 }
+
