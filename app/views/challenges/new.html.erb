@@ -1,26 +1,30 @@
-<h1 class="mt-3 pb-2">Choose your challenge</h1>
-<div class="challenge pt-3">
-  <div class="challenger1">
-    <%= cl_image_tag @friend.first.friend1_user.photo.key, :transformation=>[
-            {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-            {:width=>200, :crop=>"scale"}
-            ], class: "avatar-friend-list" %>
-    <div class="friend-name"><%= @friend.first.friend1_user.nickname %></div>
+<div class="container">
+  <h1>Choose your challenge</h1>
+  <div class="challenge">
+    <div class="challenger1">
+      <%= cl_image_tag @friend.first.friend1_user.photo.key, :transformation=>[
+              {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+              {:width=>200, :crop=>"scale"}
+              ], class: "avatar-friend-list" %>
+      <h5 class="friend-name"><%= @friend.first.friend1_user.nickname %></h5>
+    </div>
+    <div class="arrow-challenge"><i class="fas fa-arrows-alt-h"></i></div>
+    <div class="challenger2">
+      <%= cl_image_tag @friend.first.friend2_user.photo.key, :transformation=>[
+              {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+              {:width=>200, :crop=>"scale"}
+              ], class: "avatar-friend-list" %>
+      <h5 class="friend-name"><%= @friend.first.friend2_user.nickname %></h5>
+    </div>
   </div>
-  <div class="pt-2"><i class="fas fa-arrows-alt-h"></i></div>
-  <div class="challenger2">
-    <%= cl_image_tag @friend.first.friend2_user.photo.key, :transformation=>[
-            {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-            {:width=>200, :crop=>"scale"}
-            ], class: "avatar-friend-list" %>
-    <div class="friend-name"><%= @friend.first.friend2_user.nickname %></div>
+  <div class="objective-setting">
+    <%= simple_form_for @challenge do |f| %>
+      <h4>Veggie meals per week : </h4>
+      <div id="target-veggies-days" class="new-target"></div>
+      <%= f.input :nb_days_veggie, as: :range, input_html: { min:0, max:21 }, label: false %>
+      <%= f.input :message %>
+      <%= hidden_field_tag(:format, params[:format]) %>
+      <%= f.submit 'New challenge', class: "btn-white" %>
+    <% end %>
   </div>
 </div>
-
-<%= simple_form_for @challenge do |f| %>
-  <h4>Veggie meals per week : </h4>
-  <%= f.input :nb_days_veggie, as: :range, input_html: { min:0, max:21 }, label: false %>
-  <%= f.input :message %>
-  <%= hidden_field_tag(:format, params[:format]) %>
-  <%= f.submit 'New challenge', class: "btn-white" %>
-<% end %>
