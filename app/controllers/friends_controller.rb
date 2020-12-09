@@ -47,6 +47,12 @@ class FriendsController < ApplicationController
     redirect_to friends_path
   end
 
+  def destroy
+    @friend = Friend.find_by("friend1_user_id= ? AND friend2_user_id= ? or friend1_user_id= ? AND friend2_user_id= ?", current_user.id, params[:id], params[:id], current_user.id)
+    @friend.destroy
+    redirect_to friends_path
+  end
+
   private
 
   def friend_params
