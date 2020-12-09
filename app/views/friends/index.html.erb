@@ -13,14 +13,14 @@
         <% @friend = Friend.where(friend1_user: current_user, friend2_user: friend).or(Friend.where(friend2_user: current_user, friend1_user: friend)) %>
         <% if @friend.first.friend2_user == current_user %>
           <%= link_to new_challenge_path(@friend.first.friend1_user_id), class: "" do %>
-          <button class="delete-btn"></button>
-          <%= link_to "test", friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"} %>
           <%= cl_image_tag friend.photo.key, :transformation=>[
           {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
           {:width=>200, :crop=>"scale"}
           ], class: "avatar-friend-list"%>
           <div class="friend-name"><%= friend.nickname %></div>
           <% end %>
+          <button class="delete-btn"></button>
+          <%= link_to "test", friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"} %>
         <% else %>
           <%= link_to new_challenge_path(@friend.first.friend2_user_id), class: "" do %>
           <%= cl_image_tag friend.photo.key, :transformation=>[
