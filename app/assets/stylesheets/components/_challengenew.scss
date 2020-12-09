@@ -1,9 +1,10 @@
 .challenge {
   display: flex;
-  align-item: center;
+  align-items: center;
   justify-content: space-around;
+
+  .arrow-challenge {
+    font-size: 3em;
+  }
 }
 
-.fa-arrows-alt-h {
-  font-size: 70px;
-}

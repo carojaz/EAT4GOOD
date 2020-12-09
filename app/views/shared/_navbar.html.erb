@@ -14,7 +14,7 @@
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <!-- Enlever le .first et mettre User en minuscule 2 fois en dessous ! -->
-          <% if User.first.photo.attached? %>
+          <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, :transformation=>[
   {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
   {:width=>200, :crop=>"scale"}

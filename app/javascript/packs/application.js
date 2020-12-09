@@ -31,6 +31,8 @@ import { selectClassMeal } from '../components/select_class_meal';
 import { objectiveSetting } from '../components/objective_setting';
 import { leafFollowUp } from '../components/leaf_follow_up';
 import { sliderValue } from '../components/slider';
+import { sliderChallenges } from '../components/slider_challenges';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -39,4 +41,5 @@ document.addEventListener('turbolinks:load', () => {
   objectiveSetting();
   leafFollowUp();
   sliderValue();
+  sliderChallenges();
 });
