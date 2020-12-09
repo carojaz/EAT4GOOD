@@ -1,20 +1,76 @@
 <h1 class="mt-3">Your challenge</h1>
+<h3>We are in week <%= @week %></h3>
 
 <% @challengesets.each do |challengeset| %>
   <% challengeset.each do |chall| %>
-    <div class="card">
-      <div class="vs">
-          <div class="avatars">
-            <div class="avatar1"></div>
-            <div class="avatar2"></div>
-          </div>
-          <p>week</p>
+    <% if chall.start_date == @week %>
+      <div class="card-product-this-week mt-3">
+
+        <%= cl_image_tag chall.friend.friend1_user.photo.key, :transformation=>[
+        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+        {:width=>200, :crop=>"scale"}
+        ], class: "avatar-challenge"%>
+        <p>vs</p>
+        <%= cl_image_tag chall.friend.friend2_user.photo.key, :transformation=>[
+        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+        {:width=>200, :crop=>"scale"}
+        ], class: "avatar-challenge"%>
+
+        <div class="card-product-infos">
+          <p>week <%= chall.start_date %> (in progress)</p>
+          <h6><%= chall.challenge.nb_days_veggie%> veggies meals this week</h6>
+        </div>
       </div>
-      <div class="recap">
-        <p><%= chall.challenge.nb_days_veggie%> veggies meals this week</p>
-        <p><%= chall.challenge.message %></p>
+    <% elsif chall.start_date == @week + 1 %>
+      <div class="card-product-next-week mt-3">
+
+        <%= cl_image_tag chall.friend.friend1_user.photo.key, :transformation=>[
+        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+        {:width=>200, :crop=>"scale"}
+        ], class: "avatar-challenge"%>
+        <p>vs</p>
+        <%= cl_image_tag chall.friend.friend2_user.photo.key, :transformation=>[
+        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+        {:width=>200, :crop=>"scale"}
+        ], class: "avatar-challenge"%>
+
+        <div class="card-product-infos">
+          <p>week <%= chall.start_date %> (next week)</p>
+          <h6><%= chall.challenge.nb_days_veggie%> veggies meals next week</h6>
+        </div>
       </div>
-    </div>
+    <% else %>
+        <div class="card-product-finish mt-3">
+
+        <%= cl_image_tag chall.friend.friend1_user.photo.key, :transformation=>[
+        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+        {:width=>200, :crop=>"scale"}
+        ], class: "avatar-challenge"%>
+        <p>vs</p>
+        <%= cl_image_tag chall.friend.friend2_user.photo.key, :transformation=>[
+        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+        {:width=>200, :crop=>"scale"}
+        ], class: "avatar-challenge"%>
+
+        <div class="card-product-infos">
+          <% @weekend = chall.start_date %>
+          <% @days_of_week = current_user.days.where(date: @weekend_start..@weekend_end).to_a %>
+          <% @veggie_this_week = 0 %>
+          <% @days_of_week.each do |day| %>
+            <% @veggie_this_week += 1 if day.breakfast.foodtype.name == "Veggie" %>
+            <% @veggie_this_week += 1 if day.lunch.foodtype.name == "Veggie" %>
+            <% @veggie_this_week += 1 if day.dinner.foodtype.name == "Veggie" %>
+          <% end %>
+          <% if @veggie_this_week >= chall.challenge.nb_days_veggie %>
+            <p style="color:green">YOU WIN<p>
+            <h6><%= chall.challenge.nb_days_veggie%> veggies meals week <%= chall.start_date %></h6>
+          <% else %>
+            <p style="color:red">YOU LOOSE<p>
+            <h6><%= chall.challenge.nb_days_veggie%> veggies meals week <%= chall.start_date %></h6>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
 
