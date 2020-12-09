@@ -62,27 +62,9 @@
     </div>
   </div>
 <div class="day">
-  <div class="week-analysis">
-    <div class="follow-icon">
-      <% if @week_status  == 0 %>
-        <p>Let's start!</p>
-      <% elsif @week_status > 0 && @week_status < 100 %>
-        <p>Nice! Go on!</p>
-      <% elsif @week_status == 100 %>
-        <p>Congrats!!</p>
-      <% else %>
-        <p>Near to stars!</p>
-      <% end %>
-      <div class="leaf">
-        <div class="leaf-fill" data-obj='<%= @week_status %>'>
-          <%= image_tag "leaf0.svg", alt: "leaf-fill" %>
-        </div>
-        <div class="leaf-empty">
-          <%= image_tag "leaf100.svg", alt: "leaf-empty" %>
-        </div>
-      </div>
-      <p> <%= @veggie_this_week %> / <%= @obj_veggie %> veggie meals</p>
-    </div>
+
+  <div class="daily">
+    <h6>Daily saving</h6>
   </div>
   <div class="indicators">
     <div class="co2">
@@ -134,6 +116,30 @@
         </div>
       </div>
       <p>- <%= @eco_h2o_day %> L</p>
+    </div>
+  </div>
+
+  <p>Weekly veggie counter</p>
+  <div class="week-analysis">
+    <div class="follow-icon">
+      <p> <%= @veggie_this_week %> / <%= @obj_veggie %><br>veggie meals</p>
+      <div class="leaf">
+        <div class="leaf-fill" data-obj='<%= @week_status %>'>
+          <%= image_tag "leaf0.svg", alt: "leaf-fill" %>
+        </div>
+        <div class="leaf-empty">
+          <%= image_tag "leaf100.svg", alt: "leaf-empty" %>
+        </div>
+      </div>
+      <% if @week_status  == 0 %>
+        <p>Let's start!</p>
+      <% elsif @week_status > 0 && @week_status < 100 %>
+        <p>Nice! Go on!</p>
+      <% elsif @week_status == 100 %>
+        <p>Congrats!!</p>
+      <% else %>
+        <p>Near to stars!</p>
+      <% end %>
     </div>
   </div>
 

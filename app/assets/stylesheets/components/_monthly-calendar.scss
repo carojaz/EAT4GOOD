@@ -1,10 +1,12 @@
 .monthly-analysis {
-  width: 60%;
+  width: 80%;
   border-radius: 25px;
-  border: silver 0.1em solid;
+  // border: silver 0.1em solid;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
   background-color: white;
   padding: 1em;
   margin-bottom: 2em;
+  display: block;
 
   h5 {
     margin-top: 0em;
@@ -19,17 +21,15 @@
   }
 
   th{
-    font-weight: normal;
-    font-size: 14px;
     color: #5b5b5b;
-    width: 1em;
+    width: 14.5%;
     padding-bottom: 0.5em;
   }
 
   td{
     font-weight: normal;
-    font-size: 12px;
     text-align: center;
+    width: 1em;
   }
 
 
