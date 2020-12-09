@@ -8,5 +8,7 @@ class ChallengesetsController < ApplicationController
       challset = Challengeset.where(friend_id: friend)
       @challengesets << challset unless challset == []
     end
+    @chall = @challengesets.flatten
+    @chall.sort! { |a, b| b[:start_date] <=> a[:start_date] }
   end
 end
