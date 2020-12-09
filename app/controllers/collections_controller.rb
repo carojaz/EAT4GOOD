@@ -15,17 +15,21 @@ class CollectionsController < ApplicationController
   end
 
   def up_counter
-    # Badges 1 a 3 (veggie meals)
+    # Badges veggie meals
     @days = Day.where(user: current_user).to_a
+
     @asparagus_badge = Badge.where(name: "Asparagus")
     @collection1 = Collection.find_by(badge: @asparagus_badge, user: current_user)
     @collection1.counter = 0
+
     @brocoli_badge = Badge.where(name: "Broccoli")
     @collection2 = Collection.find_by(badge: @brocoli_badge, user: current_user)
     @collection2.counter = 0
+
     @mushroom_badge = Badge.where(name: "Mushroom")
     @collection3 = Collection.find_by(badge: @mushroom_badge, user: current_user)
     @collection3.counter = 0
+
     @days.each do |day|
       @collection1.counter += 1 if day.breakfast.foodtype.name == "Veggie"
       @collection1.counter += 1 if day.lunch.foodtype.name == "Veggie"
@@ -42,6 +46,33 @@ class CollectionsController < ApplicationController
       @collection3.counter += 1 if day.dinner.foodtype.name == "Veggie"
       @collection3.save
     end
+
+    # badges challenges
+    @date = Date.today
+    @week = @date.cweek
+    @friends = Friend.where(friend1_user: current_user).or(Friend.where(friend2_user: current_user))
+    @challengesets = []
+    @friends.each do |friend|
+      challset = Challengeset.where(friend_id: friend)
+      @challengesets << challset unless challset == []
+    end
+    @chall = @challengesets.flatten
+    counter = @chall.count
+
+    @orange_badge = Badge.where(name: "Orange")
+    @collection4 = Collection.find_by(badge: @orange_badge, user: current_user)
+    @collection4.counter = counter
+    @collection4.save
+
+    @pineapple_badge = Badge.where(name: "Pineapple")
+    @collection5 = Collection.find_by(badge: @pineapple_badge, user: current_user)
+    @collection5.counter = counter
+    @collection5.save
+
+    @pomegranate_badge = Badge.where(name: "Pomegranate")
+    @collection6 = Collection.find_by(badge: @pomegranate_badge, user: current_user)
+    @collection6.counter = counter
+    @collection6.save
 
     # badges amis
     @friends = Friend.where(friend1_user: current_user).or(Friend.where(friend2_user: current_user))
