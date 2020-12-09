@@ -74,6 +74,34 @@ class CollectionsController < ApplicationController
     @collection6.counter = counter
     @collection6.save
 
+    # badges positives
+    @days = Day.where(user: current_user).to_a
+
+    @radish_badge = Badge.where(name: "Radish")
+    @collection6 = Collection.find_by(badge: @radish_badge, user: current_user)
+    @collection6.counter = 0
+
+    @salad_badge = Badge.where(name: "Salad")
+    @collection7 = Collection.find_by(badge: @salad_badge, user: current_user)
+    @collection7.counter = 0
+
+    @tangerine_badge = Badge.where(name: "Tangerine")
+    @collection8 = Collection.find_by(badge: @tangerine_badge, user: current_user)
+    @collection8.counter = 0
+
+    @days.each do |day|
+      @collection6.counter += 1 if (day.breakfast.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish") && (day.lunch.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish") && (day.dinner.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish")
+      @collection6.save
+
+      @collection7.counter += 1 if (day.breakfast.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish") && (day.lunch.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish") && (day.dinner.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish")
+      @collection7.save
+
+      @collection8.counter += 1 if (day.breakfast.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish") && (day.lunch.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish") && (day.dinner.foodtype.name == "Veggie" || "Dairy" || "Meat" || "Fish")
+      @collection8.save
+    end
+
+    # badges objectifs
+
     # badges amis
     @friends = Friend.where(friend1_user: current_user).or(Friend.where(friend2_user: current_user))
     @count = @friends.count
@@ -92,6 +120,10 @@ class CollectionsController < ApplicationController
     @collection15 = Collection.find_by(badge: @pumpkin_badge, user: current_user)
     @collection15.counter = @count
     @collection15.save
+
+    # badges log in
+
+    # badges trees?
 
     # Badges Ultimes
     @badges = Badge.all
