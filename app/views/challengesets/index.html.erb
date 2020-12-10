@@ -5,70 +5,78 @@
 
     <% if challengeset.start_date == @week %>
       <div class="card-product-this-week mt-3">
+        <div class="topcard">
+          <%= cl_image_tag challengeset.friend.friend1_user.photo.key, :transformation=>[
+          {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+          {:width=>200, :crop=>"scale"}
+          ], class: "avatar-challenge"%>
+          <p>vs</p>
+          <%= cl_image_tag challengeset.friend.friend2_user.photo.key, :transformation=>[
+          {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+          {:width=>200, :crop=>"scale"}
+          ], class: "avatar-challenge"%>
 
-        <%= cl_image_tag challengeset.friend.friend1_user.photo.key, :transformation=>[
-        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-        {:width=>200, :crop=>"scale"}
-        ], class: "avatar-challenge"%>
-        <p>vs</p>
-        <%= cl_image_tag challengeset.friend.friend2_user.photo.key, :transformation=>[
-        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-        {:width=>200, :crop=>"scale"}
-        ], class: "avatar-challenge"%>
-
-        <div class="card-product-infos">
-          <p>week <%= challengeset.start_date %> (in progress)</p>
-          <h6><%= challengeset.challenge.nb_days_veggie%> veggies meals this week</h6>
+          <div class="card-product-infos">
+            <p>week <%= challengeset.start_date %> (in progress)</p>
+            <h6><%= challengeset.challenge.nb_days_veggie%> veggies meals this week</h6>
+          </div>
         </div>
+        <h6 class="pt-2"> <%= challengeset.challenge.message %></h6>
       </div>
+
     <% elsif challengeset.start_date == @week + 1 %>
       <div class="card-product-next-week mt-3">
+        <div class="topcard">
+          <%= cl_image_tag challengeset.friend.friend1_user.photo.key, :transformation=>[
+          {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+          {:width=>200, :crop=>"scale"}
+          ], class: "avatar-challenge"%>
+          <p>vs</p>
+          <%= cl_image_tag challengeset.friend.friend2_user.photo.key, :transformation=>[
+          {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+          {:width=>200, :crop=>"scale"}
+          ], class: "avatar-challenge"%>
 
-        <%= cl_image_tag challengeset.friend.friend1_user.photo.key, :transformation=>[
-        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-        {:width=>200, :crop=>"scale"}
-        ], class: "avatar-challenge"%>
-        <p>vs</p>
-        <%= cl_image_tag challengeset.friend.friend2_user.photo.key, :transformation=>[
-        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-        {:width=>200, :crop=>"scale"}
-        ], class: "avatar-challenge"%>
-
-        <div class="card-product-infos">
-          <p>week <%= challengeset.start_date %> (next week)</p>
-          <h6><%= challengeset.challenge.nb_days_veggie%> veggies meals next week</h6>
+          <div class="card-product-infos">
+            <p>week <%= challengeset.start_date %> (next week)</p>
+            <h6><%= challengeset.challenge.nb_days_veggie%> veggies meals next week</h6>
+          </div>
         </div>
+        <h6 class="pt-2"> <%= challengeset.challenge.message %></h6>
       </div>
+
     <% else %>
         <div class="card-product-finish mt-3">
+          <div class="topcard">
+            <%= cl_image_tag challengeset.friend.friend1_user.photo.key, :transformation=>[
+            {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+            {:width=>200, :crop=>"scale"}
+            ], class: "avatar-challenge"%>
+            <p>vs</p>
+            <%= cl_image_tag challengeset.friend.friend2_user.photo.key, :transformation=>[
+            {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+            {:width=>200, :crop=>"scale"}
+            ], class: "avatar-challenge"%>
 
-        <%= cl_image_tag challengeset.friend.friend1_user.photo.key, :transformation=>[
-        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-        {:width=>200, :crop=>"scale"}
-        ], class: "avatar-challenge"%>
-        <p>vs</p>
-        <%= cl_image_tag challengeset.friend.friend2_user.photo.key, :transformation=>[
-        {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-        {:width=>200, :crop=>"scale"}
-        ], class: "avatar-challenge"%>
-
-        <div class="card-product-infos">
-          <% @weekend = challengeset.start_date %>
-          <% @days_of_week = current_user.days.where(date: @weekend_start..@weekend_end).to_a %>
-          <% @veggie_this_week = 0 %>
-          <% @days_of_week.each do |day| %>
-            <% @veggie_this_week += 1 if day.breakfast.foodtype.name == "Veggie" %>
-            <% @veggie_this_week += 1 if day.lunch.foodtype.name == "Veggie" %>
-            <% @veggie_this_week += 1 if day.dinner.foodtype.name == "Veggie" %>
-          <% end %>
-          <% if @veggie_this_week >= challengeset.challenge.nb_days_veggie %>
-            <p style="color:green">YOU WIN<p>
-            <h6><%= challengeset.challenge.nb_days_veggie%> veggies meals week <%= challengeset.start_date %></h6>
-          <% else %>
-            <p style="color:red">TRY AGAIN<p>
-            <h6><%= challengeset.challenge.nb_days_veggie%> veggies meals week <%= challengeset.start_date %></h6>
-          <% end %>
-        </div>
+            <div class="card-product-infos">
+              <% @weekend = challengeset.start_date %>
+              <% @days_of_week = current_user.days.where(date: @weekend_start..@weekend_end).to_a %>
+              <% @veggie_this_week = 0 %>
+              <% @days_of_week.each do |day| %>
+                <% @veggie_this_week += 1 if day.breakfast.foodtype.name == "Veggie" %>
+                <% @veggie_this_week += 1 if day.lunch.foodtype.name == "Veggie" %>
+                <% @veggie_this_week += 1 if day.dinner.foodtype.name == "Veggie" %>
+              <% end %>
+              <% if @veggie_this_week >= challengeset.challenge.nb_days_veggie %>
+                <p style="color:green">YOU WIN<p>
+                <h6><%= challengeset.challenge.nb_days_veggie%> veggies meals week <%= challengeset.start_date %></h6>
+              <% else %>
+                <p style="color:red">TRY AGAIN<p>
+                <h6><%= challengeset.challenge.nb_days_veggie%> veggies meals week <%= challengeset.start_date %></h6>
+              <% end %>
+            </div>
+          </div>
+          <h6 class="pt-2"> <%= challengeset.challenge.message %></h6>
       </div>
   <% end %>
 <% end %>
