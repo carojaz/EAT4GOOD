@@ -6,49 +6,79 @@
       <%= link_to "Your challenges", friend_challengesets_path(current_user), class: "search-input btn-white" %>
 </form>
 <div class="friendlist">
-  <h2 class="mt-3 mb-3">Challenge your friends</h2>
+  <h2 class= mt-3 mb-3">Challenge your friends</h2>
   <div class="row">
     <% @my_friends.each do |friend| %>
       <div class="col-4 mb-5 <%= "opacity-avatar" if @friends.find{|f|f.friend1_user == friend || f.friend2_user == friend }.status == "pending"  %>">
         <div class="card-delete-friend">
           <% @friend = Friend.where(friend1_user: current_user, friend2_user: friend).or(Friend.where(friend2_user: current_user, friend1_user: friend)) %>
           <% if @friend.first.friend2_user == current_user %>
-            <%= link_to new_challenge_path(@friend.first.friend1_user_id), class: "" do %>
+            <% if @friend.first.status == "OK" %>
+              <%= link_to new_challenge_path(@friend.first.friend1_user_id), class: "" do %>
+                <%= cl_image_tag friend.photo.key, :transformation=>[
+                {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+                {:width=>200, :crop=>"scale"}
+                ], class: "avatar-friend-list"%>
+              <% end %>
+              <%= link_to friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"}, class: "hidden" do %>
+                <button class="delete-btn">-</button>
+              <% end %>
+              <div class="friend-name"><%= friend.nickname %></div>
+              <%= link_to new_challenge_path(@friend.first.friend2_user_id), class: "" do %>
+              <% end %>
+            <% elsif @friend.first.status == "pending" %>
+              <% if friend.photo.attached? %>
+                <%= cl_image_tag friend.photo.key, :transformation=>[
+                {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+                {:width=>200, :crop=>"scale"}
+                ], class: "avatar-friend-list"%>
+              <% else %>
+                <%= cl_image_tag "https://pbs.twimg.com/profile_images/1092451626781163523/0YzJMi-8_400x400.jpg", class: "avatar-friend-list", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% end %>
+              <%= link_to friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"}, class: "hidden" do %>
+                <button class="delete-btn">-</button>
+              <% end %>
+              <div class="friend-name"><%= friend.nickname %>
+              </div>
+            <% end %>
+        <% else %>
+          <% if @friend.first.status == "OK" %>
+            <%= link_to new_challenge_path(@friend.first.friend2_user_id), class: "" do %>
+              <%= cl_image_tag friend.photo.key, :transformation=>[
+              {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+              {:width=>200, :crop=>"scale"}
+              ], class: "avatar-friend-list"%>
+            <% end %>
+            <%= link_to  friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"}, class: "hidden" do %>
+              <button class="delete-btn">-</button>
+            <% end %>
+            <div class="friend-name">
+              <%= friend.nickname %>
+            </div>
+          <% elsif @friend.first.status == "pending" %>
             <%= cl_image_tag friend.photo.key, :transformation=>[
             {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
             {:width=>200, :crop=>"scale"}
             ], class: "avatar-friend-list"%>
-            <%= link_to friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"}, class: "hidden" do %>
+            <%= link_to  friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"}, class: "hidden" do %>
               <button class="delete-btn">-</button>
-            <% end %>
             <div class="friend-name"><%= friend.nickname %></div>
             <% end %>
-          <% else %>
-          <%= link_to new_challenge_path(@friend.first.friend2_user_id), class: "" do %>
-          <div>
-            <%= cl_image_tag friend.photo.key, :transformation=>[
-            {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-            {:width=>200, :crop=>"scale"}
-            ], class: "avatar-friend-list"%>
-               <%= link_to  friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"}, class: "hidden" do %>
-              <button class="delete-btn">-</button>
-            <% end %>
-            <div class="friend-name"><%= friend.nickname %></div>
-          </div>
           <% end %>
-          <% end %>
-        </div>
+        <% end %>
+
         <% if @friends.find{|f| f.friend2_user == current_user } && @friends.find{|f| f.friend2_user == current_user && f.friend1_user == friend} %>
           <% if @friends.find{|f| f.friend2_user == current_user && f.friend1_user == friend}.status == "pending" %>
             <%= link_to validated_friend_path(@friends.find{|f|f.friend1_user == friend || f.friend2_user == friend }), method: :patch do %>
-            <button class="fas fa-check-circle"></button>
+              <button class="fas fa-check-circle"></button>
             <% end %>
             <%= link_to refused_friend_path(@friends.find{|f| f.friend2_user == current_user }), method: :patch do %>
-            <button class="fas fa-times-circle"></button>
+              <button class="fas fa-times-circle"></button>
             <% end %>
           <% end %>
         <% end %>
       </div>
-    <% end %>
+    </div>
+       <% end %>
   </div>
 </div>

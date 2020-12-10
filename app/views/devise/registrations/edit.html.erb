@@ -1,8 +1,8 @@
-<div class="container container-user">
+<div class="container-user">
   <div class="user-info">
     <div class="user-pict">
-      <% if User.first.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, :transformation=>[
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, :transformation=>[
     {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
     {:width=>200, :crop=>"scale"}
     ], class: "avatar-bordered-xlarge dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -24,8 +24,8 @@
         <div id="target-veggies-days" class="new-target">
         </div>
         <%= f.input :veggies_days, as: :range, input_html: { min:0, max:21 }, label: false %>
-        <%= f.button :submit %>
-        <% end %>
+        <%= f.submit "Update", class: "btn-white" %>
+      <% end %>
     </div>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>

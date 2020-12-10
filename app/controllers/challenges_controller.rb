@@ -14,8 +14,14 @@ class ChallengesController < ApplicationController
       @date = Date.today
       @week = @date.cweek
       @challengeset.start_date = @week + 1
-      @challengeset.save
-      redirect_to friends_path
+      if Challengeset.find_by(friend: @friend, start_date: @week + 1)
+        @challenge = Challenge.new(challenge_params)
+        flash[:notice] = "You already challenge this friend for the next week"
+        render :new
+      else
+        @challengeset.save
+        redirect_to friends_path
+      end
     else
       render :new
     end

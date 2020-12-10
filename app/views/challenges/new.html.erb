@@ -20,13 +20,13 @@
             <h5 class="friend-name"><%= @friend.first.friend2_user.nickname %></h5>
           </div>
         </div>
-        <%= simple_form_for @challenge do |f| %>
           <h4>How many Veggie meals next week ?</h4>
+        <%= simple_form_for @challenge do |f| %>
           <div id="target-veggies-days" class="new-target"></div>
           <%= f.input :nb_days_veggie, as: :range, input_html: { min:0, max:21 }, label: false %>
           <%= f.input :message, label: false, placeholder: "Write message to challenge your friend!", as: :text, :input_html => { :cols => 20, :rows => 10 } %>
           <%= hidden_field_tag(:format, params[:format]) %>
-          <%= f.submit 'Send challenge', class: "btn-white h5" %>
+          <%= f.submit 'Send challenge', class: "btn-white" %>
         <% end %>
       </div>
     </div>
