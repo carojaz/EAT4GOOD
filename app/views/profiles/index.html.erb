@@ -15,7 +15,7 @@
 <div class="friendlist">
   <div class="row">
     <% @users_not_my_friend.each do |user| %>
-      <div class="col-4">
+      <div class="col-4 mb-5">
         <div class="card-add-friend">
           <%= simple_form_for @friend do |f| %>
             <%= f.input :friend2_user, as: :hidden, input_html: {value: user.id} %>

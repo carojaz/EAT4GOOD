@@ -18,3 +18,64 @@
   opacity: 0.5;
 }
 
+.card-delete-friend{
+  width: 80px;
+  margin: auto;
+  position: relative;
+  .avatar-friend-list{
+    margin: 0;
+  }
+}
+
+.delete-btn{
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  border: solid black 0.1em;
+  color: black;
+  font-size: 20px;
+  background-color:rgb(248, 130, 130);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  position: relative;
+  bottom: 20px;
+  right: -59px;
+  padding: 0;
+  line-height: 0.8;
+
+  &:hover {
+    text-decoration: none;
+    background-color: rgb(255, 4, 0);
+  }
+}
+
+.fa-check-circle{
+  border: 0;
+}
+
+.fa-check-circle{
+  color: rgb(130, 201, 30);
+  font-size: 20px;
+
+  &:hover{
+    text-decoration: none;
+    color: green;
+  }
+}
+
+
+.fa-times-circle{
+  border: 0;
+}
+
+.fa-times-circle{
+  color: rgb(243, 64, 64);
+  font-size: 20px;
+
+  &:hover{
+    text-decoration: none;
+    color: red;
+  }
+}

@@ -2,6 +2,9 @@
   width: 80px;
   margin: auto;
   position: relative;
+  .avatar-friend-list{
+    margin: 0;
+  }
 }
 .add-btn{
     height: 20px;
@@ -9,14 +12,15 @@
     border-radius: 50px;
     border: solid $orange 0.1em;
     color: $orange;
+    font-size: 20px;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 1px;
+    right: -1px;
     padding: 0;
     line-height: 0.8;
 
