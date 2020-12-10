@@ -9,35 +9,43 @@
   <h2 class="mt-3 mb-3">Challenge your friends</h2>
   <div class="row">
     <% @my_friends.each do |friend| %>
-      <div class="col-4 <%= "opacity-avatar" if @friends.find{|f|f.friend1_user == friend || f.friend2_user == friend }.status == "pending"  %>">
-        <% @friend = Friend.where(friend1_user: current_user, friend2_user: friend).or(Friend.where(friend2_user: current_user, friend1_user: friend)) %>
-        <% if @friend.first.friend2_user == current_user %>
-          <%= link_to new_challenge_path(@friend.first.friend1_user_id), class: "" do %>
-          <%= cl_image_tag friend.photo.key, :transformation=>[
-          {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-          {:width=>200, :crop=>"scale"}
-          ], class: "avatar-friend-list"%>
-          <div class="friend-name"><%= friend.nickname %></div>
-          <%= link_to friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"}, class: "hidden" do %>
-          <button class="delete-btn"></button>
-          <% end %>
-          <% end %>
-        <% else %>
+      <div class="col-4 mb-5 <%= "opacity-avatar" if @friends.find{|f|f.friend1_user == friend || f.friend2_user == friend }.status == "pending"  %>">
+        <div class="card-delete-friend">
+          <% @friend = Friend.where(friend1_user: current_user, friend2_user: friend).or(Friend.where(friend2_user: current_user, friend1_user: friend)) %>
+          <% if @friend.first.friend2_user == current_user %>
+            <%= link_to new_challenge_path(@friend.first.friend1_user_id), class: "" do %>
+            <%= cl_image_tag friend.photo.key, :transformation=>[
+            {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+            {:width=>200, :crop=>"scale"}
+            ], class: "avatar-friend-list"%>
+            <%= link_to friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"}, class: "hidden" do %>
+              <button class="delete-btn">-</button>
+            <% end %>
+            <div class="friend-name"><%= friend.nickname %></div>
+            <% end %>
+          <% else %>
           <%= link_to new_challenge_path(@friend.first.friend2_user_id), class: "" do %>
-          <%= cl_image_tag friend.photo.key, :transformation=>[
-          {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
-          {:width=>200, :crop=>"scale"}
-          ], class: "avatar-friend-list"%>
-          <div class="friend-name"><%= friend.nickname %></div>
-          <%= link_to  friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"}, class: "hidden" do %>
-         <button class="delete-btn"></button>
+          <div>
+            <%= cl_image_tag friend.photo.key, :transformation=>[
+            {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+            {:width=>200, :crop=>"scale"}
+            ], class: "avatar-friend-list"%>
+               <%= link_to  friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"}, class: "hidden" do %>
+              <button class="delete-btn">-</button>
+            <% end %>
+            <div class="friend-name"><%= friend.nickname %></div>
+          </div>
           <% end %>
-        <% end %>
-        <% end %>
+          <% end %>
+        </div>
         <% if @friends.find{|f| f.friend2_user == current_user } && @friends.find{|f| f.friend2_user == current_user && f.friend1_user == friend} %>
           <% if @friends.find{|f| f.friend2_user == current_user && f.friend1_user == friend}.status == "pending" %>
-            <%= link_to "Validated friend", validated_friend_path(@friends.find{|f|f.friend1_user == friend || f.friend2_user == friend }), method: :patch  %>
-            <%= link_to "Refused friend", refused_friend_path(@friends.find{|f| f.friend2_user == current_user }), method: :patch  %>
+            <%= link_to validated_friend_path(@friends.find{|f|f.friend1_user == friend || f.friend2_user == friend }), method: :patch do %>
+            <button class="fas fa-check-circle"></button>
+            <% end %>
+            <%= link_to refused_friend_path(@friends.find{|f| f.friend2_user == current_user }), method: :patch do %>
+            <button class="fas fa-times-circle"></button>
+            <% end %>
           <% end %>
         <% end %>
       </div>

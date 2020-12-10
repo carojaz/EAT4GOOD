@@ -1,7 +1,7 @@
 class FriendsController < ApplicationController
 
   def index
-    @friends = Friend.where(friend1_user: current_user, status: ["OK", "pending"]).or(Friend.where(friend2_user: current_user, status: ["OK", "pending"]))
+    @friends = Friend.where(friend1_user: current_user, status: ["OK", "pending"]).or(Friend.where(friend2_user: current_user, status: ["OK", "pending"])).order(status: :desc)
     @my_friends = @friends.map do |friend|
       if friend.friend1_user == current_user
         friend.friend2_user
