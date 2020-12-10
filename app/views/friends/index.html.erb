@@ -25,10 +25,14 @@
             <% end %>
             <% end %>
           <% elsif @friend.first.status == "pending" %>
-            <%= cl_image_tag friend.photo.key, :transformation=>[
+            <% if friend.photo.attached? %>
+              <%= cl_image_tag friend.photo.key, :transformation=>[
             {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
             {:width=>200, :crop=>"scale"}
             ], class: "avatar-friend-list"%>
+            <% else %>
+              <%= cl_image_tag "https://pbs.twimg.com/profile_images/1092451626781163523/0YzJMi-8_400x400.jpg", class: "avatar-friend-list", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
             <div class="friend-name"><%= friend.nickname %></div>
             <%= link_to friend_path(friend), method: :delete, data: {confirm: "Are you sure ?"}, class: "hidden" do %>
             <button class="delete-btn"></button>
