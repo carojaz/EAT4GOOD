@@ -96,7 +96,7 @@ class CollectionsController < ApplicationController
     @collection5.counter = counter
     @collection5.save
 
-    @pomegranate_badge = Badge.where(name: "Pomegranate")
+    @pomegranate_badge = Badge.where(name: "Pomegran")
     @collection6 = Collection.find_by(badge: @pomegranate_badge, user: current_user)
     @collection6.counter = counter
     @collection6.save
