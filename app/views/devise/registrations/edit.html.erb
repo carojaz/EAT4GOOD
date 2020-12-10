@@ -24,8 +24,8 @@
         <div id="target-veggies-days" class="new-target">
         </div>
         <%= f.input :veggies_days, as: :range, input_html: { min:0, max:21 }, label: false %>
-        <%= f.submit "Update", class: "btn-white"  %>
-        <% end %>
+        <%= f.submit "Update", class: "btn-white" %>
+      <% end %>
     </div>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
