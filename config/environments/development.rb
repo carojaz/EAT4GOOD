@@ -65,4 +65,5 @@ Rails.application.configure do
   Bullet.enable = true
   Bullet.rails_logger = true
 end
+  config.hosts << /\A[a-z0-9]+\.ngrok\.io/
 end
