@@ -1,6 +1,6 @@
 .container-user {
   background-color: $green;
-  padding : 2em;
+  padding : 0.5em;
   width: 80%;
   border-radius: 20px;
   color: white;
@@ -51,7 +51,15 @@
   justify-content: center;
   flex-direction: column;
 
+  .week-obj {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .objective-setting {
+    width: 90%;
     padding: 1em;
     margin: 1em 0;
     border-radius: 25px;
@@ -66,6 +74,14 @@
 
       h6 {
         margin: 0.5em;
+      }
+
+      .challenge {
+        width: 100%;
+      }
+      #new_challenge > div.form-group.text.required.challenge_message {
+        display: flex;
+        justify-content: center;
       }
 
       .new-target {
@@ -111,21 +127,21 @@
         height: 0.1em;
         padding: 0.08em;
       }
-
       #challenge_message {
         height: 7em;
-        width: 20em;
+        width: 90%;
         margin: 1em 0;
         color: $gray;
         border-radius: 25px;
-        padding: 0.1em 0;
+        padding: 0.5em 0;
         overflow-wrap: break-word;
+        text-align: center;
       }
 
       .btn-white {
-        width: 20em;
+        width: 80%;
         margin: 0.5em 0;
+        padding: 0.3;
       }
   }
 }
-

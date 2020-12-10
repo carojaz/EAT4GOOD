@@ -7,19 +7,27 @@
   <% else %>
     <%= link_to "/", class: "" do %>
       <%= image_tag "dashboard.svg" %>
-      <div class="p-footer">Dashboard</div>
+      <div class="p-footer">
+        <h6>Dashboard</h6>
+      </div>
     <% end %>
   <% end %>
   <%= link_to collections_path, class: "" do %>
     <%= image_tag "badge.svg" %>
-    <div class="p-footer">Badges</div>
+    <div class="p-footer">
+      <h6>Badges</h6>
+    </div>
   <% end %>
   <%= link_to recipes_path, class: "" do %>
     <%= image_tag "cookbook.svg" %>
-    <div class="p-footer">Recipes</div>
+    <div class="p-footer">
+      <h6>Recipes</h6>
+    </div>
   <% end %>
   <%= link_to friends_path, class: "" do %>
     <%= image_tag "shuttle.svg" %>
-    <div class="p-footer">Challenges</div>
+    <div class="p-footer">
+      <h6>Challenges</h6>
+    </div>
   <% end %>
 </div>
