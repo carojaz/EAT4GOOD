@@ -1,4 +1,4 @@
-<div class="container container-user">
+<div class="container-user">
   <div class="user-info">
     <div class="user-pict">
       <% if User.first.photo.attached? %>
@@ -24,7 +24,9 @@
         <div id="target-veggies-days" class="new-target">
         </div>
         <%= f.input :veggies_days, as: :range, input_html: { min:0, max:21 }, label: false %>
-        <%= f.button :submit %>
+        <div class="form-actions btn-white">
+          <h4><%= f.button :submit %></h4>
+        </div>
         <% end %>
     </div>
 
