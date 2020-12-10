@@ -109,7 +109,7 @@ Badge.create(target: 120, name: "Apple", description: "Eat 120 veggie meals to g
 Badge.create(target: 200, name: "Banana", description: "Eat 200 veggie meals to get this badge", picture_path: "badge12.svg")
 Badge.create(target: 5, name: "Orange", description: "Take part in 5 challenges to get this badge", picture_path: "badge4.svg")
 Badge.create(target: 25, name: "Pineapple", description: "Take part in 25 challenges to get this badge", picture_path: "badge5.svg")
-Badge.create(target: 100, name: "Pomegranate", description: "Take part in 100 challenges to get this badge", picture_path: "badge6.svg")
+Badge.create(target: 100, name: "Pomegran", description: "Take part in 100 challenges to get this badge", picture_path: "badge6.svg")
 Badge.create(target: 5, name: "Radish", description: "Fill your 3 meals for 5 days to get this badge", picture_path: "badge7.svg")
 Badge.create(target: 25, name: "Salad", description: "Fill your 3 meals for 25 days to get this badge", picture_path: "badge8.svg")
 Badge.create(target: 100, name: "Tangerine", description: "Fill your 3 meals for 100 days to get this badge", picture_path: "badge9.svg")

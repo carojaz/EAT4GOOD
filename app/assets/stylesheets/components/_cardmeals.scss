@@ -17,3 +17,11 @@
 .meal {
   position: relative;
 }
+
+.day-edit {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+}
