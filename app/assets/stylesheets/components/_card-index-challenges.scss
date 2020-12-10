@@ -1,17 +1,23 @@
+.topcard {
+  display: flex;
+  align-items: center;
+  height: 60%;
+  border-bottom: 1px solid #ede6e2;
+}
 
 // Card-product-this-week
 
 .card-product-this-week {
   overflow: hidden;
-  height: 100px;
+  height: 180px;
   width: 80%;
   background: white;
   border-radius: 10px;
   margin: 0 auto;
   border: 5px solid gold;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
 }
 
 .card-product-this-week img {
@@ -42,15 +48,15 @@
 
 .card-product-next-week {
   overflow: hidden;
-  height: 100px;
+  height: 180px;
   width: 80%;
   border-radius: 10px;
   border: 5px solid $green;
   margin: 0 auto;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
 }
 
 .card-product-next-week img {
@@ -81,15 +87,15 @@
 
 .card-product-finish {
   overflow: hidden;
-  height: 100px;
+  height: 180px;
   width: 80%;
   border-radius: 10px;
   margin: 0 auto;
   border: 5px solid black;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
 }
 
 .card-product-finish img {
