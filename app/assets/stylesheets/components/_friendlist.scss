@@ -51,13 +51,18 @@
   }
 }
 
+.btn-validate-refuse {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .fa-check-circle{
   border: 0;
 }
 
 .fa-check-circle{
   color: rgb(130, 201, 30);
-  font-size: 20px;
+  font-size: 1.25em;
 
   &:hover{
     text-decoration: none;
@@ -72,7 +77,7 @@
 
 .fa-times-circle{
   color: rgb(243, 64, 64);
-  font-size: 20px;
+  font-size: 1.25em;
 
   &:hover{
     text-decoration: none;
